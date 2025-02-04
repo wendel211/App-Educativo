@@ -60,9 +60,7 @@ export const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
     <SafeAreaView style={styles.container}>
       <Header 
         title={`Olá, ${userName}`}
-        rightComponent={
-          <Text style={styles.logoutText} onPress={() => {}}>Sair</Text>
-        }
+    
       />
       
       <ScrollView style={styles.content}>

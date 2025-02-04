@@ -4,7 +4,8 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthNavigator } from './AuthNavigator';
-import { TabNavigator } from './TabNavigator'; // Importe o TabNavigator
+import { DrawerNavigator } from './DrawerNavigator'; // Importe o DrawerNavigator
+import { TabNavigator } from './TabNavigator';
 
 const Stack = createNativeStackNavigator();
 
@@ -25,7 +26,7 @@ export const AppNavigator = () => {
           // Telas principais (autenticado)
           <Stack.Screen
             name="Main"
-            component={TabNavigator} // Use o TabNavigator aqui
+            component={DrawerNavigator} // Use o DrawerNavigator aqui
             options={{ headerShown: false }}
           />
         )}

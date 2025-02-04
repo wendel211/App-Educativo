@@ -35,21 +35,6 @@ const topicsData: Record<string, { id: string; title: string; duration: string; 
     { id: '4-2', title: 'Dietas Específicas', duration: '9 min', level: 'Intermediário' },
     { id: '4-3', title: 'Planejamento de Refeições', duration: '11 min', level: 'Avançado' },
   ],
-  '5': [
-    { id: '5-1', title: 'Importância da Hidratação', duration: '5 min', level: 'Básico' },
-    { id: '5-2', title: 'Quantidade Ideal de Água', duration: '7 min', level: 'Intermediário' },
-    { id: '5-3', title: 'Impacto da Hidratação na Saúde', duration: '9 min', level: 'Avançado' },
-  ],
-  '6': [
-    { id: '6-1', title: 'Sono e Saúde', duration: '6 min', level: 'Básico' },
-    { id: '6-2', title: 'Dicas para Melhorar o Sono', duration: '8 min', level: 'Intermediário' },
-    { id: '6-3', title: 'Relação entre Sono e Doenças Crônicas', duration: '10 min', level: 'Avançado' },
-  ],
-  '7': [
-    { id: '7-1', title: 'Gestão do Estresse', duration: '5 min', level: 'Básico' },
-    { id: '7-2', title: 'Técnicas de Relaxamento', duration: '8 min', level: 'Intermediário' },
-    { id: '7-3', title: 'Impacto do Estresse na Saúde', duration: '10 min', level: 'Avançado' },
-  ],
 };
 
 export const TopicsScreen: React.FC<TopicsScreenProps> = ({ navigation, route }) => {
