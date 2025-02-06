@@ -35,6 +35,7 @@ const topicsData: Record<string, { id: string; title: string; duration: string; 
     { id: '4-2', title: 'Dietas Específicas', duration: '9 min', level: 'Intermediário' },
     { id: '4-3', title: 'Planejamento de Refeições', duration: '11 min', level: 'Avançado' },
   ],
+  
 };
 
 export const TopicsScreen: React.FC<TopicsScreenProps> = ({ navigation, route }) => {

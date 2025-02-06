@@ -13,11 +13,11 @@
       <Tab.Navigator
         screenOptions={{
           headerShown: false, // Oculta o header
-          tabBarActiveBackgroundColor: '#7d7d7d', // Cor de fundo do ícone ativo
-          tabBarActiveTintColor: '#ffffff', // Cor do ícone ativo
-          tabBarInactiveTintColor: '#cccccc', // Cor do ícone inativo
+          tabBarActiveBackgroundColor: '#FFF', // Cor de fundo do ícone ativo
+          tabBarActiveTintColor: '#1F8E8A', // Cor do ícone ativo
+          tabBarInactiveTintColor: '#767676', // Cor do ícone inativo
           tabBarStyle: {
-            backgroundColor: '#4f4f4f', // Cor de fundo da barra de navegação
+            backgroundColor: '#FFF', // Cor de fundo da barra de navegação
           },
         }}
       >

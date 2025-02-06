@@ -47,6 +47,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     minHeight: 50,
+    marginBottom: 24,
   },
   primary: {
     backgroundColor: colors.primary,

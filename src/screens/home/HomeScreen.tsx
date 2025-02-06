@@ -11,6 +11,39 @@ import {
 import { Header } from '../../components/common/Header';
 import { TopicCard } from '../../components/education/TopicCard';
 import { colors } from '../../styles/colors';
+import { AwarenessCard } from '../../components/common/AwarenessCard'; // Importe o novo componente
+
+
+interface AwarenessData {
+  id: string;
+  title: string;
+  image: ImageSourcePropType;
+}
+
+const awarenessTopics: AwarenessData[] = [
+  {
+    id: '1',
+    title: 'Por que é tão importante rever os cuidados referente aos nossos hábitos sendo portador de doenças cardiovasculares?',
+    image: require('../../assets/images/cardiovas.jpg'), // Adicione a imagem no diretório assets
+  },
+  {
+    id: '2',
+    title: 'Por que é tão importante rever os cuidados referente aos nossos hábitos sendo portador de diabetes tipo 2?',
+    image: require('../../assets/images/diabetes.jpg'), // Adicione a imagem no diretório assets
+  },
+  {
+    id: '3',
+    title: 'Por que é tão importante rever os cuidados referente aos nossos hábitos sendo portador de doenças cardiovasculares e diabetes tipo 2?',
+    image: require('../../assets/images/paciente.jpg'), // Adicione a imagem no diretório assets
+  },
+];
+
+  const handleCardPress = (topicId: string) => {
+    // Redireciona para a tela específica com base no ID do card
+    navigation.navigate('AwarenessDetail', { topicId });
+  };
+
+
 
 interface TopicData {
   id: string;
@@ -57,24 +90,33 @@ export const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
   };
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Header 
-        title={`Olá, ${userName}`}
-    
-      />
-      
+    <SafeAreaView style={styles.container}> 
+
       <ScrollView style={styles.content}>
+
         <View style={styles.welcomeSection}>
-          <Text style={styles.welcomeTitle}>
-            Aprenda algo novo sobre sua saúde hoje!
-          </Text>
-          <Text style={styles.welcomeSubtitle}>
-            Explore nossos tópicos educativos e cuide melhor da sua saúde
-          </Text>
+          <Text style={styles.sectionTitle}>Bem-vindo, {userName}!</Text>
+          <Text style={styles.initialTitle}>Aprenda cuidar da saúde sendo portador de doenças cardiovascular e diabetes!</Text>
+        </View>
+
+        <View style={styles.awarenessSection}>
+          {awarenessTopics.map((topic) => (
+            <AwarenessCard
+              key={topic.id}
+              title={topic.title}
+              image={topic.image}
+              onPress={() => handleCardPress(topic.id)}
+            />
+          ))}
         </View>
 
         <View style={styles.topicsSection}>
           <Text style={styles.sectionTitle}>Tópicos Educativos</Text>
+
+          <Text style={styles.initialTitle}>
+            Explore nossos tópicos educativos e cuide melhor da sua saúde
+          </Text>
+
           {topics.map((topic) => (
             <TopicCard
               key={topic.id}
@@ -87,7 +129,6 @@ export const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
         </View>
 
         <View style={styles.quickAccessSection}>
-          <Text style={styles.sectionTitle}>Acesso Rápido</Text>
           <View style={styles.quickAccessGrid}>
             {/* Aqui você pode adicionar botões de acesso rápido para
                 funcionalidades importantes */}
@@ -110,16 +151,26 @@ const styles = StyleSheet.create({
   welcomeSection: {
     marginBottom: 24,
   },
+
+  initialTitle : {
+    fontSize: 15,
+    color: colors.text,
+    marginBottom: 1,
+    lineHeight: 22,
+    padding: 16,
+  },
+  
   welcomeTitle: {
-    fontSize: 24,
-    fontWeight: 'bold',
+    fontSize: 16,
     color: colors.text,
     marginBottom: 8,
+    paddingBottom: 8, 
   },
   welcomeSubtitle: {
-    fontSize: 16,
+    fontSize: 14,
     color: '#666',
     lineHeight: 22,
+    marginBottom: 16,
   },
   topicsSection: {
     marginBottom: 24,
@@ -128,7 +179,8 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: 'bold',
     color: colors.text,
-    marginBottom: 16,
+    marginBottom: 2,
+    padding:16,
   },
   quickAccessSection: {
     marginBottom: 24,
@@ -142,4 +194,11 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontSize: 16,
   },
+
+  awarenessSection: {
+    marginBottom: 24,
+  },
+
+  
+
 });

@@ -1,10 +1,13 @@
-// src/screens/auth/LoginScreen.tsx
 import React, { useState } from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
-import { colors } from '../../styles/colors';
-import { useAuth } from '../../contexts/AuthContext'; // Importe o contexto
+import { useAuth } from '../../contexts/AuthContext';
+
+const { width } = Dimensions.get('window'); // Obtém a largura da tela
+
+const logo = require('../../assets/images/LOGO.png');
+const logoName = require('../../assets/images/NomeLOGO.png');
 
 type LoginScreenProps = {
   navigation: any;
@@ -16,7 +19,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({ email: '', password: '' });
 
-  const { login } = useAuth(); // Use o contexto de autenticação
+  const { login } = useAuth();
 
   const validateForm = () => {
     const newErrors = { email: '', password: '' };
@@ -42,8 +45,8 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
     setLoading(true);
     try {
-      await login(email, password); // Chame a função de login do contexto
-      navigation.navigate('Home'); // Redirecione para a tela Home
+      await login(email, password);
+      navigation.navigate('Home');
     } catch (error) {
       console.error('Login error:', error);
     } finally {
@@ -53,6 +56,13 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
+      {/* Container do Logo e Nome */}
+      <View style={styles.logoContainer}>
+        <Image source={logo} style={styles.logo} resizeMode="contain" />
+        <Image source={logoName} style={styles.logoName} resizeMode="contain" />
+      </View>
+
+      {/* Formulário */}
       <View style={styles.content}>
         <Input
           label="E-mail"
@@ -73,12 +83,6 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
         />
 
         <Button title="Entrar" onPress={handleLogin} loading={loading} />
-
-        <Button
-          title="Criar conta"
-          onPress={() => navigation.navigate('Register')}
-          variant="secondary"
-        />
       </View>
     </View>
   );
@@ -87,11 +91,26 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: '#fefefe',
+    padding: 16,
+    paddingTop: 50,
+    alignItems: 'center',
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: 20, // Espaço entre logo e formulário
+  },
+  logo: {
+    width: width * 0.32, // 40% da largura da tela
+    height: width * 0.20, // Mantém proporção quadrada
+  },
+  logoName: {
+    width: width * 0.32, // Nome do logo mais largo que o logo principal
+    height: width * 0.20, // Mantém proporção menor para evitar distorção
   },
   content: {
-    flex: 1,
-    padding: 20,
-    justifyContent: 'center',
+    width: '100%',
+    alignItems: 'center',
+    marginTop: 20,
   },
 });

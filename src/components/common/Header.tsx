@@ -35,14 +35,14 @@ export const Header: React.FC<HeaderProps> = ({
 
 const styles = StyleSheet.create({
   header: {
-    height: 60,
+    height: 80,
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-between',
-    paddingHorizontal: 16,
-    backgroundColor: colors.background,
-    borderBottomWidth: 1,
+    justifyContent: 'flex-start',
+    backgroundColor:  '#fff',
+    borderBottomWidth: 0,
     borderBottomColor: '#EEE',
+    
   },
   leftContainer: {
     width: 60,
@@ -52,7 +52,7 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
   },
   title: {
-    fontSize: 18,
+    fontSize: 24,
     fontWeight: 'bold',
     color: colors.text,
   },

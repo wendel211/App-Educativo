@@ -1,10 +1,13 @@
-// src/screens/auth/RegisterScreen.tsx
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Alert } from 'react-native';
+import { View, StyleSheet, ScrollView, Alert, Image, Dimensions } from 'react-native';
 import { Header } from '../../components/common/Header';	
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
 import { colors } from '../../styles/colors';
+
+const { width } = Dimensions.get('window');
+const logo = require('../../assets/images/LOGO.png');
+const logoName = require('../../assets/images/NomeLOGO.png');
 
 type RegisterScreenProps = {
   navigation: any;
@@ -64,7 +67,6 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
 
     setLoading(true);
     try {
-      // Aqui virá a lógica de registro
       console.log('Register:', formData);
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
       navigation.navigate('Login');
@@ -77,11 +79,11 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
 
   return (
     <View style={styles.container}>
-      <Header 
-        title="Criar Conta" 
-        showBack 
-        onBackPress={() => navigation.goBack()} 
-      />
+      <View style={styles.logoContainer}>
+        <Image source={logo} style={styles.logo} resizeMode="contain" />
+        <Image source={logoName} style={styles.logoName} resizeMode="contain" />
+      </View>
+
       <ScrollView 
         style={styles.content}
         showsVerticalScrollIndicator={false}
@@ -136,9 +138,24 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+    paddingTop: 50,
+  },
+  logoContainer: {
+    alignItems: 'center',
+    marginBottom: 20,
+  },
+  logo: {
+    width: width * 0.32,
+    height: width * 0.20,
+    marginBottom: 2,
+  },
+  logoName: {
+    width: width * 0.32,
+    height: width * 0.20,
   },
   content: {
     flex: 1,
     padding: 20,
   },
 });
+
