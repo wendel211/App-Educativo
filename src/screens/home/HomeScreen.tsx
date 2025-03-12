@@ -1,18 +1,19 @@
-// src/screens/home/HomeScreen.tsx
 import React from 'react';
 import { 
   View, 
   Text, 
   StyleSheet, 
   ScrollView, 
-  SafeAreaView,
-  ImageSourcePropType 
+  SafeAreaView, 
+  Image, 
+  ImageSourcePropType, 
+  Platform, 
+  TouchableOpacity
 } from 'react-native';
-import { Header } from '../../components/common/Header';
+import { useNavigation } from '@react-navigation/native';
 import { TopicCard } from '../../components/education/TopicCard';
 import { colors } from '../../styles/colors';
-import { AwarenessCard } from '../../components/common/AwarenessCard'; // Importe o novo componente
-
+import { AwarenessCard } from '../../components/common/AwarenessCard';
 
 interface AwarenessData {
   id: string;
@@ -24,26 +25,19 @@ const awarenessTopics: AwarenessData[] = [
   {
     id: '1',
     title: 'Por que é tão importante rever os cuidados referente aos nossos hábitos sendo portador de doenças cardiovasculares?',
-    image: require('../../assets/images/cardiovas.jpg'), // Adicione a imagem no diretório assets
+    image: require('../../assets/images/cardiovas.jpg'),
   },
   {
     id: '2',
     title: 'Por que é tão importante rever os cuidados referente aos nossos hábitos sendo portador de diabetes tipo 2?',
-    image: require('../../assets/images/diabetes.jpg'), // Adicione a imagem no diretório assets
+    image: require('../../assets/images/diabetes.jpg'),
   },
   {
     id: '3',
     title: 'Por que é tão importante rever os cuidados referente aos nossos hábitos sendo portador de doenças cardiovasculares e diabetes tipo 2?',
-    image: require('../../assets/images/paciente.jpg'), // Adicione a imagem no diretório assets
+    image: require('../../assets/images/paciente.jpg'),
   },
 ];
-
-  const handleCardPress = (topicId: string) => {
-    // Redireciona para a tela específica com base no ID do card
-    navigation.navigate('AwarenessDetail', { topicId });
-  };
-
-
 
 interface TopicData {
   id: string;
@@ -79,24 +73,34 @@ const topics: TopicData[] = [
   },
 ];
 
-export const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
-  const userName = "Usuário"; // Isso virá do contexto de autenticação depois
+export const HomeScreen: React.FC = () => {
+  const navigation = useNavigation(); // Hook para abrir o Drawer
+  const userName = "Usuário"; // Simulando o nome do usuário
 
-  const handleTopicPress = (topicId: string, title: string) => {
-    navigation.navigate('Topics', { 
-      category: topicId,
-      title: title 
-    });
+  const handleProfilePress = () => {
+    navigation.openDrawer(); // Abre o Drawer ao clicar na imagem de perfil
   };
 
   return (
-    <SafeAreaView style={styles.container}> 
+    <SafeAreaView style={styles.container}>
 
-      <ScrollView style={styles.content}>
+      <ScrollView contentContainerStyle={styles.content}>
+        
+        {/* Cabeçalho */}
+        <View style={styles.header}>
+          <TouchableOpacity onPress={handleProfilePress} style={styles.profileContainer}>
+            <Image 
+              source={require('../../assets/images/user.png')} // Imagem simulada
+              style={styles.profileImage}
+            />
+            <Text style={styles.greeting}>Oii, {userName} </Text>
+          </TouchableOpacity>
+        </View>
 
         <View style={styles.welcomeSection}>
-          <Text style={styles.sectionTitle}>Bem-vindo, {userName}!</Text>
-          <Text style={styles.initialTitle}>Aprenda cuidar da saúde sendo portador de doenças cardiovascular e diabetes!</Text>
+          <Text style={styles.initialTitle}>
+            Aprenda a cuidar da sua saúde sendo portador de doenças cardiovasculares e diabetes!
+          </Text>
         </View>
 
         <View style={styles.awarenessSection}>
@@ -105,16 +109,15 @@ export const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
               key={topic.id}
               title={topic.title}
               image={topic.image}
-              onPress={() => handleCardPress(topic.id)}
+              onPress={() => navigation.navigate('AwarenessDetail', { topicId: topic.id })}
             />
           ))}
         </View>
 
         <View style={styles.topicsSection}>
           <Text style={styles.sectionTitle}>Tópicos Educativos</Text>
-
           <Text style={styles.initialTitle}>
-            Explore nossos tópicos educativos e cuide melhor da sua saúde
+            Explore nossos tópicos educativos e cuide melhor da sua saúde.
           </Text>
 
           {topics.map((topic) => (
@@ -123,17 +126,11 @@ export const HomeScreen: React.FC<{ navigation: any }> = ({ navigation }) => {
               title={topic.title}
               description={topic.description}
               icon={topic.icon}
-              onPress={() => handleTopicPress(topic.id, topic.title)}
+              onPress={() => navigation.navigate('Topics', { category: topic.id, title: topic.title })}
             />
           ))}
         </View>
 
-        <View style={styles.quickAccessSection}>
-          <View style={styles.quickAccessGrid}>
-            {/* Aqui você pode adicionar botões de acesso rápido para
-                funcionalidades importantes */}
-          </View>
-        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -145,60 +142,64 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   content: {
-    flex: 1,
-    padding: 16,
+    paddingBottom: 20, // Evita corte no final da tela
+  },
+  header: {
+    height: 180,
+    justifyContent: 'center',
+    backgroundColor: colors.primary,
+    paddingHorizontal: 20,
+    paddingTop: Platform.OS === 'ios' ? 50 : 30, // Ajuste para iOS e Android
+    borderBottomLeftRadius: 10,
+    borderBottomRightRadius: 10,
+    elevation: 4,
+    shadowColor: "#000",
+    shadowOpacity: 0.1,
+    shadowRadius: 10,
+  },
+  profileContainer: {
+    flexDirection: 'row', // Alinha imagem e texto na mesma linha
+    alignItems: 'center',
+  },
+  profileImage: {
+    width: 50,
+    height: 50,
+    borderRadius: 25,
+    borderWidth: 2,
+    borderColor: '#fff',
+    marginRight: 10, // Espaço entre a imagem e o texto
+  },
+  greeting: {
+    fontSize: 22,
+    fontWeight: 'bold',  
+    color: 'black',
   },
   welcomeSection: {
-    marginBottom: 24,
+    marginTop: 20,
+    paddingHorizontal: 16,
   },
-
-  initialTitle : {
-    fontSize: 15,
-    color: colors.text,
-    marginBottom: 1,
-    lineHeight: 22,
-    padding: 16,
-  },
-  
-  welcomeTitle: {
-    fontSize: 16,
-    color: colors.text,
-    marginBottom: 8,
-    paddingBottom: 8, 
-  },
-  welcomeSubtitle: {
+  initialTitle: {
     fontSize: 14,
-    color: '#666',
+    color: colors.text,
+    marginBottom: 10,
     lineHeight: 22,
-    marginBottom: 16,
-  },
-  topicsSection: {
-    marginBottom: 24,
+    fontWeight: 'bold',
+
   },
   sectionTitle: {
-    fontSize: 20,
+    fontSize: 22,
     fontWeight: 'bold',
     color: colors.text,
-    marginBottom: 2,
-    padding:16,
+    marginBottom: 10,
   },
-  quickAccessSection: {
-    marginBottom: 24,
+  topicsSection: {
+    marginTop: 20,
+    paddingHorizontal: 16,
   },
-  quickAccessGrid: {
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
-  },
-  logoutText: {
-    color: colors.primary,
-    fontSize: 16,
-  },
-
   awarenessSection: {
-    marginBottom: 24,
+    marginTop: 20,
+    paddingHorizontal: 16,
   },
-
-  
-
 });
+
+export default HomeScreen;

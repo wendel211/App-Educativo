@@ -7,9 +7,7 @@ import { SettingsScreen } from '../screens/settings/SettingsScreen';
 import { useAuth } from '../contexts/AuthContext';
 
 const Drawer = createDrawerNavigator();
-
 const logoName = require('../assets/images/NomeLOGO.png');
-
 const { width } = Dimensions.get('window');
 
 export const DrawerNavigator = () => {
@@ -27,10 +25,7 @@ export const DrawerNavigator = () => {
           backgroundColor: '#fff',
           width: 250,
         },
-        headerStyle: {
-          backgroundColor: '#1F8E8A',
-        },
-        headerTintColor: '#ffffff',
+        headerShown: false, // Removendo o cabeçalho fixo
       }}
       initialRouteName="Home"
     >
@@ -58,11 +53,12 @@ export const DrawerNavigator = () => {
 const CustomDrawerContent = (props: any) => {
   return (
     <DrawerContentScrollView {...props} contentContainerStyle={styles.drawerContainer}>
-      {/* Logo Centralizada */}
+      {/* Logo que rola junto com os itens do Drawer */}
       <View style={styles.logoContainer}>
         <Image source={logoName} style={styles.logoName} resizeMode="contain" />
       </View>
 
+      {/* Itens do Drawer */}
       <View style={styles.drawerContent}>
         <DrawerItemList {...props} />
       </View>
@@ -84,7 +80,6 @@ const CustomDrawerContent = (props: any) => {
 const styles = StyleSheet.create({
   drawerContainer: {
     flex: 1,
-    justifyContent: 'space-between',
   },
   drawerContent: {
     flex: 1,
@@ -101,11 +96,12 @@ const styles = StyleSheet.create({
   logoContainer: {
     alignItems: 'center',
     marginBottom: 20,
-    paddingTop: 30, // Adiciona espaço no topo do drawer
+    paddingVertical: 10, // Pequeno espaço para a logo
   },
   logoName: {
-    width: width * 0.32, // Ajustado para um tamanho adequado
+    width: width * 0.32,
     height: width * 0.2,
   },
 });
 
+export default DrawerNavigator;
