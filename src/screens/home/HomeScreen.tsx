@@ -10,7 +10,7 @@ import {
   Platform, 
   TouchableOpacity
 } from 'react-native';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, DrawerActions } from '@react-navigation/native';
 import { TopicCard } from '../../components/education/TopicCard';
 import { colors } from '../../styles/colors';
 import { AwarenessCard } from '../../components/common/AwarenessCard';
@@ -75,10 +75,10 @@ const topics: TopicData[] = [
 
 export const HomeScreen: React.FC = () => {
   const navigation = useNavigation(); // Hook para abrir o Drawer
-  const userName = "Usuário"; // Simulando o nome do usuário
+  const userName = "Wendel"; // Simulando o nome do usuário
 
   const handleProfilePress = () => {
-    navigation.openDrawer(); // Abre o Drawer ao clicar na imagem de perfil
+    navigation.dispatch(DrawerActions.openDrawer()); // Abre o Drawer ao clicar na imagem de perfil
   };
 
   return (
@@ -93,7 +93,7 @@ export const HomeScreen: React.FC = () => {
               source={require('../../assets/images/user.png')} // Imagem simulada
               style={styles.profileImage}
             />
-            <Text style={styles.greeting}>Oii, {userName} </Text>
+            <Text style={styles.greeting}>Olá, {userName} </Text>
           </TouchableOpacity>
         </View>
 
@@ -101,6 +101,7 @@ export const HomeScreen: React.FC = () => {
           <Text style={styles.initialTitle}>
             Aprenda a cuidar da sua saúde sendo portador de doenças cardiovasculares e diabetes!
           </Text>
+          <View style={styles.divider} />
         </View>
 
         <View style={styles.awarenessSection}>
@@ -184,6 +185,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     lineHeight: 22,
     fontWeight: 'bold',
+    padding: 4,
 
   },
   sectionTitle: {
@@ -200,6 +202,13 @@ const styles = StyleSheet.create({
     marginTop: 20,
     paddingHorizontal: 16,
   },
+  divider: {
+    height: 1,
+    backgroundColor: colors.text,
+    width: 364,
+    marginBottom: 10,
+  },
+
 });
 
 export default HomeScreen;

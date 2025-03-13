@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, StyleSheet, Image, Dimensions, TouchableOpacity, Text } from 'react-native';
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
 import { useAuth } from '../../contexts/AuthContext';
 
-const { width } = Dimensions.get('window'); // Obtém a largura da tela
+const { width } = Dimensions.get('window');
 
 const logo = require('../../assets/images/LOGO.png');
 const logoName = require('../../assets/images/NomeLOGO.png');
@@ -83,6 +83,14 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
         />
 
         <Button title="Entrar" onPress={handleLogin} loading={loading} />
+
+        {/* Link para tela de esquecimento de senha */}
+        <TouchableOpacity 
+          onPress={() => navigation.navigate('ForgotPassword')}
+          style={styles.forgotPasswordContainer}
+        >
+          <Text style={styles.forgotPasswordText}>Esqueceu a senha?</Text>
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -98,19 +106,26 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
-    marginBottom: 20, // Espaço entre logo e formulário
+    marginBottom: 20,
   },
   logo: {
-    width: width * 0.32, // 40% da largura da tela
-    height: width * 0.20, // Mantém proporção quadrada
+    width: width * 0.32,
+    height: width * 0.20,
   },
   logoName: {
-    width: width * 0.32, // Nome do logo mais largo que o logo principal
-    height: width * 0.20, // Mantém proporção menor para evitar distorção
+    width: width * 0.32,
+    height: width * 0.20,
   },
   content: {
     width: '100%',
     alignItems: 'center',
     marginTop: 20,
+  },
+  forgotPasswordContainer: {
+    marginTop: 15,
+  },
+  forgotPasswordText: {
+    color: '#007bff',
+    textDecorationLine: 'underline',
   },
 });

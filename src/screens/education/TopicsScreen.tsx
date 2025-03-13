@@ -1,71 +1,44 @@
-// src/screens/education/TopicsScreen.tsx
 import React from 'react';
 import { 
   View, 
   Text, 
   StyleSheet, 
-  ScrollView, 
-  SafeAreaView,
   TouchableOpacity 
 } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
 import { Header } from '../../components/common/Header';
 import { colors } from '../../styles/colors';
-import { BottomTabScreenProps } from '@react-navigation/bottom-tabs';
+import { FontAwesome5 } from '@expo/vector-icons';
 
-type TopicsScreenProps = BottomTabScreenProps<any, 'Topics'>;
+const diseases = [
+  { id: '1', title: 'Insuficiência Cardíaca', icon: 'heart' },
+  { id: '2', title: 'Doenças Cardíacas Congênitas', icon: 'heart' },
+  { id: '3', title: 'Doenças das Valvas Cardíacas', icon: 'heart' },
+  { id: '4', title: 'Doenças do Miocárdio', icon: 'heart' },
+  { id: '5', title: 'Diabetes tipo 1', icon: 'syringe' },
+  { id: '6', title: 'Diabetes tipo 2', icon: 'syringe' },
+];
 
-const topicsData: Record<string, { id: string; title: string; duration: string; level: string }[]> = {
-  '1': [
-    { id: '1-1', title: 'O que é Diabetes?', duration: '5 min', level: 'Básico' },
-    { id: '1-2', title: 'Tipos de Diabetes', duration: '8 min', level: 'Intermediário' },
-    { id: '1-3', title: 'Controle Glicêmico', duration: '10 min', level: 'Avançado' },
-  ],
-  '2': [
-    { id: '2-1', title: 'Anatomia do Coração', duration: '7 min', level: 'Básico' },
-    { id: '2-2', title: 'Pressão Arterial', duration: '6 min', level: 'Intermediário' },
-    { id: '2-3', title: 'Prevenção de Doenças Cardíacas', duration: '12 min', level: 'Avançado' },
-  ],
-  '3': [
-    { id: '3-1', title: 'Benefícios do Exercício', duration: '5 min', level: 'Básico' },
-    { id: '3-2', title: 'Exercícios Recomendados', duration: '8 min', level: 'Intermediário' },
-    { id: '3-3', title: 'Monitoramento Durante Exercícios', duration: '10 min', level: 'Avançado' },
-  ],
-  '4': [
-    { id: '4-1', title: 'Princípios da Boa Alimentação', duration: '6 min', level: 'Básico' },
-    { id: '4-2', title: 'Dietas Específicas', duration: '9 min', level: 'Intermediário' },
-    { id: '4-3', title: 'Planejamento de Refeições', duration: '11 min', level: 'Avançado' },
-  ],
-  
-};
-
-export const TopicsScreen: React.FC<TopicsScreenProps> = ({ navigation, route }) => {
-  const category = route?.params?.category ?? '1'; 
-  const title = route?.params?.title ?? 'Tópicos';
-
-  const topics = topicsData[category] || [];
+export const TopicsScreen: React.FC = () => {
+  const navigation = useNavigation();
 
   return (
-    <SafeAreaView style={styles.container}>
-      <Header title={title} showBack onBackPress={() => navigation.goBack()} />
-      <ScrollView style={styles.content}>
-        <Text style={styles.description}>
-          Explore os tópicos disponíveis e aprenda mais sobre {title.toLowerCase()}.
-        </Text>
-        <View style={styles.topicsList}>
-          {topics.map((topic) => (
-            <TouchableOpacity key={topic.id} style={styles.topicCard} onPress={() => {}}>
-              <View style={styles.topicHeader}>
-                <Text style={styles.topicTitle}>{topic.title}</Text>
-                <Text style={styles.topicLevel}>{topic.level}</Text>
-              </View>
-              <View style={styles.topicFooter}>
-                <Text style={styles.topicDuration}>Duração: {topic.duration}</Text>
-              </View>
-            </TouchableOpacity>
-          ))}
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+    <View style={styles.container}>
+      <Header title=""/>
+      <Text style={styles.title}>Tópicos Educacionais</Text>
+      <View style={styles.gridContainer}>
+        {diseases.map((disease) => (
+          <TouchableOpacity
+            key={disease.id}
+            style={styles.card}
+            onPress={() => navigation.navigate('DiseaseDetail', { disease: disease.title })}
+          >
+            <FontAwesome5 name={disease.icon} size={32} color="#fff" style={styles.icon} />
+            <Text style={styles.cardText}>{disease.title}</Text>
+          </TouchableOpacity>
+        ))}
+      </View>
+    </View>
   );
 };
 
@@ -73,59 +46,45 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
+    padding: 20,
   },
-  content: {
+  title: {
+    fontSize: 22,
+    fontWeight: 'bold',
+    color: colors.text,
+    textAlign: 'center',
+    marginBottom: 20,
+  },
+  gridContainer: {
     flex: 1,
-    padding: 16,
-  },
-  description: {
-    fontSize: 16,
-    color: '#666',
-    marginBottom: 24,
-    lineHeight: 22,
-  },
-  topicsList: {
-    gap: 12,
-  },
-  topicCard: {
-    backgroundColor: 'white',
-    borderRadius: 12,
-    padding: 16,
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.1,
-    shadowRadius: 4,
-    elevation: 3,
-  },
-  topicHeader: {
     flexDirection: 'row',
+    flexWrap: 'wrap',
     justifyContent: 'space-between',
     alignItems: 'center',
-    marginBottom: 12,
   },
-  topicTitle: {
-    fontSize: 16,
-    fontWeight: '600',
-    color: colors.text,
-    flex: 1,
-  },
-  topicLevel: {
-    fontSize: 12,
-    color: colors.primary,
-    backgroundColor: `${colors.primary}20`,
-    paddingHorizontal: 8,
-    paddingVertical: 4,
-    borderRadius: 12,
-  },
-  topicFooter: {
-    flexDirection: 'row',
+  card: {
+    width: '47%',
+    height: '30%',
+    backgroundColor: colors.primary,
+    justifyContent: 'center',
     alignItems: 'center',
+    borderRadius: 15,
+    marginBottom: 15,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 5,
   },
-  topicDuration: {
-    fontSize: 12,
-    color: '#666',
+  icon: {
+    marginBottom: 10,
+  },
+  cardText: {
+    fontSize: 16,
+    fontWeight: 'bold',
+    color: '#fff',
+    textAlign: 'center',
   },
 });
+
+export default TopicsScreen;
