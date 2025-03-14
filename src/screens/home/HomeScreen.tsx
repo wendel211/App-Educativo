@@ -1,3 +1,4 @@
+// src/screens/home/HomeScreen.tsx
 import React from 'react';
 import { 
   View, 
@@ -74,26 +75,24 @@ const topics: TopicData[] = [
 ];
 
 export const HomeScreen: React.FC = () => {
-  const navigation = useNavigation(); // Hook para abrir o Drawer
-  const userName = "Wendel"; // Simulando o nome do usuário
+  const navigation = useNavigation();
+  const userName = "Wendel";
 
   const handleProfilePress = () => {
-    navigation.dispatch(DrawerActions.openDrawer()); // Abre o Drawer ao clicar na imagem de perfil
+    navigation.dispatch(DrawerActions.openDrawer());
   };
 
   return (
     <SafeAreaView style={styles.container}>
-
       <ScrollView contentContainerStyle={styles.content}>
-        
         {/* Cabeçalho */}
         <View style={styles.header}>
           <TouchableOpacity onPress={handleProfilePress} style={styles.profileContainer}>
             <Image 
-              source={require('../../assets/images/user.png')} // Imagem simulada
+              source={require('../../assets/images/user.png')}
               style={styles.profileImage}
             />
-            <Text style={styles.greeting}>Olá, {userName} </Text>
+            <Text style={styles.greeting}>Olá, {userName}</Text>
           </TouchableOpacity>
         </View>
 
@@ -131,7 +130,6 @@ export const HomeScreen: React.FC = () => {
             />
           ))}
         </View>
-
       </ScrollView>
     </SafeAreaView>
   );
@@ -143,14 +141,14 @@ const styles = StyleSheet.create({
     backgroundColor: colors.background,
   },
   content: {
-    paddingBottom: 20, // Evita corte no final da tela
+    paddingBottom: 20,
   },
   header: {
     height: 180,
     justifyContent: 'center',
     backgroundColor: colors.primary,
     paddingHorizontal: 20,
-    paddingTop: Platform.OS === 'ios' ? 50 : 30, // Ajuste para iOS e Android
+    paddingTop: Platform.OS === 'ios' ? 50 : 30,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     elevation: 4,
@@ -159,7 +157,7 @@ const styles = StyleSheet.create({
     shadowRadius: 10,
   },
   profileContainer: {
-    flexDirection: 'row', // Alinha imagem e texto na mesma linha
+    flexDirection: 'row',
     alignItems: 'center',
   },
   profileImage: {
@@ -168,12 +166,12 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     borderWidth: 2,
     borderColor: '#fff',
-    marginRight: 10, // Espaço entre a imagem e o texto
+    marginRight: 10,
   },
   greeting: {
     fontSize: 22,
-    fontWeight: 'bold',  
     color: 'black',
+    fontFamily: 'Poppins-Bold',
   },
   welcomeSection: {
     marginTop: 20,
@@ -184,15 +182,14 @@ const styles = StyleSheet.create({
     color: colors.text,
     marginBottom: 10,
     lineHeight: 22,
-    fontWeight: 'bold',
     padding: 4,
-
+    fontFamily: 'Poppins-Regular',
   },
   sectionTitle: {
     fontSize: 22,
-    fontWeight: 'bold',
     color: colors.text,
     marginBottom: 10,
+    fontFamily: 'Poppins-Bold',
   },
   topicsSection: {
     marginTop: 20,
@@ -201,6 +198,7 @@ const styles = StyleSheet.create({
   awarenessSection: {
     marginTop: 20,
     paddingHorizontal: 16,
+    
   },
   divider: {
     height: 1,
@@ -208,7 +206,6 @@ const styles = StyleSheet.create({
     width: 364,
     marginBottom: 10,
   },
-
 });
 
 export default HomeScreen;

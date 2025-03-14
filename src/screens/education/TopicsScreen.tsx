@@ -50,10 +50,10 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: 22,
-    fontWeight: 'bold',
     color: colors.text,
     textAlign: 'center',
     marginBottom: 20,
+    fontFamily: 'Poppins-Bold',
   },
   gridContainer: {
     flex: 1,
@@ -81,9 +81,9 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontSize: 16,
-    fontWeight: 'bold',
     color: '#fff',
     textAlign: 'center',
+    fontFamily: 'Poppins-Bold',
   },
 });
 

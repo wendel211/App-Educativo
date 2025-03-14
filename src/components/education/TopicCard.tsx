@@ -50,10 +50,12 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: colors.text,
     marginBottom: 8,
+    fontFamily: 'Poppins-Bold',
   },
   description: {
     fontSize: 14,
     color: '#666',
     lineHeight: 20,
+    fontFamily: 'Poppins-Regular',
   },
 });

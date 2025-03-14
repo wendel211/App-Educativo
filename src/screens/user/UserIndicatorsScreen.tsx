@@ -405,7 +405,7 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     fontSize: 24,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
     color: 'black',
   },
   headerButtons: {
@@ -419,7 +419,7 @@ const styles = StyleSheet.create({
   },
   sectionTitle: {
     fontSize: 22,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
     color: '#000',
     marginBottom: 10,
   },
@@ -483,7 +483,7 @@ const styles = StyleSheet.create({
   },
   goalTitle: {
     fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
     marginBottom: 5,
   },
   progressBarContainer: {
@@ -534,7 +534,7 @@ const styles = StyleSheet.create({
   },
   modalTitle: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontFamily: 'Poppins-Bold',
     color: '#333',
   },
   modalContent: {
@@ -556,5 +556,5 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
 });
-
+""
 export default UserIndicatorsScreen;
