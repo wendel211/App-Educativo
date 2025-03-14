@@ -5,6 +5,7 @@
   import { HomeScreen } from '../screens/home/HomeScreen';
   import  { TopicsScreen } from '../screens/education/TopicsScreen';
   import { UserIndicatorsScreen } from '../screens/user/UserIndicatorsScreen'; // Crie essa tela se ainda não existir
+  import { HomeStackNavigator } from './HomeStackNavigator'; // Importe o HomeStackNavigator
 
   const Tab = createBottomTabNavigator();
 
@@ -24,7 +25,7 @@
         {/* Tela Home */}
         <Tab.Screen
           name="Home"
-          component={HomeScreen}
+          component={HomeStackNavigator}
           options={{
             tabBarIcon: ({ color, size }) => (
               <Feather name="home" size={size} color={color} />

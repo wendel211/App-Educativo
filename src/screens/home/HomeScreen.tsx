@@ -110,7 +110,7 @@ export const HomeScreen: React.FC = () => {
               key={topic.id}
               title={topic.title}
               image={topic.image}
-              onPress={() => navigation.navigate('AwarenessDetail', { topicId: topic.id })}
+              onPress={() => navigation.navigate('ArticleDetailScreen', { topicId: topic.id })}
             />
           ))}
         </View>

@@ -4,6 +4,7 @@ export type AuthStackParamList = {
     Login: undefined;
     Register: undefined;
     ForgotPassword: undefined;
+    
   };
   
   export type AppStackParamList = {
@@ -16,5 +17,8 @@ export type AuthStackParamList = {
     TopicDetail: {
       id: string;
       title: string;
+    };
+    ArticleDetail: {
+      id: string;
     };
   };
