@@ -21,4 +21,10 @@ export type AuthStackParamList = {
     ArticleDetail: {
       id: string;
     };
+    Profile: undefined;
+    EditProfile: undefined;
+    UserIndicators: undefined;
+    UserIndicatorsDetail: {
+      id: string;
+    };
   };

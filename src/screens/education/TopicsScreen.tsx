@@ -1,4 +1,5 @@
-import React from 'react';
+// src/screens/education/TopicsScreen.tsx
+import React from 'react'; 
 import { 
   View, 
   Text, 
@@ -31,7 +32,7 @@ export const TopicsScreen: React.FC = () => {
           <TouchableOpacity
             key={disease.id}
             style={styles.card}
-            onPress={() => navigation.navigate('DiseaseDetail', { disease: disease.title })}
+            onPress={() => navigation.navigate('DiseaseDetailScreen', { diseaseId: disease.id })}
           >
             <FontAwesome5 name={disease.icon} size={32} color="#fff" style={styles.icon} />
             <Text style={styles.cardText}>{disease.title}</Text>

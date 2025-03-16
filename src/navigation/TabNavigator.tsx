@@ -5,6 +5,7 @@ import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
 import { HomeStackNavigator } from './HomeStackNavigator'; // Usando o stack da Home
 import { TopicsScreen } from '../screens/education/TopicsScreen';
 import { UserIndicatorsScreen } from '../screens/user/UserIndicatorsScreen';
+import { TopicStackNavigator } from './TopicStackNavigator'; // Usando o stack de Tópicos
 
 const Tab = createBottomTabNavigator();
 
@@ -33,7 +34,7 @@ export const TabNavigator = () => {
 
       <Tab.Screen
         name="Topics"
-        component={TopicsScreen}
+        component={TopicStackNavigator}
         options={{
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="book-open-outline" size={size} color={color} />
