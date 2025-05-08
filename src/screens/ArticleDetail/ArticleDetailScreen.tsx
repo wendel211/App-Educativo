@@ -2,7 +2,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
-import { colors } from '../../styles/colors';
+
 
 type ArticleDetailScreenRouteProp = RouteProp<{ params: { topicId: string } }, 'params'>;
 

@@ -7,6 +7,7 @@ import { TabNavigator } from './TabNavigator';
 import { SettingsScreen } from '../screens/settings/SettingsScreen';
 import { useAuth } from '../contexts/AuthContext';
 
+
 const Drawer = createDrawerNavigator();
 const logoName = require('../assets/images/NomeLOGO.png');
 const { width } = Dimensions.get('window');

@@ -1,25 +1,32 @@
 import React, { useState } from 'react';
-import { View, StyleSheet, Image, Dimensions, TouchableOpacity, Text } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+  Text,
+  Alert,
+} from 'react-native';
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
-import { useAuth } from '../../contexts/AuthContext';
+import { login as firebaseLogin } from '../../services/auth'; // função do Firebase
+import { useAuth } from '../../contexts/AuthContext'; // contexto
+import { useNavigation } from '@react-navigation/native';
 
 const { width } = Dimensions.get('window');
 
 const logo = require('../../assets/images/LOGO.png');
 const logoName = require('../../assets/images/NomeLOGO.png');
 
-type LoginScreenProps = {
-  navigation: any;
-};
-
-export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
+export const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [loading, setLoading] = useState(false);
   const [errors, setErrors] = useState({ email: '', password: '' });
 
-  const { login } = useAuth();
+  const { login: authLogin } = useAuth(); // usa o contexto
+  const navigation = useNavigation();
 
   const validateForm = () => {
     const newErrors = { email: '', password: '' };
@@ -45,10 +52,10 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
     setLoading(true);
     try {
-      await login(email, password);
-      navigation.navigate('Home');
-    } catch (error) {
-      console.error('Login error:', error);
+      await firebaseLogin(email, password); // autenticação com Firebase
+      await authLogin(email, password); // ativa o isAuthenticated
+    } catch (error: any) {
+      Alert.alert('Erro', 'Não foi possível fazer login.');
     } finally {
       setLoading(false);
     }
@@ -56,13 +63,11 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      {/* Container do Logo e Nome */}
       <View style={styles.logoContainer}>
         <Image source={logo} style={styles.logo} resizeMode="contain" />
         <Image source={logoName} style={styles.logoName} resizeMode="contain" />
       </View>
 
-      {/* Formulário */}
       <View style={styles.content}>
         <Input
           label="E-mail"
@@ -84,8 +89,7 @@ export const LoginScreen: React.FC<LoginScreenProps> = ({ navigation }) => {
 
         <Button title="Entrar" onPress={handleLogin} loading={loading} />
 
-        {/* Link para tela de esquecimento de senha */}
-        <TouchableOpacity 
+        <TouchableOpacity
           onPress={() => navigation.navigate('ForgotPassword')}
           style={styles.forgotPasswordContainer}
         >
@@ -129,3 +133,5 @@ const styles = StyleSheet.create({
     textDecorationLine: 'underline',
   },
 });
+
+export default LoginScreen;

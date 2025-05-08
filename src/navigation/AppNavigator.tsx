@@ -4,29 +4,31 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { useAuth } from '../contexts/AuthContext';
 import { AuthNavigator } from './AuthNavigator';
-import { DrawerNavigator } from './DrawerNavigator'; // Importe o DrawerNavigator
-import { TabNavigator } from './TabNavigator';
+import { DrawerNavigator } from './DrawerNavigator';
+import LoadingScreen from '../screens/common/LoadingScreen'; // Importa a tela de loading
 
 const Stack = createNativeStackNavigator();
 
 export const AppNavigator = () => {
-  const { isAuthenticated } = useAuth();
+  const { isAuthenticated, loading } = useAuth();
+
+  if (loading) {
+    return <LoadingScreen />; 
+  }
 
   return (
     <NavigationContainer>
       <Stack.Navigator>
         {!isAuthenticated ? (
-          // Telas de autenticação (não autenticado)
           <Stack.Screen
             name="Auth"
             component={AuthNavigator}
             options={{ headerShown: false }}
           />
         ) : (
-          // Telas principais (autenticado)
           <Stack.Screen
             name="Main"
-            component={DrawerNavigator} // Use o DrawerNavigator aqui
+            component={DrawerNavigator}
             options={{ headerShown: false }}
           />
         )}

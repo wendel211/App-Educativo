@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { View, StyleSheet, ScrollView, Alert, Image, Dimensions } from 'react-native';
-import { Header } from '../../components/common/Header';	
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
 import { colors } from '../../styles/colors';
+import { register } from '../../services/auth'; 
 
 const { width } = Dimensions.get('window');
 const logo = require('../../assets/images/LOGO.png');
@@ -67,11 +67,21 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
 
     setLoading(true);
     try {
-      console.log('Register:', formData);
+      await register(formData.email, formData.password); // Chamada ao Firebase
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
       navigation.navigate('Login');
-    } catch (error) {
-      Alert.alert('Erro', 'Erro ao realizar cadastro');
+    } catch (error: any) {
+      let errorMessage = 'Erro ao realizar cadastro';
+
+      if (error.code === 'auth/email-already-in-use') {
+        errorMessage = 'Esse e-mail já está em uso.';
+      } else if (error.code === 'auth/invalid-email') {
+        errorMessage = 'E-mail inválido.';
+      } else if (error.code === 'auth/weak-password') {
+        errorMessage = 'Senha fraca. Use 6 ou mais caracteres.';
+      }
+
+      Alert.alert('Erro', errorMessage);
     } finally {
       setLoading(false);
     }
@@ -84,10 +94,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
         <Image source={logoName} style={styles.logoName} resizeMode="contain" />
       </View>
 
-      <ScrollView 
-        style={styles.content}
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <Input
           label="Nome completo"
           value={formData.name}
@@ -124,11 +131,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
           error={errors.confirmPassword}
         />
 
-        <Button
-          title="Criar conta"
-          onPress={handleRegister}
-          loading={loading}
-        />
+        <Button title="Criar conta" onPress={handleRegister} loading={loading} />
       </ScrollView>
     </View>
   );
@@ -159,3 +162,4 @@ const styles = StyleSheet.create({
   },
 });
 
+export default RegisterScreen;

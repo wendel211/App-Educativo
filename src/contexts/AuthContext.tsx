@@ -1,29 +1,50 @@
-// src/contexts/AuthContext.tsx
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  ReactNode,
+} from 'react';
+import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { auth } from '../services/firebaseConfig';
 
 type AuthContextType = {
   isAuthenticated: boolean;
   login: (email: string, password: string) => Promise<void>;
   logout: () => void;
+  loading: boolean;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [loading, setLoading] = useState(true); // controla splash ou bloqueio inicial
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, (user) => {
+      setIsAuthenticated(!!user);
+      setLoading(false); // finaliza carregamento inicial
+    });
+
+    return () => unsubscribe();
+  }, []);
 
   const login = async (email: string, password: string) => {
-    // Simulação de uma requisição de login
-    console.log('Logging in with:', email, password);
-    setIsAuthenticated(true); // Define o usuário como autenticado
+    // esse login real já é feito em services/auth.ts
+    // aqui você só sinaliza a autenticação
+    setIsAuthenticated(true);
   };
 
   const logout = () => {
-    setIsAuthenticated(false); // Define o usuário como não autenticado
+    signOut(auth); // encerra sessão no Firebase
+    setIsAuthenticated(false);
   };
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+    <AuthContext.Provider
+      value={{ isAuthenticated, login, logout, loading }}
+    >
       {children}
     </AuthContext.Provider>
   );

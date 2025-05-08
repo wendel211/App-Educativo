@@ -2,10 +2,9 @@
 import React from 'react';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather, MaterialCommunityIcons } from '@expo/vector-icons';
-import { HomeStackNavigator } from './HomeStackNavigator'; // Usando o stack da Home
-import { TopicsScreen } from '../screens/education/TopicsScreen';
+import { HomeStackNavigator } from './HomeStackNavigator'; 
 import { UserIndicatorsScreen } from '../screens/user/UserIndicatorsScreen';
-import { TopicStackNavigator } from './TopicStackNavigator'; // Usando o stack de Tópicos
+import { TopicStackNavigator } from './TopicStackNavigator'; 
 
 const Tab = createBottomTabNavigator();
 
