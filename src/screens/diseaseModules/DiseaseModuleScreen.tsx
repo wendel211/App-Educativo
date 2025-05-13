@@ -1,8 +1,9 @@
 import React from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Alert } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import { colors } from '../../styles/colors';
 import { diseaseModules } from '../../data/diseaseModules';
+import { useModuleProgress } from '../../hooks/useModuleProgress';
 
 interface RouteParams {
   diseaseId: string;
@@ -11,8 +12,11 @@ interface RouteParams {
 
 const DiseaseModuleScreen: React.FC = () => {
   const route = useRoute();
+  const navigation = useNavigation();
   const { diseaseId, moduleIndex } = route.params as RouteParams;
   const module = diseaseModules[diseaseId]?.modules[moduleIndex];
+
+  const { isCompleted, markAsCompleted } = useModuleProgress();
 
   if (!module) {
     return (
@@ -21,6 +25,20 @@ const DiseaseModuleScreen: React.FC = () => {
       </View>
     );
   }
+
+  const handleComplete = async () => {
+    try {
+      await markAsCompleted(diseaseId, moduleIndex);
+      Alert.alert('Parabéns!', 'Você concluiu este módulo e desbloqueou o próximo.', [
+        {
+          text: 'OK',
+          onPress: () => navigation.goBack(),
+        },
+      ]);
+    } catch (err) {
+      Alert.alert('Erro', 'Não foi possível salvar o progresso.');
+    }
+  };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
@@ -44,6 +62,11 @@ const DiseaseModuleScreen: React.FC = () => {
               ))}
             </View>
           )}
+          {!isCompleted(diseaseId, moduleIndex) && (
+            <TouchableOpacity style={styles.completeButton} onPress={handleComplete}>
+              <Text style={styles.buttonText}>Marcar como concluído</Text>
+            </TouchableOpacity>
+          )}
         </>
       )}
 
@@ -56,6 +79,7 @@ const DiseaseModuleScreen: React.FC = () => {
               style={styles.optionButton}
               onPress={() => {
                 if (option === q.correctAnswer) {
+                  handleComplete();
                   Alert.alert('Correto!', 'Você respondeu corretamente.');
                 } else {
                   Alert.alert('Incorreto', 'Tente novamente.');
@@ -73,6 +97,16 @@ const DiseaseModuleScreen: React.FC = () => {
           <Text style={styles.habitText}>✓ {habit}</Text>
         </View>
       ))}
+
+      {module.type === 'habits' && !isCompleted(diseaseId, moduleIndex) && (
+        <TouchableOpacity style={styles.completeButton} onPress={handleComplete}>
+          <Text style={styles.buttonText}>Marcar como concluído</Text>
+        </TouchableOpacity>
+      )}
+
+      {isCompleted(diseaseId, moduleIndex) && (
+        <Text style={styles.completedText}>✓ Módulo Concluído</Text>
+      )}
     </ScrollView>
   );
 };
@@ -139,6 +173,24 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontFamily: 'Poppins-Regular',
     color: colors.text,
+  },
+  completeButton: {
+    marginTop: 20,
+    backgroundColor: colors.primary,
+    padding: 12,
+    borderRadius: 8,
+    alignItems: 'center',
+  },
+  buttonText: {
+    color: '#fff',
+    fontFamily: 'Poppins-Bold',
+  },
+  completedText: {
+    marginTop: 20,
+    color: 'green',
+    fontFamily: 'Poppins-Bold',
+    fontSize: 16,
+    textAlign: 'center',
   },
 });
 
