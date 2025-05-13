@@ -5,8 +5,9 @@ import React, {
   useEffect,
   ReactNode,
 } from 'react';
-import { onAuthStateChanged, signOut } from 'firebase/auth';
+import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../services/firebaseConfig';
+import { login as firebaseLogin, logout as firebaseLogout } from '../services/auth';
 
 type AuthContextType = {
   isAuthenticated: boolean;
@@ -19,26 +20,23 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
 export const AuthProvider = ({ children }: { children: ReactNode }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [loading, setLoading] = useState(true); // controla splash ou bloqueio inicial
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       setIsAuthenticated(!!user);
-      setLoading(false); // finaliza carregamento inicial
+      setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
 
   const login = async (email: string, password: string) => {
-    // esse login real já é feito em services/auth.ts
-    // aqui você só sinaliza a autenticação
-    setIsAuthenticated(true);
+    await firebaseLogin(email, password);
   };
 
   const logout = () => {
-    signOut(auth); // encerra sessão no Firebase
-    setIsAuthenticated(false);
+    firebaseLogout();
   };
 
   return (
