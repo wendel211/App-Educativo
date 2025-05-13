@@ -1,68 +1,51 @@
-// src/screens/diseaseModules/DiseaseDetailScreen.tsx
-import React from 'react';
-import { ScrollView, Text, StyleSheet, View, TouchableOpacity } from 'react-native';
-import { useRoute } from '@react-navigation/native';
+import React, { useState } from 'react';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { useRoute, useNavigation } from '@react-navigation/native';
 import { colors } from '../../styles/colors';
+import { diseaseModules } from '../../data/diseaseModules';
 
 interface RouteParams {
   diseaseId: string;
 }
 
 const DiseaseDetailScreen: React.FC = () => {
-  // Obtenha os parâmetros da rota
   const route = useRoute();
+  const navigation = useNavigation();
   const { diseaseId } = route.params as RouteParams;
 
-  // Dados de exemplo – esses dados podem vir de uma API ou arquivo local
-  const moduleData = {
-    title: `Detalhes sobre ${diseaseId}`,
-    progress: 0.7, // 70% de progresso
-    content: `Aqui estão informações importantes sobre como lidar com ${diseaseId}.
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse potenti.
-Praesent at ligula nec lacus ullamcorper dictum eu vitae libero.`,
-    quizQuestions: [
-      {
-        question: 'Qual destas práticas é recomendada?',
-        options: ['Prática A', 'Prática B', 'Prática C'],
-        correctAnswer: 'Prática B',
-      },
-      {
-        question: 'Qual o percentual ideal de controle?',
-        options: ['70%', '80%', '90%'],
-        correctAnswer: '80%',
-      },
-    ],
+  const disease = diseaseModules[diseaseId];
+  const [unlockedModules, setUnlockedModules] = useState<number[]>([0]);
+  const [completedModules, setCompletedModules] = useState<number[]>([]);
+
+  const handleModulePress = (index: number) => {
+    if (!unlockedModules.includes(index)) return;
+
+    navigation.navigate('DiseaseModuleScreen', {
+      diseaseId,
+      moduleIndex: index
+    });
   };
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      {/* Título do módulo */}
-      <Text style={styles.title}>{moduleData.title}</Text>
+      <Text style={styles.title}>Módulo Educacional: {disease?.name}</Text>
 
-      {/* Barra de Progresso */}
-      <View style={styles.progressContainer}>
-        <View style={[styles.progressBar, { width: `${moduleData.progress * 100}%` }]} />
-      </View>
+      {disease?.modules.map((mod, index) => (
+        <View key={index} style={styles.moduleCard}>
+          <Text style={styles.moduleTitle}>{mod.title}</Text>
 
-      {/* Seção de Conteúdo */}
-      <View style={styles.contentSection}>
-        <Text style={styles.contentText}>{moduleData.content}</Text>
-      </View>
-
-      {/* Seção de Quiz */}
-      <View style={styles.quizSection}>
-        <Text style={styles.quizHeading}>Quiz</Text>
-        {moduleData.quizQuestions.map((q, index) => (
-          <View key={index} style={styles.questionContainer}>
-            <Text style={styles.questionText}>{q.question}</Text>
-            {q.options.map((option, idx) => (
-              <TouchableOpacity key={idx} style={styles.optionButton}>
-                <Text style={styles.optionText}>{option}</Text>
-              </TouchableOpacity>
-            ))}
-          </View>
-        ))}
-      </View>
+          {unlockedModules.includes(index) ? (
+            <TouchableOpacity
+              style={styles.moduleButton}
+              onPress={() => handleModulePress(index)}
+            >
+              <Text style={styles.buttonText}>Iniciar Módulo</Text>
+            </TouchableOpacity>
+          ) : (
+            <Text style={styles.lockedText}>Bloqueado - Complete o módulo anterior</Text>
+          )}
+        </View>
+      ))}
     </ScrollView>
   );
 };
@@ -76,56 +59,40 @@ const styles = StyleSheet.create({
     fontSize: 24,
     fontFamily: 'Poppins-Bold',
     color: colors.text,
-    marginBottom: 10,
-  },
-  progressContainer: {
-    height: 10,
-    backgroundColor: '#ddd',
-    borderRadius: 5,
     marginBottom: 20,
+    textAlign: 'center',
   },
-  progressBar: {
-    height: '100%',
-    backgroundColor: colors.primary,
-    borderRadius: 5,
+  moduleCard: {
+    backgroundColor: '#fff',
+    padding: 20,
+    marginBottom: 15,
+    borderRadius: 10,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 4 },
+    shadowOpacity: 0.1,
+    shadowRadius: 5,
+    elevation: 3,
   },
-  contentSection: {
-    marginBottom: 20,
-  },
-  contentText: {
-    fontSize: 16,
-    fontFamily: 'Poppins-Regular',
-    lineHeight: 24,
-    color: colors.text,
-  },
-  quizSection: {
-    marginBottom: 20,
-  },
-  quizHeading: {
-    fontSize: 20,
+  moduleTitle: {
+    fontSize: 18,
     fontFamily: 'Poppins-Bold',
     color: colors.text,
     marginBottom: 10,
   },
-  questionContainer: {
-    marginBottom: 15,
-  },
-  questionText: {
-    fontSize: 16,
-    fontFamily: 'Poppins-Regular',
-    color: colors.text,
-    marginBottom: 8,
-  },
-  optionButton: {
+  moduleButton: {
+    backgroundColor: colors.primary,
     padding: 10,
-    backgroundColor: '#eee',
     borderRadius: 8,
-    marginBottom: 5,
+    alignItems: 'center',
   },
-  optionText: {
-    fontSize: 14,
+  buttonText: {
+    color: '#fff',
+    fontFamily: 'Poppins-Bold',
+  },
+  lockedText: {
+    color: '#999',
     fontFamily: 'Poppins-Regular',
-    color: colors.text,
+    fontSize: 14,
   },
 });
 
