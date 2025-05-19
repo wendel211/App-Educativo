@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, SafeAreaView, Platform } from 'react-native';
 import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native';
 import { colors } from '../../styles/colors';
 import { diseaseModules } from '../../data/diseaseModules';
 import { getUserProgress } from '../../services/progressService';
 import { useCallback } from 'react';
+import { Ionicons } from '@expo/vector-icons';
 
 interface RouteParams {
   diseaseId: string;
@@ -52,53 +53,94 @@ const DiseaseDetailScreen: React.FC = () => {
 
   if (loading) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Carregando progresso...</Text>
-      </View>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.centeredContainer}>
+          <Text style={styles.title}>Carregando progresso...</Text>
+        </View>
+      </SafeAreaView>
     );
   }
 
   if (!disease) {
     return (
-      <View style={styles.container}>
-        <Text style={styles.title}>Doença não encontrada.</Text>
-      </View>
+      <SafeAreaView style={styles.safeArea}>
+        <View style={styles.centeredContainer}>
+          <Text style={styles.title}>Doença não encontrada.</Text>
+        </View>
+      </SafeAreaView>
     );
   }
 
   return (
-    <ScrollView contentContainerStyle={styles.container}>
-      <Text style={styles.title}>Módulo Educacional: {disease.name}</Text>
+    <SafeAreaView style={styles.safeArea}>
+      <View style={styles.header}>
+        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+          <Ionicons name="arrow-back" size={24} color={colors.text} />
+        </TouchableOpacity>
+        <Text style={styles.headerTitle}>{disease.name}</Text>
+      </View>
 
-      {disease.modules.map((mod, index) => (
-        <View key={index} style={styles.moduleCard}>
-          <Text style={styles.moduleTitle}>{mod.title}</Text>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
 
-          {isModuleUnlocked(index) ? (
-            <TouchableOpacity
-              style={styles.moduleButton}
-              onPress={() => handleModulePress(index)}
-            >
-              <Text style={styles.buttonText}>
-                {completedModules.includes(index) ? 'Concluído ✓' : 'Iniciar Módulo'}
-              </Text>
-            </TouchableOpacity>
-          ) : (
-            <Text style={styles.lockedText}>Bloqueado - Complete o módulo anterior</Text>
-          )}
-        </View>
-      ))}
-    </ScrollView>
+        {disease.modules.map((mod, index) => (
+          <View key={index} style={styles.moduleCard}>
+            <Text style={styles.moduleTitle}>{mod.title}</Text>
+
+            {isModuleUnlocked(index) ? (
+              <TouchableOpacity
+                style={styles.moduleButton}
+                onPress={() => handleModulePress(index)}
+              >
+                <Text style={styles.buttonText}>
+                  {completedModules.includes(index) ? 'Concluído ✓' : 'Iniciar Módulo'}
+                </Text>
+              </TouchableOpacity>
+            ) : (
+              <Text style={styles.lockedText}>Bloqueado - Complete o módulo anterior</Text>
+            )}
+          </View>
+        ))}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
-  container: {
-    padding: 20,
-    backgroundColor: '#F7F7F7',
+  safeArea: {
+    flex: 1,
+    backgroundColor: colors.background,
+  },
+  header: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    paddingHorizontal: 15,
+    paddingTop: Platform.OS === 'android' ? 40 : 20,
+    paddingBottom: 10,
+    backgroundColor: colors.background,
+  },
+  backButton: {
+    marginRight: 10,
+    padding: 6,
+  },
+  headerTitle: {
+    fontSize: 20,
+    fontFamily: 'Poppins-Bold',
+    color: colors.text,
+    flex: 1,
+  },
+  scrollContent: {
+    paddingHorizontal: 20,
+    paddingBottom: 30,
+  },
+  centeredContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    paddingHorizontal: 20,
+    backgroundColor: colors.background,
   },
   title: {
-    fontSize: 24,
+    fontSize: 22,
     fontFamily: 'Poppins-Bold',
     color: colors.text,
     marginBottom: 20,
@@ -107,29 +149,30 @@ const styles = StyleSheet.create({
   moduleCard: {
     backgroundColor: '#fff',
     padding: 20,
-    marginBottom: 15,
-    borderRadius: 10,
+    marginBottom: 20,
+    borderRadius: 12,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 4 },
     shadowOpacity: 0.1,
-    shadowRadius: 5,
-    elevation: 3,
+    shadowRadius: 6,
+    elevation: 4,
   },
   moduleTitle: {
     fontSize: 18,
     fontFamily: 'Poppins-Bold',
     color: colors.text,
-    marginBottom: 10,
+    marginBottom: 12,
   },
   moduleButton: {
     backgroundColor: colors.primary,
-    padding: 10,
+    paddingVertical: 12,
     borderRadius: 8,
     alignItems: 'center',
   },
   buttonText: {
     color: '#fff',
     fontFamily: 'Poppins-Bold',
+    fontSize: 16,
   },
   lockedText: {
     color: '#999',
