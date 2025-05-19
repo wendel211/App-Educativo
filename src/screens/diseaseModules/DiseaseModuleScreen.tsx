@@ -1,10 +1,19 @@
-import React from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Linking, Alert, SafeAreaView, Platform } from 'react-native';
-import { useRoute, useNavigation } from '@react-navigation/native';
+import React, { useCallback } from 'react';
+import {
+  View,
+  Text,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+  SafeAreaView,
+  Platform
+} from 'react-native';
+import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native';
+import { Ionicons } from '@expo/vector-icons';
+import { useModuleProgress } from '../../hooks/useModuleProgress';
 import { colors } from '../../styles/colors';
 import { diseaseModules } from '../../data/diseaseModules';
-import { useModuleProgress } from '../../hooks/useModuleProgress';
-import { Ionicons } from '@expo/vector-icons';
 
 interface RouteParams {
   diseaseId: string;
@@ -15,9 +24,16 @@ const DiseaseModuleScreen: React.FC = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const { diseaseId, moduleIndex } = route.params as RouteParams;
-  const module = diseaseModules[diseaseId]?.modules[moduleIndex];
 
   const { isCompleted, markAsCompleted } = useModuleProgress();
+  const module = diseaseModules[diseaseId]?.modules[moduleIndex];
+
+  // Re-carrega quando a tela ganha foco (caso queira atualizar estado externo)
+  useFocusEffect(
+    useCallback(() => {
+      // nada extra por enquanto
+    }, [])
+  );
 
   if (!module) {
     return (
@@ -32,19 +48,18 @@ const DiseaseModuleScreen: React.FC = () => {
   const handleComplete = async () => {
     try {
       await markAsCompleted(diseaseId, moduleIndex);
-      Alert.alert('Parabéns!', 'Você concluiu este módulo e desbloqueou o próximo.', [
-        {
-          text: 'OK',
-          onPress: () => navigation.goBack(),
-        },
+      Alert.alert('Parabéns!', 'Você concluiu este módulo.', [
+        { text: 'OK', onPress: () => navigation.goBack() }
       ]);
     } catch (err) {
+      console.error(err);
       Alert.alert('Erro', 'Não foi possível salvar o progresso.');
     }
   };
 
   return (
     <SafeAreaView style={styles.safeArea}>
+      {/* Header */}
       <View style={styles.header}>
         <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
           <Ionicons name="arrow-back" size={24} color={colors.text} />
@@ -53,28 +68,24 @@ const DiseaseModuleScreen: React.FC = () => {
       </View>
 
       <ScrollView contentContainerStyle={styles.scrollContent}>
+        {/* Conteúdo do Módulo */}
         {module.type === 'learn' && (
           <>
             <Text style={styles.content}>{module.content}</Text>
             {module.videoUrl && (
-              <TouchableOpacity onPress={() => Linking.openURL(module.videoUrl)}>
+              <TouchableOpacity onPress={() => module.videoUrl && navigation.openURL(module.videoUrl)}>
                 <Text style={styles.link}>📺 Assistir vídeo</Text>
               </TouchableOpacity>
             )}
             {module.references?.length > 0 && (
               <View style={styles.referencesSection}>
                 <Text style={styles.sectionTitle}>Referências:</Text>
-                {module.references.map((ref, index) => (
-                  <TouchableOpacity key={index} onPress={() => Linking.openURL(ref)}>
+                {module.references.map((ref, idx) => (
+                  <TouchableOpacity key={idx} onPress={() => navigation.openURL(ref)}>
                     <Text style={styles.link}>• {ref}</Text>
                   </TouchableOpacity>
                 ))}
               </View>
-            )}
-            {!isCompleted(diseaseId, moduleIndex) && (
-              <TouchableOpacity style={styles.completeButton} onPress={handleComplete}>
-                <Text style={styles.buttonText}>Marcar como concluído</Text>
-              </TouchableOpacity>
             )}
           </>
         )}
@@ -82,20 +93,20 @@ const DiseaseModuleScreen: React.FC = () => {
         {module.type === 'quiz' && module.questions?.map((q, qi) => (
           <View key={qi} style={styles.questionContainer}>
             <Text style={styles.questionText}>{q.question}</Text>
-            {q.options.map((option, oi) => (
+            {q.options.map((opt, oi) => (
               <TouchableOpacity
                 key={oi}
                 style={styles.optionButton}
                 onPress={() => {
-                  if (option === q.correctAnswer) {
+                  if (opt === q.correctAnswer) {
                     handleComplete();
-                    Alert.alert('Correto!', 'Você respondeu corretamente.');
+                    Alert.alert('Correto!', 'Resposta certa.');
                   } else {
                     Alert.alert('Incorreto', 'Tente novamente.');
                   }
                 }}
               >
-                <Text style={styles.optionText}>{option}</Text>
+                <Text style={styles.optionText}>{opt}</Text>
               </TouchableOpacity>
             ))}
           </View>
@@ -107,19 +118,20 @@ const DiseaseModuleScreen: React.FC = () => {
           </View>
         ))}
 
-        {module.type === 'habits' && !isCompleted(diseaseId, moduleIndex) && (
+        {/* Botão de concluir ou texto de concluído */}
+        {!isCompleted(diseaseId, moduleIndex) ? (
           <TouchableOpacity style={styles.completeButton} onPress={handleComplete}>
             <Text style={styles.buttonText}>Marcar como concluído</Text>
           </TouchableOpacity>
-        )}
-
-        {isCompleted(diseaseId, moduleIndex) && (
+        ) : (
           <Text style={styles.completedText}>✓ Módulo Concluído</Text>
         )}
       </ScrollView>
     </SafeAreaView>
   );
 };
+
+export default DiseaseModuleScreen;
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -233,5 +245,3 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
 });
-
-export default DiseaseModuleScreen;

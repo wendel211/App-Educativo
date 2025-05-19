@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { getUserProgress, markModuleComplete } from '../services/progressService';
-import { auth } from '../services/firebaseConfig';
+import { usePoints } from '../contexts/PointsContext';
 
 type ProgressMap = {
   [diseaseId: string]: number[];
@@ -8,6 +8,7 @@ type ProgressMap = {
 
 export const useModuleProgress = () => {
   const [completedModules, setCompletedModules] = useState<ProgressMap>({});
+  const { refreshPoints } = usePoints();
 
   const isCompleted = (diseaseId: string, moduleIndex: number) => {
     return completedModules[diseaseId]?.includes(moduleIndex);
@@ -15,7 +16,7 @@ export const useModuleProgress = () => {
 
   const markAsCompleted = async (diseaseId: string, moduleIndex: number) => {
     await markModuleComplete(diseaseId, moduleIndex);
-    setCompletedModules((prev) => {
+    setCompletedModules(prev => {
       const current = prev[diseaseId] || [];
       if (current.includes(moduleIndex)) return prev;
       return {
@@ -23,13 +24,13 @@ export const useModuleProgress = () => {
         [diseaseId]: [...current, moduleIndex],
       };
     });
+    // atualiza o contexto de pontos
+    await refreshPoints();
   };
 
   useEffect(() => {
     const fetchInitialProgress = async () => {
-      if (!auth.currentUser?.uid) return;
-
-      const diseaseIds = ['1', '2', '3', '4', '5', '6'];
+      const diseaseIds = ['1','2','3','4','5','6'];
       const progressData: ProgressMap = {};
 
       for (const id of diseaseIds) {
@@ -38,6 +39,8 @@ export const useModuleProgress = () => {
       }
 
       setCompletedModules(progressData);
+      // também puxa o total inicial
+      await refreshPoints();
     };
 
     fetchInitialProgress();
