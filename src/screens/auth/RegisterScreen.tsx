@@ -3,7 +3,7 @@ import { View, StyleSheet, ScrollView, Alert, Image, Dimensions } from 'react-na
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
 import { colors } from '../../styles/colors';
-import { register } from '../../services/auth'; 
+import { register } from '../../services/auth';
 
 const { width } = Dimensions.get('window');
 const logo = require('../../assets/images/LOGO.png');
@@ -31,12 +31,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
   const [loading, setLoading] = useState(false);
 
   const validateForm = () => {
-    const newErrors = {
-      name: '',
-      email: '',
-      password: '',
-      confirmPassword: '',
-    };
+    const newErrors = { name: '', email: '', password: '', confirmPassword: '' };
 
     if (!formData.name.trim()) {
       newErrors.name = 'Nome é obrigatório';
@@ -67,7 +62,8 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
 
     setLoading(true);
     try {
-      await register(formData.email, formData.password); // Chamada ao Firebase
+      // Passa o name para a função de registro
+      await register(formData.email.trim(), formData.password, formData.name.trim());
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
       navigation.navigate('Login');
     } catch (error: any) {
@@ -96,9 +92,9 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <Input
-          label="Nome completo"
+          label="Nome de usuário"
           value={formData.name}
-          onChangeText={(text) => setFormData({ ...formData, name: text })}
+          onChangeText={text => setFormData({ ...formData, name: text })}
           placeholder="Digite seu nome"
           error={errors.name}
           autoCapitalize="words"
@@ -107,16 +103,17 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
         <Input
           label="E-mail"
           value={formData.email}
-          onChangeText={(text) => setFormData({ ...formData, email: text })}
+          onChangeText={text => setFormData({ ...formData, email: text })}
           placeholder="Digite seu e-mail"
           error={errors.email}
           autoCapitalize="none"
+          keyboardType="email-address"
         />
 
         <Input
           label="Senha"
           value={formData.password}
-          onChangeText={(text) => setFormData({ ...formData, password: text })}
+          onChangeText={text => setFormData({ ...formData, password: text })}
           placeholder="Digite sua senha"
           secureTextEntry
           error={errors.password}
@@ -125,7 +122,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
         <Input
           label="Confirmar Senha"
           value={formData.confirmPassword}
-          onChangeText={(text) => setFormData({ ...formData, confirmPassword: text })}
+          onChangeText={text => setFormData({ ...formData, confirmPassword: text })}
           placeholder="Confirme sua senha"
           secureTextEntry
           error={errors.confirmPassword}

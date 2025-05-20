@@ -1,6 +1,4 @@
-// src/screens/HomeScreen.tsx
-
-import React, { useCallback } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   View,
   Text,
@@ -12,6 +10,7 @@ import {
   Platform,
   TouchableOpacity
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
   useNavigation,
   DrawerActions,
@@ -21,74 +20,52 @@ import { TopicCard } from '../../components/education/TopicCard';
 import { AwarenessCard } from '../../components/common/AwarenessCard';
 import { colors } from '../../styles/colors';
 import { usePoints } from '../../contexts/PointsContext';
-
-interface AwarenessData {
-  id: string;
-  title: string;
-  image: ImageSourcePropType;
-}
-
-const awarenessTopics: AwarenessData[] = [
-  {
-    id: '1',
-    title:
-      'Por que é tão importante rever os cuidados referente aos nossos hábitos sendo portador de doenças cardiovasculares?',
-    image: require('../../assets/images/cardiovas.jpg'),
-  },
-  {
-    id: '2',
-    title:
-      'Por que é tão importante rever os cuidados referente aos nossos hábitos sendo portador de diabetes tipo 2?',
-    image: require('../../assets/images/diabetes.jpg'),
-  },
-  {
-    id: '3',
-    title:
-      'Por que é tão importante rever os cuidados referente aos nossos hábitos sendo portador de doenças cardiovasculares e diabetes tipo 2?',
-    image: require('../../assets/images/paciente.jpg'),
-  },
-];
-
-interface TopicData {
-  id: string;
-  title: string;
-  description: string;
-  icon: ImageSourcePropType;
-}
-
-const topics: TopicData[] = [
-  {
-    id: '1',
-    title: 'Diabetes',
-    description: 'Aprenda sobre tipos de diabetes, controle glicêmico e hábitos saudáveis.',
-    icon: require('../../assets/images/diabetes-icon.png'),
-  },
-  {
-    id: '2',
-    title: 'Saúde do Coração',
-    description: 'Informações sobre prevenção e cuidados com doenças cardiovasculares.',
-    icon: require('../../assets/images/heart-icon.png'),
-  },
-  {
-    id: '3',
-    title: 'Atividade Física',
-    description: 'Exercícios recomendados e seus benefícios para sua condição.',
-    icon: require('../../assets/images/exercise-icon.png'),
-  },
-  {
-    id: '4',
-    title: 'Alimentação Saudável',
-    description: 'Dicas de nutrição e dietas específicas para cada condição.',
-    icon: require('../../assets/images/nutrition-icon.png'),
-  },
-];
+import { useAuth } from '../../contexts/AuthContext';
+import { awarenessTopics, topics } from '../../data/homeData';
 
 export const HomeScreen: React.FC = () => {
   const navigation = useNavigation();
-  const userName = 'Wendel';
+  const { user } = useAuth();
   const { totalPoints, refreshPoints } = usePoints();
 
-  // Atualiza pontos sempre que a tela volta a ganhar foco
+ 
+  const [userName, setUserName] = useState<string>('Usuário');
+  useEffect(() => {
+    (async () => {
+      if (user?.uid) {
+        try {
+          const { doc, getDoc } = await import('firebase/firestore');
+          const { db } = await import('../../services/firebaseConfig');
+          const ref = doc(db, 'users', user.uid);
+          const snap = await getDoc(ref);
+          const data = snap.exists() ? snap.data() : {};
+          const nameFromDB = data.name as string | undefined;
+          const storedName = await AsyncStorage.getItem('userName');
+          const nameToUse = nameFromDB ?? user.displayName ?? storedName ?? 'Usuário';
+          setUserName(nameToUse);
+          await AsyncStorage.setItem('userName', nameToUse);
+        } catch (e) {
+          console.warn('Erro ao buscar nome do usuário:', e);
+          const stored = await AsyncStorage.getItem('userName');
+          setUserName(stored ?? user.displayName ?? 'Usuário');
+        }
+      }
+    })();
+  }, [user]);
+
+  const badges = [
+    require('../../assets/medalhas/Medalha_1.png'),
+    require('../../assets/medalhas/Medalha_2.png'),
+    require('../../assets/medalhas/Medalha_3.png'),
+    require('../../assets/medalhas/Medalha_4.png'),
+    require('../../assets/medalhas/Medalha_5.png'),
+    require('../../assets/medalhas/Medalha_6.png'),
+  ];
+  const levelThreshold = 30; 
+  const levelIndex = Math.min(Math.floor(totalPoints / levelThreshold), badges.length - 1);
+  const badgeSource = badges[levelIndex];
+
+  // --- Refresh Points on Focus ---
   useFocusEffect(
     useCallback(() => {
       refreshPoints();
@@ -107,20 +84,15 @@ export const HomeScreen: React.FC = () => {
         {/* Cabeçalho */}
         <View style={styles.header}>
           <TouchableOpacity onPress={handleProfilePress} style={styles.profileContainer}>
-            <Image
-              source={require('../../assets/images/user.png')}
-              style={styles.profileImage}
-            />
+            <Image source={badgeSource} style={styles.badgeImage} />
             <View>
               <Text style={styles.greeting}>Olá, {userName}</Text>
               <View style={styles.progressWrapper}>
-                <View
-                  style={[styles.progressBar, { width: `${progressPercent}%` }]}
-                />
+                <View style={[styles.progressBar, { width: `${progressPercent}%` }]} />
               </View>
-              <Text style={styles.progressLabel}>
-                {totalPoints} / 180 pontos
-              </Text>
+              <Text style={styles.progressLabel}>{totalPoints} / 180 pontos</Text>
+              {/* Texto Motivacional no header */}
+     
             </View>
           </TouchableOpacity>
         </View>
@@ -128,22 +100,19 @@ export const HomeScreen: React.FC = () => {
         {/* Boas-vindas */}
         <View style={styles.welcomeSection}>
           <Text style={styles.initialTitle}>
-            Aprenda a cuidar da sua saúde sendo portador de doenças
-            cardiovasculares e diabetes!
+            Aprenda a cuidar da saúde sendo portador de doenças cardiovasculares e diabetes. Ganhe pontos e aumente seu nível ao concluir os módulos!
           </Text>
           <View style={styles.divider} />
         </View>
 
         {/* Cards de awareness */}
         <View style={styles.awarenessSection}>
-          {awarenessTopics.map((topic) => (
+          {awarenessTopics.map(topic => (
             <AwarenessCard
               key={topic.id}
               title={topic.title}
               image={topic.image}
-              onPress={() =>
-                navigation.navigate('ArticleDetailScreen', { topicId: topic.id })
-              }
+              onPress={() => navigation.navigate('ArticleDetailScreen', { topicId: topic.id })}
             />
           ))}
         </View>
@@ -154,18 +123,13 @@ export const HomeScreen: React.FC = () => {
           <Text style={styles.initialTitle}>
             Explore nossos tópicos educativos e cuide melhor da sua saúde.
           </Text>
-          {topics.map((topic) => (
+          {topics.map(topic => (
             <TopicCard
               key={topic.id}
               title={topic.title}
               description={topic.description}
               icon={topic.icon}
-              onPress={() =>
-                navigation.navigate('Topics', {
-                  category: topic.id,
-                  title: topic.title,
-                })
-              }
+              onPress={() => navigation.navigate('Topics', { category: topic.id, title: topic.title })}
             />
           ))}
         </View>
@@ -174,20 +138,18 @@ export const HomeScreen: React.FC = () => {
   );
 };
 
+export default HomeScreen;
+
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colors.background,
-  },
-  content: {
-    paddingBottom: 20,
-  },
+  container: { flex: 1, backgroundColor: colors.background },
+  content: { paddingBottom: 20 },
   header: {
     height: 200,
     justifyContent: 'center',
     backgroundColor: colors.primary,
     paddingHorizontal: 20,
     paddingTop: Platform.OS === 'ios' ? 50 : 30,
+    paddingBottom: 16,
     borderBottomLeftRadius: 10,
     borderBottomRightRadius: 10,
     elevation: 4,
@@ -195,73 +157,17 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 10,
   },
-  profileContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-  },
-  profileImage: {
-    width: 50,
-    height: 50,
-    borderRadius: 25,
-    borderWidth: 2,
-    borderColor: '#fff',
-    marginRight: 10,
-  },
-  greeting: {
-    fontSize: 22,
-    color: '#fff',
-    fontFamily: 'Poppins-Bold',
-  },
-  progressWrapper: {
-    height: 8,
-    width: 160,
-    backgroundColor: '#ddd',
-    borderRadius: 5,
-    marginTop: 6,
-  },
-  progressBar: {
-    height: '100%',
-    backgroundColor: '#4CAF50',
-    borderRadius: 5,
-  },
-  progressLabel: {
-    fontSize: 12,
-    color: '#fff',
-    fontFamily: 'Poppins-Regular',
-    marginTop: 4,
-  },
-  welcomeSection: {
-    marginTop: 20,
-    paddingHorizontal: 16,
-  },
-  initialTitle: {
-    fontSize: 14,
-    color: colors.text,
-    marginBottom: 10,
-    lineHeight: 22,
-    padding: 4,
-    fontFamily: 'Poppins-Regular',
-  },
-  divider: {
-    height: 1,
-    backgroundColor: colors.text,
-    width: '100%',
-    marginBottom: 10,
-  },
-  awarenessSection: {
-    marginTop: 20,
-    paddingHorizontal: 16,
-  },
-  topicsSection: {
-    marginTop: 20,
-    paddingHorizontal: 16,
-  },
-  sectionTitle: {
-    fontSize: 22,
-    color: colors.text,
-    marginBottom: 10,
-    fontFamily: 'Poppins-Bold',
-  },
+  profileContainer: { flexDirection: 'row', alignItems: 'center' },
+  badgeImage: { width: 50, height: 50, marginRight: 10 },
+  greeting: { fontSize: 22, color: '#fff', fontFamily: 'Poppins-Bold' },
+  progressWrapper: { height: 8, width: 160, backgroundColor: '#ddd', borderRadius: 5, overflow: 'hidden', marginTop: 6 },
+  progressBar: { height: '100%', backgroundColor: '#4CAF50' },
+  progressLabel: { fontSize: 12, color: '#fff', fontFamily: 'Poppins-Regular', marginTop: 4 },
+  motivationHeader: { fontSize: 14, color: '#E0F7FA', fontFamily: 'Poppins-Regular', marginTop: 8 },
+  welcomeSection: { marginTop: 20, paddingHorizontal: 16 },
+  initialTitle: { fontSize: 14, color: colors.text, marginBottom: 10, lineHeight: 22, fontFamily: 'Poppins-Regular' },
+  divider: { height: 1, backgroundColor: colors.text, width: '100%', marginBottom: 10 },
+  awarenessSection: { marginTop: 20, paddingHorizontal: 16 },
+  topicsSection: { marginTop: 20, paddingHorizontal: 16 },
+  sectionTitle: { fontSize: 22, color: colors.text, marginBottom: 10, fontFamily: 'Poppins-Bold' },
 });
-
-export default HomeScreen;

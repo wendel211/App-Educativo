@@ -24,7 +24,7 @@ export const useModuleProgress = () => {
         [diseaseId]: [...current, moduleIndex],
       };
     });
-    // atualiza o contexto de pontos
+ 
     await refreshPoints();
   };
 
