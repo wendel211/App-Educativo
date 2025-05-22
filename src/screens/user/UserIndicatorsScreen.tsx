@@ -1,9 +1,32 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Platform } from 'react-native';
 import { colors } from '../../styles/colors';
 import { Ionicons } from '@expo/vector-icons';
+import AddAlertModal from '../../components/alerts/AddAlertModal';
+import { getUserAlerts, deleteAlert } from '../../services/alertService';
 
 export const UserIndicatorsScreen: React.FC = () => {
+  const [showAddAlertModal, setShowAddAlertModal] = useState(false);
+  const [alerts, setAlerts] = useState<any[]>([]);
+
+  const loadAlerts = async () => {
+    const data = await getUserAlerts();
+    setAlerts(data);
+  };
+
+  const handleDeleteAlert = async (alertId: string) => {
+    try {
+      await deleteAlert(alertId);
+      loadAlerts();
+    } catch (error) {
+      console.error('Erro ao deletar alerta:', error);
+    }
+  };
+
+  useEffect(() => {
+    loadAlerts();
+  }, []);
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -37,18 +60,35 @@ export const UserIndicatorsScreen: React.FC = () => {
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
           <Text style={styles.sectionTitle}>Meus Alertas</Text>
-          <TouchableOpacity style={styles.addButton}>
+          <TouchableOpacity style={styles.addButton} onPress={() => setShowAddAlertModal(true)}>
             <Ionicons name="add-circle" size={28} color={colors.primary} />
           </TouchableOpacity>
         </View>
-        <View style={styles.alertCard}>
-          <Text style={styles.alertTitle}>Tomar Medicação</Text>
-          <Text style={styles.alertSubtitle}>Todos os dias às 08:00</Text>
-        </View>
-        <View style={styles.alertCard}>
-          <Text style={styles.alertTitle}>Atividade Física</Text>
-          <Text style={styles.alertSubtitle}>Segunda, Quarta e Sexta às 18:00</Text>
-        </View>
+        {alerts.length === 0 ? (
+          <Text style={{ fontSize: 14, color: colors.text, fontFamily: 'Poppins-Regular' }}>
+            Nenhum alerta cadastrado.
+          </Text>
+        ) : (
+          alerts.map(alert => (
+            <View key={alert.id} style={styles.alertCard}>
+              <View style={styles.alertContent}>
+                <View>
+                  <Text style={styles.alertTitle}>{alert.title}</Text>
+                  <Text style={styles.alertSubtitle}>
+                    {alert.repeat === 'daily'
+                      ? `Todos os dias às ${alert.time}`
+                      : alert.repeat === 'once'
+                      ? `Em ${alert.date} às ${alert.time}`
+                      : `Às ${alert.time} nos dias ${alert.daysOfWeek.join(', ')}`}
+                  </Text>
+                </View>
+                <TouchableOpacity onPress={() => handleDeleteAlert(alert.id)}>
+                  <Ionicons name="trash" size={24} color="#1F8E8A" />
+                </TouchableOpacity>
+              </View>
+            </View>
+          ))
+        )}
       </View>
 
       {/* Seção de Registro Manual */}
@@ -61,6 +101,12 @@ export const UserIndicatorsScreen: React.FC = () => {
         </View>
         <Text style={styles.recordHint}>Registre seu peso, glicemia e batimentos de hoje.</Text>
       </View>
+
+      <AddAlertModal 
+        visible={showAddAlertModal} 
+        onClose={() => setShowAddAlertModal(false)} 
+        onSaved={loadAlerts}
+      />
     </ScrollView>
   );
 };
@@ -92,6 +138,7 @@ const styles = StyleSheet.create({
   dataValue: { fontSize: 18, fontFamily: 'Poppins-Bold', color: colors.text, marginTop: 6 },
   dataLabel: { fontSize: 14, color: colors.text, fontFamily: 'Poppins-Regular' },
   alertCard: { backgroundColor: '#fff', padding: 12, borderRadius: 12, elevation: 2, marginBottom: 8 },
+  alertContent: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   alertTitle: { fontSize: 16, fontFamily: 'Poppins-Bold', color: colors.text },
   alertSubtitle: { fontSize: 14, fontFamily: 'Poppins-Regular', color: colors.text },
   recordHint: { fontSize: 14, color: colors.text, fontFamily: 'Poppins-Regular' }
