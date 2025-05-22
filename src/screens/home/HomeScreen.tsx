@@ -32,15 +32,17 @@ export const HomeScreen: React.FC = () => {
   const [userName, setUserName] = useState<string>('Usuário');
   const [screenReaderEnabled, setScreenReaderEnabled] = useState<boolean>(false);
 
-  // Mensagens de level up
+  const maxPoints = 150;
+
   const levelUpMessages = [
-    'Parabéns pelo primeiro nível! Continue cuidando da sua saúde!',
     'Você está indo muito bem! Continue aprendendo e crescendo!',
     'Impressionante! Você está se tornando um especialista em saúde!',
     'Incrível progresso! Sua dedicação está fazendo diferença!',
     'Você é inspirador! Continue nesse caminho de autocuidado!',
     'Extraordinário! Você alcançou o nível máximo de conhecimento!'
   ];
+  const welcomeMessage =
+    'Bem-vindo! Este app ajuda você a aprender sobre saúde cardiovascular e diabetes. Ganhe pontos completando módulos e suba de nível para acompanhar seu progresso!';
   const [showLevelUp, setShowLevelUp] = useState(false);
   const [levelUpMessage, setLevelUpMessage] = useState('');
   const previousLevelRef = useRef<number>(0);
@@ -97,11 +99,24 @@ export const HomeScreen: React.FC = () => {
   const currentLevel = levelIndex + 1;
   const badgeSource = badges[levelIndex];
 
-  // Detectar aumento de nível
+  // Exibir boas-vindas apenas na primeira vez
+  useEffect(() => {
+    (async () => {
+      const hasSeenWelcome = await AsyncStorage.getItem('hasSeenWelcome');
+      if (!hasSeenWelcome) {
+        setLevelUpMessage(welcomeMessage);
+        setShowLevelUp(true);
+        await AsyncStorage.setItem('hasSeenWelcome', 'true');
+      }
+      previousLevelRef.current = currentLevel;
+    })();
+  }, [currentLevel]);
+
+  // Detectar aumento de nível (>1)
   useEffect(() => {
     const prevLevel = previousLevelRef.current;
-    if (currentLevel > prevLevel) {
-      const message = levelUpMessages[prevLevel] || '';
+    if (currentLevel > prevLevel && prevLevel > 0) {
+      const message = levelUpMessages[prevLevel - 1] || '';
       setLevelUpMessage(message);
       setShowLevelUp(true);
     }
@@ -115,15 +130,19 @@ export const HomeScreen: React.FC = () => {
     }, [refreshPoints])
   );
 
-  const progressPercent = Math.min((totalPoints / 180) * 100, 100);
-  const pointsRemaining = Math.max(180 - totalPoints, 0);
+  // Cálculo de progresso e cor dinâmica
+  const progressPercent = Math.min((totalPoints / maxPoints) * 100, 100);
+  const isMax = totalPoints >= maxPoints;
+  const barColor = isMax ? '#FFD700' : '#4CAF50';
+  const pointsRemaining = Math.max(maxPoints - totalPoints, 0);
+
   const handleProfilePress = () => navigation.dispatch(DrawerActions.openDrawer());
 
   return (
     <SafeAreaView style={styles.container} accessible={false}>
       <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
 
-      {/* Modal de Level Up */}
+      {/* Modal de Boas-vindas / Level Up */}
       <Modal
         visible={showLevelUp}
         transparent
@@ -132,9 +151,11 @@ export const HomeScreen: React.FC = () => {
       >
         <View style={styles.modalContainer}>
           <View style={styles.modalContent}>
-            <Text style={styles.modalTitle}>Você subiu de nível!</Text>
+            <Text style={styles.modalTitle} accessibilityRole="header">
+              {previousLevelRef.current === currentLevel ? 'Parabéns!' : 'Você subiu de nível!'}
+            </Text>
             <Text style={styles.modalMessage}>{levelUpMessage}</Text>
-            <TouchableOpacity onPress={() => setShowLevelUp(false)} style={styles.modalButton}>
+            <TouchableOpacity onPress={() => setShowLevelUp(false)} style={styles.modalButton} accessibilityRole="button">
               <Text style={styles.modalButtonText}>OK</Text>
             </TouchableOpacity>
           </View>
@@ -148,7 +169,7 @@ export const HomeScreen: React.FC = () => {
             onPress={handleProfilePress}
             style={styles.profileContainer}
             accessible
-            accessibilityLabel={`Abrir perfil. Olá ${userName}. Você está no nível ${currentLevel} com ${totalPoints} de 180 pontos.`}
+            accessibilityLabel={`Abrir perfil. Olá ${userName}. Você está no nível ${currentLevel} com ${totalPoints} de ${maxPoints} pontos.`}
             accessibilityRole="button"
             accessibilityHint="Toque para abrir o menu lateral"
           >
@@ -164,12 +185,12 @@ export const HomeScreen: React.FC = () => {
               <View
                 style={styles.progressContainer}
                 accessible
-                accessibilityLabel={`Progresso: ${totalPoints} de 180 pontos. Faltam ${pointsRemaining} pontos.`}
+                accessibilityLabel={`Progresso: ${totalPoints} de ${maxPoints} pontos. Faltam ${pointsRemaining} pontos.`}
               >
                 <View style={styles.progressWrapper}>
-                  <View style={[styles.progressBar, { width: `${progressPercent}%` }]} />
+                  <View style={[styles.progressBar, { width: `${progressPercent}%`, backgroundColor: barColor }]} />
                 </View>
-                <Text style={styles.progressLabel}>{totalPoints} / 180 pontos</Text>
+                <Text style={styles.progressLabel}>{totalPoints} / {maxPoints} pontos</Text>
               </View>
             </View>
           </TouchableOpacity>
@@ -178,12 +199,12 @@ export const HomeScreen: React.FC = () => {
         {/* Boas-vindas */}
         <View style={styles.welcomeSection} accessible accessibilityRole="text" accessibilityLabel="Seção de boas-vindas">
           <Text style={styles.initialText} accessibilityRole="header">
-            Aprenda a cuidar da saúde sendo portador de doenças cardiovasculares e diabetes. Ganhe pontos e aumente seu nível ao concluir os módulos!
+            Aprenda a como cuidar da saúde sendo portador de doenças cardiovasculares e diabetes. Ganhe pontos e aumente seu nível ao concluir os módulos!
           </Text>
           <View style={styles.divider} />
         </View>
 
-        {/* Dicas de conscientização */}
+        {/* Artigos de conscientização */}
         <View style={styles.awarenessSection} accessible accessibilityRole="text" accessibilityLabel="Seção de dicas de saúde importantes">
           <Text style={styles.sectionTitle}>Dicas Importantes</Text>
           <View style={styles.awarenessCardContainer}>
@@ -253,7 +274,7 @@ const styles = StyleSheet.create({
     borderRadius: 6,
     overflow: 'hidden'
   },
-  progressBar: { height: '100%', backgroundColor: '#4CAF50' },
+  progressBar: { height: '100%' },
   progressLabel: { fontSize: 14, color: '#FFFFFF', fontFamily: 'Poppins-Medium', marginTop: 6 },
   welcomeSection: { marginTop: 24, paddingHorizontal: 24, marginBottom: 12 },
   initialText: { fontSize: 16, color: colors.text, marginBottom: 16, lineHeight: 24, fontFamily: 'Poppins-Regular' },
@@ -263,7 +284,6 @@ const styles = StyleSheet.create({
   topicsSection: { marginTop: 32, paddingHorizontal: 24 },
   topicsCardContainer: { marginTop: 16, gap: 20 },
   sectionTitle: { fontSize: 22, color: colors.text, marginBottom: 8, fontFamily: 'Poppins-Bold', letterSpacing: 0.25 },
-
   modalContainer: { flex: 1, justifyContent: 'center', alignItems: 'center', backgroundColor: 'rgba(0,0,0,0.5)' },
   modalContent: { backgroundColor: '#FFFFFF', padding: 24, borderRadius: 8, alignItems: 'center', marginHorizontal: 32 },
   modalTitle: { fontSize: 20, fontFamily: 'Poppins-Bold', marginBottom: 12, textAlign: 'center' },
