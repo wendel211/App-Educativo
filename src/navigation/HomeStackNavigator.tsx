@@ -1,7 +1,7 @@
 import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from '../screens/home/HomeScreen';
-import  ArticleDetailScreen  from '../screens/articleDetail/ArticleDetailScreen';
+import  ArticleDetailScreen  from '../screens/ArticleDetail/ArticleDetailScreen';
 
 export type HomeStackParamList = {
   HomeScreen: undefined;
