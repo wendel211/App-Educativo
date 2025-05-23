@@ -1,40 +1,54 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Image, Platform } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity, Platform } from 'react-native';
 import { colors } from '../../styles/colors';
 import { Ionicons } from '@expo/vector-icons';
 import AddAlertModal from '../../components/alerts/AddAlertModal';
 import { getUserAlerts, deleteAlert } from '../../services/alertService';
+import { getRecentIndicators, deleteIndicator } from '../../services/indicatorService';
+import AddIndicatorModal from '../../components/health/AddIndicatorModal';
+import { useNavigation } from '@react-navigation/native';
 
 export const UserIndicatorsScreen: React.FC = () => {
+  const navigation = useNavigation();
   const [showAddAlertModal, setShowAddAlertModal] = useState(false);
+  const [showAddIndicatorModal, setShowAddIndicatorModal] = useState(false);
   const [alerts, setAlerts] = useState<any[]>([]);
+  const [indicators, setIndicators] = useState<any[]>([]);
 
   const loadAlerts = async () => {
     const data = await getUserAlerts();
     setAlerts(data);
   };
 
+  const loadIndicators = async () => {
+    const data = await getRecentIndicators();
+    setIndicators(data);
+  };
+
   const handleDeleteAlert = async (alertId: string) => {
-    try {
-      await deleteAlert(alertId);
-      loadAlerts();
-    } catch (error) {
-      console.error('Erro ao deletar alerta:', error);
-    }
+    await deleteAlert(alertId);
+    loadAlerts();
+  };
+
+  const handleDeleteIndicator = async (indicatorId: string) => {
+    await deleteIndicator(indicatorId);
+    loadIndicators();
   };
 
   useEffect(() => {
     loadAlerts();
+    loadIndicators();
   }, []);
 
   return (
     <ScrollView style={styles.container}>
+      {/* Header */}
       <View style={styles.header}>
         <Text style={styles.headerTitle}>Meus Alertas & Saúde</Text>
         <Text style={styles.headerSubtitle}>Gerencie seus lembretes e dados de saúde</Text>
       </View>
 
-      {/* Seção de Dados de Saúde */}
+      {/* Dados de Saúde Simulados */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Dados de Saúde</Text>
         <View style={styles.cardContainer}>
@@ -65,9 +79,7 @@ export const UserIndicatorsScreen: React.FC = () => {
           </TouchableOpacity>
         </View>
         {alerts.length === 0 ? (
-          <Text style={{ fontSize: 14, color: colors.text, fontFamily: 'Poppins-Regular' }}>
-            Nenhum alerta cadastrado.
-          </Text>
+          <Text style={styles.emptyText}>Nenhum alerta cadastrado.</Text>
         ) : (
           alerts.map(alert => (
             <View key={alert.id} style={styles.alertCard}>
@@ -91,21 +103,50 @@ export const UserIndicatorsScreen: React.FC = () => {
         )}
       </View>
 
-      {/* Seção de Registro Manual */}
+      {/* Seção de Indicadores */}
       <View style={styles.section}>
         <View style={styles.sectionHeader}>
-          <Text style={styles.sectionTitle}>Registrar Indicadores</Text>
-          <TouchableOpacity style={styles.addButton}>
-            <Ionicons name="add-circle" size={28} color={colors.primary} />
-          </TouchableOpacity>
+          <Text style={styles.sectionTitle}>Meus Indicadores</Text>
+          <View style={{ flexDirection: 'row', alignItems: 'center' }}>
+            <TouchableOpacity style={{ marginRight: 12 }} onPress={() => navigation.navigate('IndicatorHistoryScreen')}>
+              <Ionicons name="list" size={24} color={colors.primary} />
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.addButton} onPress={() => setShowAddIndicatorModal(true)}>
+              <Ionicons name="add-circle" size={28} color={colors.primary} />
+            </TouchableOpacity>
+          </View>
         </View>
-        <Text style={styles.recordHint}>Registre seu peso, glicemia e batimentos de hoje.</Text>
+        {indicators.length === 0 ? (
+          <Text style={styles.emptyText}>Nenhum indicador registrado.</Text>
+        ) : (
+          indicators.map((item) => (
+            <View key={item.id} style={styles.alertCard}>
+              <View style={styles.alertContent}>
+                <View>
+                  <Text style={styles.alertTitle}>Data: {item.date}</Text>
+                  <Text style={styles.alertSubtitle}>Glicemia: {item.glucose} mg/dL</Text>
+                  <Text style={styles.alertSubtitle}>Batimentos: {item.heartRate} bpm</Text>
+                  <Text style={styles.alertSubtitle}>Peso: {item.weight} kg</Text>
+                </View>
+                <TouchableOpacity onPress={() => handleDeleteIndicator(item.id)}>
+                  <Ionicons name="trash" size={24} color="#1F8E8A" />
+                </TouchableOpacity>
+              </View>
+            </View>
+          ))
+        )}
       </View>
 
+      {/* Modais */}
       <AddAlertModal 
         visible={showAddAlertModal} 
         onClose={() => setShowAddAlertModal(false)} 
         onSaved={loadAlerts}
+      />
+      <AddIndicatorModal
+        visible={showAddIndicatorModal}
+        onClose={() => setShowAddIndicatorModal(false)}
+        onSaved={loadIndicators}
       />
     </ScrollView>
   );
@@ -141,7 +182,7 @@ const styles = StyleSheet.create({
   alertContent: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
   alertTitle: { fontSize: 16, fontFamily: 'Poppins-Bold', color: colors.text },
   alertSubtitle: { fontSize: 14, fontFamily: 'Poppins-Regular', color: colors.text },
-  recordHint: { fontSize: 14, color: colors.text, fontFamily: 'Poppins-Regular' }
+  emptyText: { fontSize: 14, color: colors.text, fontFamily: 'Poppins-Regular' }
 });
 
 export default UserIndicatorsScreen;

@@ -1,4 +1,3 @@
-// src/navigation/DrawerNavigator.tsx
 import React from 'react';
 import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
 import { Feather } from '@expo/vector-icons';
@@ -6,7 +5,7 @@ import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { TabNavigator } from './TabNavigator';
 import { SettingsScreen } from '../screens/settings/SettingsScreen';
 import { useAuth } from '../contexts/AuthContext';
-
+import IndicatorHistoryScreen from '../screens/HistoryScreen/IndicatorHistoryScreen';
 
 const Drawer = createDrawerNavigator();
 const logoName = require('../assets/images/NomeLOGO.png');
@@ -41,6 +40,14 @@ export const DrawerNavigator = () => {
         options={{
           drawerIcon: ({ color, size }) => <Feather name="home" size={size} color={color} />,
           drawerLabel: 'Página Inicial',
+        }}
+      />
+      <Drawer.Screen
+        name="IndicatorHistoryScreen"
+        component={IndicatorHistoryScreen}
+        options={{
+          drawerIcon: ({ color, size }) => <Feather name="activity" size={size} color={color} />,
+          drawerLabel: 'Histórico de Indicadores',
         }}
       />
       <Drawer.Screen
