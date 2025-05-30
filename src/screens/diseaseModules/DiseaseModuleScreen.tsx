@@ -9,7 +9,7 @@ import {
   SafeAreaView,
   Platform
 } from 'react-native';
-import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native';
+import { useRoute, useNavigation, useFocusEffect } from '@react-navigation/native'; 
 import { Ionicons } from '@expo/vector-icons';
 import { useModuleProgress } from '../../hooks/useModuleProgress';
 import { colors } from '../../styles/colors';
