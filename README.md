@@ -1,6 +1,6 @@
 # 📱 App Educativo em Saúde
 
-Aplicativo móvel desenvolvido com React Native e Expo, focado na educação em saúde para pacientes com **Diabetes Tipo 2** e **Doenças Cardiovasculares**. O app oferece conteúdos educativos, sistema de gamificação, registro de indicadores de saúde e integração com o **Health Connect** para sincronização de dados de passos, batimentos cardíacos e sono.
+Aplicativo móvel desenvolvido com React Native e Expo, focado na educação em saúde para pacientes com **Diabetes Tipo 1 e Tipo 2** e **Doenças Cardiovasculares**. O app oferece conteúdos educativos, sistema de gamificação, registro de indicadores de saúde e integração com o **Health Connect** para sincronização de dados de passos, batimentos cardíacos e sono.
 
 ## 🧠 Objetivo
 
