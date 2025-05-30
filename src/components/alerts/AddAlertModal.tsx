@@ -5,8 +5,7 @@ import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../styles/colors';
 import { createAlert } from '../../services/alertService';
 import { scheduleNotification } from '../../services/notificationService';
-// Remove Picker import if you're not using it anymore
-// import { Picker } from '@react-native-picker/picker';
+
 
 interface AddAlertModalProps {
   visible: boolean;
