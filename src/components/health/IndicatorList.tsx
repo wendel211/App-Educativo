@@ -41,13 +41,68 @@ export default function IndicatorList({ indicators, onAdd, onShowHistory, onDele
 }
 
 const styles = StyleSheet.create({
-  section: { marginTop: 24, paddingHorizontal: 24 },
-  sectionHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  sectionTitle: { fontSize: 20, fontFamily: 'Poppins-Bold', color: colors.text, marginBottom: 8 },
-  addButton: { padding: 4 },
-  alertCard: { backgroundColor: '#fff', padding: 12, borderRadius: 12, elevation: 2, marginBottom: 8 },
-  alertContent: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  alertTitle: { fontSize: 16, fontFamily: 'Poppins-Bold', color: colors.text },
-  alertSubtitle: { fontSize: 14, fontFamily: 'Poppins-Regular', color: colors.text },
-  emptyText: { fontSize: 14, color: colors.text, fontFamily: 'Poppins-Regular' }
+  section: {
+    marginTop: 20,
+    paddingHorizontal: 8,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  sectionTitle: {
+    fontSize: 21,
+    fontFamily: 'Poppins-Bold',
+    color: colors.primary,
+    letterSpacing: 0.5,
+  },
+  addButton: {
+    padding: 4,
+  },
+  alertCard: {
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOpacity: 0.12,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 16,
+    elevation: 4,
+    padding: 22,
+    marginBottom: 12,
+  },
+  alertContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  alertTitle: {
+    fontSize: 18,
+    fontFamily: 'Poppins-Bold',
+    color: colors.text,
+    marginBottom: 4,
+  },
+  alertSubtitle: {
+    fontSize: 14,
+    fontFamily: 'Poppins-Regular',
+    color: colors.text,
+    opacity: 0.7,
+    marginBottom: 2,
+  },
+  emptyText: {
+    fontSize: 16,
+    color: colors.text,
+    fontFamily: 'Poppins-Regular',
+    textAlign: 'center',
+    opacity: 0.7,
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOpacity: 0.12,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 16,
+    elevation: 4,
+    padding: 22,
+    marginBottom: 12,
+  }
 });

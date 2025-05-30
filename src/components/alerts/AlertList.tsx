@@ -12,11 +12,14 @@ export default function AlertList({ alerts, onAdd, onDelete }: any) {
           <Ionicons name="add-circle" size={28} color={colors.primary} />
         </TouchableOpacity>
       </View>
+      
       {alerts.length === 0 ? (
-        <Text style={styles.emptyText}>Nenhum alerta cadastrado.</Text>
+        <View style={styles.card}>
+          <Text style={styles.emptyText}>Nenhum alerta cadastrado.</Text>
+        </View>
       ) : (
         alerts.map((alert: any) => (
-          <View key={alert.id} style={styles.alertCard}>
+          <View key={alert.id} style={styles.card}>
             <View style={styles.alertContent}>
               <View style={{ flex: 1 }}>
                 <Text style={styles.alertTitle}>{alert.title}</Text>
@@ -29,7 +32,7 @@ export default function AlertList({ alerts, onAdd, onDelete }: any) {
                 </Text>
               </View>
               <TouchableOpacity onPress={() => onDelete(alert.id)}>
-                <Ionicons name="trash" size={24} color="#1F8E8A" />
+                <Ionicons name="trash" size={24} color={colors.primary} />
               </TouchableOpacity>
             </View>
           </View>
@@ -39,15 +42,59 @@ export default function AlertList({ alerts, onAdd, onDelete }: any) {
   );
 }
 
-// Reuse seus estilos (exemplo)
 const styles = StyleSheet.create({
-  section: { marginTop: 24, paddingHorizontal: 24 },
-  sectionHeader: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  sectionTitle: { fontSize: 20, fontFamily: 'Poppins-Bold', color: colors.text, marginBottom: 8 },
-  addButton: { padding: 4 },
-  alertCard: { backgroundColor: '#fff', padding: 12, borderRadius: 12, elevation: 2, marginBottom: 8 },
-  alertContent: { flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  alertTitle: { fontSize: 16, fontFamily: 'Poppins-Bold', color: colors.text },
-  alertSubtitle: { fontSize: 14, fontFamily: 'Poppins-Regular', color: colors.text },
-  emptyText: { fontSize: 14, color: colors.text, fontFamily: 'Poppins-Regular' }
+  section: {
+    marginTop: 32,
+    paddingHorizontal: 8,
+  },
+  sectionHeader: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    marginBottom: 16,
+  },
+  sectionTitle: {
+    fontSize: 21,
+    fontFamily: 'Poppins-Bold',
+    color: colors.primary,
+    letterSpacing: 0.5,
+  },
+  addButton: {
+    padding: 4,
+  },
+  card: {
+    backgroundColor: '#fff',
+    borderRadius: 20,
+    shadowColor: "#000",
+    shadowOpacity: 0.12,
+    shadowOffset: { width: 0, height: 4 },
+    shadowRadius: 16,
+    elevation: 4,
+    padding: 22,
+    marginBottom: 12,
+  },
+  alertContent: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+  },
+  alertTitle: {
+    fontSize: 18,
+    fontFamily: 'Poppins-Bold',
+    color: colors.text,
+    marginBottom: 4,
+  },
+  alertSubtitle: {
+    fontSize: 14,
+    fontFamily: 'Poppins-Regular',
+    color: colors.text,
+    opacity: 0.7,
+  },
+  emptyText: {
+    fontSize: 16,
+    color: colors.text,
+    fontFamily: 'Poppins-Regular',
+    textAlign: 'center',
+    opacity: 0.7,
+  }
 });
