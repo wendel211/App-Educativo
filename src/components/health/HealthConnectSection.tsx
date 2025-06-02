@@ -205,7 +205,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 21,
     fontFamily: 'Poppins-Bold',
-    color: colors.primary,
+    color: 'black',
     letterSpacing: 0.5,
   },
   metricsRow: {

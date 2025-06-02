@@ -136,7 +136,7 @@ const styles = StyleSheet.create({
     zIndex: 2,
   },
   headerTitle: {
-    fontSize: 28,
+    fontSize: 26,
     fontFamily: 'Poppins-Bold',
     color: '#fff',
     marginBottom: 6,

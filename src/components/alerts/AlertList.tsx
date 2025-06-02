@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
   sectionTitle: {
     fontSize: 21,
     fontFamily: 'Poppins-Bold',
-    color: colors.primary,
+    color: 'black',
     letterSpacing: 0.5,
   },
   addButton: {

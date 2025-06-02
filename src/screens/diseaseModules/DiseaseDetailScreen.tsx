@@ -182,7 +182,7 @@ const styles = StyleSheet.create({
   introBox: {
     marginTop: 18,
     marginHorizontal: 24,
-    backgroundColor: '#FFF8E1',
+    backgroundColor: '#fff',
     borderRadius: 12,
     padding: 14,
     borderLeftWidth: 5,
@@ -191,7 +191,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   introText: {
-    color: colors.text,
+    color: colors.secondary,
     fontFamily: 'Poppins-Regular',
     fontSize: 15,
     lineHeight: 22,
