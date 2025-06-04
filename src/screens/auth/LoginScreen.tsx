@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   View,
   StyleSheet,
@@ -7,26 +7,45 @@ import {
   TouchableOpacity,
   Text,
   Alert,
+  ActivityIndicator,
 } from 'react-native';
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
-import { login as firebaseLogin } from '../../services/auth'; // função do Firebase
-import { useAuth } from '../../contexts/AuthContext'; // contexto
+import { useAuth } from '../../contexts/AuthContext';
 import { useNavigation } from '@react-navigation/native';
+
+import * as Google from 'expo-auth-session/providers/google';
+import * as WebBrowser from 'expo-web-browser';
+
+WebBrowser.maybeCompleteAuthSession();
 
 const { width } = Dimensions.get('window');
 
 const logo = require('../../assets/images/LOGO.png');
 const logoName = require('../../assets/images/NomeLOGO.png');
+const googleLogo = require('../../assets/images/google_logo.png'); // logo do Google (PNG)
 
 export const LoginScreen: React.FC = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
+  const [loadingEmail, setLoadingEmail] = useState(false);
+  const [loadingGoogle, setLoadingGoogle] = useState(false);
   const [errors, setErrors] = useState({ email: '', password: '' });
 
-  const { login: authLogin } = useAuth(); // usa o contexto
+  const { login: authLogin, loginWithGoogle } = useAuth();
   const navigation = useNavigation();
+
+  // Auth Google
+  const [request, response, promptAsync] = Google.useAuthRequest({
+    androidClientId: '197529378592-artvpqkb10n21q64gm09f789euknaaop.apps.googleusercontent.com',
+  });
+
+  useEffect(() => {
+    if (response?.type === 'success' && response.authentication?.idToken) {
+      handleGoogleLogin(response.authentication.idToken);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [response]);
 
   const validateForm = () => {
     const newErrors = { email: '', password: '' };
@@ -49,15 +68,25 @@ export const LoginScreen: React.FC = () => {
 
   const handleLogin = async () => {
     if (!validateForm()) return;
-
-    setLoading(true);
+    setLoadingEmail(true);
     try {
-      await firebaseLogin(email, password); // autenticação com Firebase
-      await authLogin(email, password); // ativa o isAuthenticated
+      await authLogin(email, password);
     } catch (error: any) {
       Alert.alert('Erro', 'Não foi possível fazer login.');
     } finally {
-      setLoading(false);
+      setLoadingEmail(false);
+    }
+  };
+
+  // Login com Google
+  const handleGoogleLogin = async (idToken: string) => {
+    setLoadingGoogle(true);
+    try {
+      await loginWithGoogle(idToken);
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível fazer login com Google.');
+    } finally {
+      setLoadingGoogle(false);
     }
   };
 
@@ -87,7 +116,24 @@ export const LoginScreen: React.FC = () => {
           error={errors.password}
         />
 
-        <Button title="Entrar" onPress={handleLogin} loading={loading} />
+        <Button title="Entrar" onPress={handleLogin} loading={loadingEmail} />
+
+        {/* Google Login Customizado */}
+        <TouchableOpacity
+          onPress={() => promptAsync()}
+          disabled={!request || loadingGoogle}
+          style={styles.googleButton}
+          activeOpacity={0.7}
+        >
+          {loadingGoogle ? (
+            <ActivityIndicator size="small" color="#4285F4" />
+          ) : (
+            <View style={styles.googleContent}>
+              <Image source={googleLogo} style={styles.googleLogo} />
+              <Text style={styles.googleButtonText}>Entrar com Google</Text>
+            </View>
+          )}
+        </TouchableOpacity>
 
         <TouchableOpacity
           onPress={() => navigation.navigate('ForgotPassword')}
@@ -124,6 +170,41 @@ const styles = StyleSheet.create({
     width: '100%',
     alignItems: 'center',
     marginTop: 20,
+  },
+  googleButton: {
+    marginTop: 18,
+    flexDirection: 'row',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+    borderColor: '#4285F4',
+    borderWidth: 1,
+    borderRadius: 8,
+    paddingVertical: 10,
+    paddingHorizontal: 24,
+    width: '100%',
+    justifyContent: 'center',
+    elevation: 2,
+    shadowColor: '#4285F4',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.08,
+    shadowRadius: 2,
+  },
+  googleContent: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  googleLogo: {
+    width: 22,
+    height: 22,
+    marginRight: 12,
+    resizeMode: 'contain',
+  },
+  googleButtonText: {
+    color: '#4285F4',
+    fontWeight: 'bold',
+    fontSize: 16,
+    fontFamily: 'Roboto',
   },
   forgotPasswordContainer: {
     marginTop: 15,

@@ -1,9 +1,8 @@
-// src/contexts/AuthContext.tsx
-
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { onAuthStateChanged, User } from 'firebase/auth';
 import { auth } from '../services/firebaseConfig';
 import { register as firebaseRegister, login as firebaseLogin, logout as firebaseLogout } from '../services/auth';
+import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
 
 export type AuthContextType = {
   user: User | null;
@@ -12,6 +11,7 @@ export type AuthContextType = {
   login: (email: string, password: string) => Promise<void>;
   register: (email: string, password: string, name: string) => Promise<void>;
   logout: () => Promise<void>;
+  loginWithGoogle: (idToken: string) => Promise<void>;
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -40,8 +40,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     await firebaseLogout();
   };
 
+  // Login Google Android
+  const loginWithGoogle = async (idToken: string) => {
+    const credential = GoogleAuthProvider.credential(idToken);
+    await signInWithCredential(auth, credential);
+  };
+
   return (
-    <AuthContext.Provider value={{ user, isAuthenticated: !!user, loading, login, register, logout }}>
+    <AuthContext.Provider value={{
+      user,
+      isAuthenticated: !!user,
+      loading,
+      login,
+      register,
+      logout,
+      loginWithGoogle,
+    }}>
       {children}
     </AuthContext.Provider>
   );

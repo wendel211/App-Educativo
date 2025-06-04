@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "197529378592",
+    "project_id": "appeducativotcc",
+    "storage_bucket": "appeducativotcc.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:197529378592:android:886dbd18da827138fd8145",
+        "android_client_info": {
+          "package_name": "com.anonymous.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "197529378592-artvpqkb10n21q64gm09f789euknaaop.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.anonymous.myapp",
+            "certificate_hash": "25ee9a20e77dc9011f66d896fb6e81776355d8e5"
+          }
+        },
+        {
+          "client_id": "197529378592-29312ichql1ttac8lssnmqdbkr2rhugc.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAXJnGqTQoa7EPgraGvHHD5e-61NdCoz2w"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "197529378592-29312ichql1ttac8lssnmqdbkr2rhugc.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
