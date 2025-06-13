@@ -265,7 +265,7 @@ const styles = StyleSheet.create({
   profileContainer: { flexDirection: 'row', alignItems: 'center', paddingVertical: 8 },
   badgeImage: { width: 64, height: 64, marginRight: 16, borderRadius: 32 },
   userInfoContainer: { flex: 1 },
-  greeting: { fontSize: 24, color: '#FFFFFF', fontFamily: 'Poppins-Bold', marginBottom: 8 },
+  greeting: { fontSize: 22, color: '#FFFFFF', fontFamily: 'Poppins-Bold', marginBottom: 8 },
   progressContainer: { marginTop: 4 },
   progressWrapper: {
     height: 12,
