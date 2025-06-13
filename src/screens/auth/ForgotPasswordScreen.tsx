@@ -1,8 +1,20 @@
+// src/screens/ForgotPasswordScreen.tsx
+
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Alert, Image, Dimensions, TouchableOpacity, Text } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Alert,
+  Image,
+  Dimensions,
+  TouchableOpacity,
+  Text
+} from 'react-native';
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
 import { colors } from '../../styles/colors';
+import { forgotPassword } from '../../services/auth';
 
 const { width } = Dimensions.get('window');
 const logo = require('../../assets/images/LOGO.png');
@@ -13,18 +25,15 @@ type ForgotPasswordScreenProps = {
 };
 
 export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({ navigation }) => {
-  const [formData, setFormData] = useState({
-    email: '',
-  });
-
+  const [email, setEmail] = useState('');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
-  const validateForm = () => {
-    if (!formData.email) {
+  const validateForm = (): boolean => {
+    if (!email) {
       setError('E-mail é obrigatório');
       return false;
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
+    } else if (!/\S+@\S+\.\S+/.test(email)) {
       setError('E-mail inválido');
       return false;
     }
@@ -34,15 +43,26 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({ navi
 
   const handleForgotPassword = async () => {
     if (!validateForm()) return;
-
     setLoading(true);
+
     try {
-      console.log('Forgot Password:', formData);
-      // Aqui você pode implementar a lógica de recuperação de senha
-      Alert.alert('Sucesso', 'E-mail de recuperação enviado!');
+      await forgotPassword(email);
+      Alert.alert(
+        'E-mail enviado',
+        'Verifique sua caixa de entrada (ou spam) para redefinir sua senha.'
+      );
       navigation.navigate('Login');
-    } catch (error) {
-      Alert.alert('Erro', 'Erro ao enviar e-mail de recuperação');
+    } catch (err: any) {
+      console.error(err);
+      let message = 'Não foi possível enviar o e-mail. Tente novamente.';
+      if (err.code === 'auth/user-not-found') {
+        message = 'E-mail não cadastrado.';
+      } else if (err.code === 'auth/invalid-email') {
+        message = 'Formato de e-mail inválido.';
+      } else if (err.code === 'auth/network-request-failed') {
+        message = 'Falha na rede. Verifique sua conexão.';
+      }
+      Alert.alert('Erro', message);
     } finally {
       setLoading(false);
     }
@@ -55,14 +75,11 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({ navi
         <Image source={logoName} style={styles.logoName} resizeMode="contain" />
       </View>
 
-      <ScrollView 
-        style={styles.content}
-        showsVerticalScrollIndicator={false}
-      >
+      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
         <Input
           label="E-mail"
-          value={formData.email}
-          onChangeText={(text) => setFormData({ ...formData, email: text })}
+          value={email}
+          onChangeText={setEmail}
           placeholder="Digite seu e-mail"
           error={error}
           autoCapitalize="none"
@@ -74,8 +91,10 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({ navi
           loading={loading}
         />
 
-        {/* Opção de voltar */}
-        <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backContainer}>
+        <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={styles.backContainer}
+        >
           <Text style={styles.backText}>Voltar</Text>
         </TouchableOpacity>
       </ScrollView>
@@ -87,31 +106,31 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: colors.background,
-    paddingTop: 50,
+    paddingTop: 50
   },
   logoContainer: {
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 20
   },
   logo: {
     width: width * 0.32,
     height: width * 0.20,
-    marginBottom: 2,
+    marginBottom: 2
   },
   logoName: {
     width: width * 0.32,
-    height: width * 0.20,
+    height: width * 0.20
   },
   content: {
     flex: 1,
-    padding: 20,
+    padding: 20
   },
   backContainer: {
     marginTop: 20,
-    alignItems: 'center',
+    alignItems: 'center'
   },
   backText: {
     color: colors.primary || '#007bff',
-    textDecorationLine: 'underline',
-  },
+    textDecorationLine: 'underline'
+  }
 });

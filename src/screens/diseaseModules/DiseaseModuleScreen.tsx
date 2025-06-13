@@ -138,7 +138,6 @@ const LearnContent = ({ blocks, videoUrl, references }: any) => (
     {videoUrl && <VideoBlock url={videoUrl} />}
     {references?.length > 0 && (
       <View style={styles.refsSection}>
-        <Ionicons name="library" size={18} color={colors.primary} />
         <Text style={styles.refsTitle}>Referências</Text>
         {references.map((ref: string, idx: number) => (
           <TouchableOpacity key={idx} style={styles.refItem} onPress={() => Linking.openURL(ref)}>
@@ -300,13 +299,13 @@ const DiseaseModuleScreen: React.FC = () => {
 
 export default DiseaseModuleScreen;
 
-// Styles
+
 const styles = StyleSheet.create({
   container: { flex: 1, backgroundColor: '#F8FAFC' },
   scroll: {},
   contentContainer: { padding: 20, paddingBottom: 40 },
 
-  // Header
+ 
   header: {
     flexDirection: 'row',
     alignItems: 'center',
@@ -323,7 +322,7 @@ const styles = StyleSheet.create({
   headerTitle: { color: '#fff', fontSize: 18, fontFamily: 'Poppins-Bold' },
   headerSubtitle: { color: 'rgba(255,255,255,0.8)', fontSize: 13, marginTop: 2 },
 
-  // Not Found
+
   notFoundContainer: { flex: 1, justifyContent: 'center', alignItems: 'center' },
   notFoundCenter: { alignItems: 'center' },
   notFoundTitle: { fontSize: 20, color: colors.primary, marginTop: 12 },
@@ -343,7 +342,7 @@ const styles = StyleSheet.create({
     elevation: 3,
   },
 
-  // Title & Subtitle Blocks
+ 
   titleContainer: { marginBottom: 16 },
   title: { fontSize: 22, color: colors.primary, fontFamily: 'Poppins-Bold' },
   underline: { width: 40, height: 4, backgroundColor: colors.primary, marginTop: 4, borderRadius: 2 },
@@ -351,27 +350,61 @@ const styles = StyleSheet.create({
   bar: { width: 4, height: 20, backgroundColor: colors.secondary, marginRight: 8, borderRadius: 2 },
   subtitle: { fontSize: 18, color: colors.secondary, fontFamily: 'Poppins-SemiBold' },
 
-  // Paragraph & List
+
   paragraph: { fontSize: 16, lineHeight: 24, color: '#4A5568', marginBottom: 12, fontFamily: 'Poppins-Regular' },
   listWrapper: { marginVertical: 12 },
   listItem: { flexDirection: 'row', alignItems: 'center', marginBottom: 8 },
   bullet: { width: 6, height: 6, backgroundColor: colors.primary, borderRadius: 3, marginRight: 8, marginTop: 6 },
   listText: { flex: 1, fontSize: 16, fontFamily: 'Poppins-Regular' },
 
-  // Image
+  
   imageWrapper: { marginVertical: 16, alignItems: 'center' },
-  image: { width: width - 40, height: 200, borderRadius: 12, backgroundColor: '#E2E8F0' },
+  image: { width: width - 60, height: 200, borderRadius: 12, backgroundColor: '#E2E8F0' },
   caption: { fontSize: 14, color: '#718096', marginTop: 8, fontStyle: 'italic', fontFamily: 'Poppins-Italic' },
 
-  // Video
+
   videoBtn: { flexDirection: 'row', alignItems: 'center', backgroundColor: colors.primary, padding: 12, borderRadius: 12, marginVertical: 12 },
   videoText: { color: '#fff', marginLeft: 8, fontFamily: 'Poppins-Medium' },
 
-  // References
-  refsSection: { marginTop: 20, padding: 12, backgroundColor: '#F7FAFC', borderRadius: 8 },
-  refsTitle: { fontSize: 16, color: colors.primary, fontFamily: 'Poppins-SemiBold', marginBottom: 8 },
-  refItem: { marginBottom: 6 },
-  refText: { fontSize: 14, color: colors.primary, fontFamily: 'Poppins-Regular' },
+
+  refsSection: {
+  marginTop: 24,
+  padding: 16,
+  backgroundColor: '#FFFFFF',
+  borderRadius: 12,
+  borderWidth: 1,
+  borderColor: '#E2E8F0',
+  shadowColor: '#000',
+  shadowOpacity: 0.04,
+  shadowOffset: { width: 0, height: 2 },
+  shadowRadius: 6,
+  elevation: 2,
+},
+
+refsTitle: {
+  fontSize: 20,
+  color: colors.primary,
+  fontFamily: 'Poppins-Bold',    // título em negrito
+  marginBottom: 12,
+},
+
+refItem: {
+  flexDirection: 'row',
+  alignItems: 'center',
+  marginBottom: 10,
+},
+
+refIcon: {
+  marginRight: 8,
+},
+
+refText: {
+  fontSize: 14,
+  color: colors.primary,
+  fontFamily: 'Poppins-Regular',
+  textDecorationLine: 'underline', // destaca o link
+},
+
 
   // Quiz
   quizHeaderText: { fontSize: 20, color: colors.primary, fontFamily: 'Poppins-Bold', marginBottom: 12 },

@@ -14,8 +14,8 @@ export const diseaseModules = {
           },
           {
             "type": "image",
-            "src": "data:image/jpeg;base64,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",  // insira aqui a URL ou require da imagem
-            "alt": "Visão geral da insuficiência cardíaca"
+            "src": "https://www.anahp.com.br/wp-content/uploads/2024/11/SDS-Nov24-Insuficiencia-cardiaca-Prevencao-BLOG.png",  // insira aqui a URL ou require da imagem
+            "alt": "Dado geral sobre insuficiência cardíaca"
           },
           {
             "type": "subtitle",
@@ -43,7 +43,7 @@ export const diseaseModules = {
           },
           {
             "type": "image",
-            "src": "",
+            "src": "https://www.anahp.com.br/wp-content/uploads/2024/11/SDS-Nov24-Insuficiencia-cardiaca-Prevencao-BLOG.png",
             "alt": "Anatomia alterada na insuficiência cardíaca"
           },
           {
@@ -190,236 +190,990 @@ export const diseaseModules = {
     ]
  },
 
-  "2": {
-    name: "Doenças Cardíacas Congênitas",
-    modules: [
-      {
-        type: "learn",
-        title: "O que são Doenças Cardíacas Congênitas?",
-        content: [
-          { type: "title", text: "O que são Doenças Cardíacas Congênitas?" },
-          { type: "paragraph", text: "São malformações do coração presentes desde o nascimento. Podem variar de simples defeitos a alterações complexas na estrutura cardíaca." },
-          { type: "subtitle", text: "Exemplos comuns" },
-          { type: "list", items: [
-            "Comunicação interatrial (CIA)",
-            "Comunicação interventricular (CIV)",
-            "Tetralogia de Fallot"
-          ]},
-          { type: "paragraph", text: "O diagnóstico geralmente é feito por ecocardiograma e exames clínicos." }
-        ],
-        videoUrl: "https://www.youtube.com/watch?v=kQrF1HS3mR8",
-        references: [
-          "https://www.scielo.br/congenitas",
-          "https://www.cardiol.br/congenitas-info"
-        ]
-      },
-      {
-        type: "quiz",
-        title: "Teste seus conhecimentos sobre doenças congênitas",
-        questions: [
-          {
-            question: "O que caracteriza uma doença cardíaca congênita?",
-            options: ["É adquirida após infecções", "É causada por tabagismo", "Está presente desde o nascimento"],
-            correctAnswer: "Está presente desde o nascimento"
-          }
-        ]
-      },
-      {
-        type: "habits",
-        title: "Cuidados com Doenças Cardíacas Congênitas",
-        checklist: [
-          "Realizar acompanhamento médico regular",
-          "Evitar atividades físicas intensas sem avaliação",
-          "Manter vacinação em dia"
-        ]
-      }
-    ]
-  },
+// MODULO 2
 
-  "3": {
-    name: "Doenças das Valvas Cardíacas",
-    modules: [
-      {
-        type: "learn",
-        title: "O que são Doenças das Valvas Cardíacas?",
-        content: [
-          { type: "title", text: "O que são Doenças das Valvas Cardíacas?" },
-          { type: "paragraph", text: "São alterações nas estruturas que controlam o fluxo de sangue dentro do coração. As valvas podem apresentar estreitamento (estenose) ou vazamento (insuficiência)." },
-          { type: "subtitle", text: "Sintomas principais" },
-          { type: "list", items: [
-            "Fadiga",
-            "Dor no peito",
-            "Desmaios",
-            "Falta de ar"
-          ]},
-          { type: "paragraph", text: "A avaliação é feita por exame físico e ecocardiograma." }
-        ],
-        videoUrl: "https://www.youtube.com/watch?v=VKaHjFC3ctQ",
-        references: [
-          "https://www.cardiol.br/valvulopatias",
-          "https://www.scielo.br/valvulas"
-        ]
-      },
-      {
-        type: "quiz",
-        title: "Teste seus conhecimentos sobre valvulopatias",
-        questions: [
-          {
-            question: "O que é estenose valvar?",
-            options: ["Abertura excessiva da valva", "Fechamento incompleto da valva", "Estreitamento da valva"],
-            correctAnswer: "Estreitamento da valva"
-          }
-        ]
-      },
-      {
-        type: "habits",
-        title: "Hábitos para pacientes com valvulopatias",
-        checklist: [
-          "Evitar esforço físico sem orientação",
-          "Controlar pressão arterial",
-          "Realizar ecocardiogramas periódicos"
-        ]
-      }
-    ]
-  },
+"2": {
+  "name": "Doenças Cardíacas Congênitas",
+  "modules": [
+    {
+      "type": "learn",
+      "title": "O que são Doenças Cardíacas Congênitas?",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "Doenças Cardíacas Congênitas (DCC) são defeitos na estrutura do coração ou grandes vasos presentes desde o nascimento, resultantes de má-formação durante o desenvolvimento fetal."
+        },
+        {
+          "type": "subtitle",
+          "text": "🧠 Por que acontecem?"
+        },
+        {
+          "type": "paragraph",
+          "text": "As principais causas incluem fatores genéticos, exposições maternas durante a gravidez (infecções, medicamentos, toxinas) e alterações cromossômicas."
+        },
+        {
+          "type": "list",
+          "items": [
+            "Síndromes genéticas (ex.: Síndrome de Down)",
+            "Exposição a drogas ou álcool pela gestante",
+            "Infecções maternas (rubéola, citomegalovírus)",
+            "Deficiências nutricionais (folato)",
+            "Fatores ambientais e idiopáticos"
+          ]
+        },
+        {
+          "type": "image",
+          "src": "https://www.example.com/images/cc_infantil_anatomia.png",
+          "alt": "Tipos comuns de defeitos cardíacos congênitos"
+        },
+        {
+          "type": "subtitle",
+          "text": "Classificação"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Acyanóticas (ex.: Comunicação Interatrial, Comunicação Interventricular)",
+            "Cianóticas (ex.: Tetralogia de Fallot, Transposição de Grandes Vasos)",
+            "Obstrutivas (ex.: Coarctação da Aorta)"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Sintomas e sinais"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Cianose (pele azulada)",
+            "Fadiga e intolerância ao esforço",
+            "Sopro cardíaco audível ao estetoscópio",
+            "Falha de ganho de peso em bebês",
+            "Taquipneia ou dificuldade para mamar"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Diagnóstico"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Ecocardiograma fetal ou pós-natal",
+            "Radiografia de tórax",
+            "Eletrocardiograma (ECG)",
+            "Cateterismo cardíaco (em casos selecionados)"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Tratamento"
+        },
+        {
+          "type": "paragraph",
+          "text": "Pode variar de acompanhamento clínico até intervenções invasivas:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Medicações para controlar sintomas e prevenir infecções",
+            "Cateterismo cardíaco intervencionista (fechamento de defeitos)",
+            "Cirurgia corretiva ou paliativa",
+            "Transplante cardíaco em casos complexos"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Prevenção e acompanhamento"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Suplementação de ácido fólico antes e durante a gestação",
+            "Vacinação materna (rubéola)",
+            "Rastreamento pré-natal por ultrassom",
+            "Acompanhamento com cardiologista pediátrico"
+          ]
+        }
+      ],
+      "references": [
+        "https://pt.wikipedia.org/wiki/Doen%C3%A7as_card%C3%ADacas_cong%C3%AAnitas",
+        "https://www.heart.org/pt-br/health-topics/congenital-heart-defects",
+        "https://www.msdmanuals.com/pt/casa/distúrbios-do-coração-e-dos-vasos-sanguíneos/doenças-cardíacas-congênitas"
+      ]
+    },
+    {
+      "type": "quiz",
+      "title": "Teste seus conhecimentos sobre DCC",
+      "questions": [
+        {
+          "question": "O que caracteriza uma doença cardíaca congênita cianótica?",
+          "options": ["Falha de ganho de peso", "Sopro audível", "Cianose sistêmica"],
+          "correctAnswer": "Cianose sistêmica"
+        },
+        {
+          "question": "Qual defeito é classificado como acianótico?",
+          "options": ["Tetralogia de Fallot", "Comunicação Interventricular", "Transposição de Grandes Vasos"],
+          "correctAnswer": "Comunicação Interventricular"
+        },
+        {
+          "question": "Qual exame é padrão-ouro para diagnóstico pré-natal?",
+          "options": ["Raio-X de tórax", "Ecocardiograma fetal", "Cateterismo cardíaco"],
+          "correctAnswer": "Ecocardiograma fetal"
+        },
+        {
+          "question": "A suplementação de qual substância previne DCC?",
+          "options": ["Vitamina C", "Ácido fólico", "Cálcio"],
+          "correctAnswer": "Ácido fólico"
+        },
+        {
+          "question": "Um dos tratamentos não invasivos é:",
+          "options": ["Cirurgia cardíaca", "Cateterismo intervencionista", "Transplante cardíaco"],
+          "correctAnswer": "Cateterismo intervencionista"
+        }
+      ]
+    },
+    {
+      "type": "habits",
+      "title": "Recomendações para Gestantes",
+      "checklist": [
+        "Tomar ácido fólico diariamente (0,4–0,8 mg) antes de engravidar e no primeiro trimestre",
+        "Manter todas as vacinas em dia, especialmente contra rubéola",
+        "Evitar consumo de álcool, tabaco e substâncias teratogênicas",
+        "Realizar pré-natais regulares com avaliação ecocardiográfica fetal quando indicado",
+        "Adotar alimentação balanceada e atividade física leve conforme orientação médica"
+      ],
+      "notes": [
+        "Ácido fólico reduz em até 70% o risco de defeitos no tubo neural e auxilia na prevenção de DCC:หลักcite[1]",
+        "Vacinação contra rubéola é essencial para prevenir complicações cardíacas congênitas:หลักcite[2]",
+        "Exposição a álcool e tabaco correlaciona-se ao aumento de malformações fetais incluindo DCC:หลักcite[3]"
+      ]
+    }
+  ]
+},
+
+// MODULO 3
+
+"3": {
+  "name": "Doenças das Valvas Cardíacas",
+  "modules": [
+    {
+      "type": "learn",
+      "title": "O que são Doenças das Valvas Cardíacas?",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "As doenças valvares cardíacas envolvem alterações na estrutura ou função das válvulas que regulam o fluxo sanguíneo unidirecional pelo coração. Podem causar estenose (estreitamento) ou regurgitação (vazamento) e levar a sintomas variados conforme o grau de disfunção."
+        },
+        {
+          "type": "subtitle",
+          "text": "🫀 Anatomia e função das válvulas"
+        },
+        {
+          "type": "paragraph",
+          "text": "O coração possui quatro válvulas principais: mitral e tricúspide (que controlam o fluxo entre átrios e ventrículos) e aórtica e pulmonar (que regulam a saída do sangue aos grandes vasos). Elas abrem e fecham em sincronia com o ciclo cardíaco."
+        },
+        {
+          "type": "image",
+          "src": "https://www.example.com/images/anatomia_valvas_cardiacas.png",
+          "alt": "Diagrama das quatro válvulas cardíacas"
+        },
+        {
+          "type": "subtitle",
+          "text": "Tipos de disfunção valvar"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Estenose – abertura reduzida da válvula, aumentando a pós-carga.",
+            "Regurgitação (insuficiência) – fechamento incompleto, causando refluxo de sangue."
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Principais causas"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Doença reumática (pós-infecção por Streptococcus)",
+            "Degeneração calcificada (idosos)",
+            "Congênita (ex.: válvula bicúspide aórtica)",
+            "Endocardite infecciosa",
+            "Lúpus e outras doenças autoimunes"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Sintomas comuns"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Fadiga e intolerância ao esforço",
+            "Dispneia de esforço ou ortopneia",
+            "Síncope (em estenose aórtica avançada)",
+            "Palpitações ou palpitação com sensação de batimento irregular",
+            "Edema de membros inferiores (insuficiência tricúspide)",
+            "Dor ou desconforto no peito"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Diagnóstico"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Ausculta cardíaca (sopros característicos)",
+            "Ecocardiograma transtorácico ou transesofágico",
+            "Radiografia de tórax (câmaras cardíacas dilatadas)",
+            "Cateterismo cardíaco (em casos selecionados)",
+            "Resonância magnética cardíaca – avaliação anatômica complementar"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Tratamento"
+        },
+        {
+          "type": "paragraph",
+          "text": "O manejo depende da gravidade e do tipo de disfunção:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Medidas clínicas: redução de sobrecarga volêmica, controle de arritmias",
+            "Reparo valvar cirúrgico (sempre que possível)",
+            "Substituição valvar (biológica ou mecânica)",
+            "Intervenções percutâneas: TAVI para estenose aórtica, MitraClip para regurgitação mitral",
+            "Profilaxia de endocardite em procedimentos de risco"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Prevenção e acompanhamento"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Tratamento adequado de infecções estreptocócicas",
+            "Acompanhamento ecocardiográfico semestral ou anual",
+            "Profilaxia antibiótica em procedimentos dentários invasivos",
+            "Controle de fatores de risco cardiovascular (hipertensão, dislipidemia)",
+            "Vacinação antigripal e antipneumocócica"
+          ]
+        },
+        {
+          "type": "video",
+          "src": "https://www.youtube.com/watch?v=ZKTFfYH7u2c",
+          "alt": "Vídeo explicativo sobre doenças valvares"
+        }
+      ],
+      "references": [
+        "https://pt.wikipedia.org/wiki/Doen%C3%A7as_valvares",
+        "https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Valvular-Heart-Disease",
+        "https://www.mayoclinic.org/pt-br/diseases-conditions/heart-valve-disease/symptoms-causes"
+      ]
+    },
+    {
+      "type": "quiz",
+      "title": "Teste seus conhecimentos sobre Doenças Valvares",
+      "questions": [
+        {
+          "question": "Qual é a função principal das válvulas cardíacas?",
+          "options": [
+            "Regular a frequência cardíaca",
+            "Garantir o fluxo unidirecional do sangue",
+            "Produzir hormônios cardíacos"
+          ],
+          "correctAnswer": "Garantir o fluxo unidirecional do sangue"
+        },
+        {
+          "question": "O que caracteriza estenose valvar?",
+          "options": [
+            "Válvula com fechamento incompleto",
+            "Abertura reduzida da válvula",
+            "Espessamento do músculo cardíaco"
+          ],
+          "correctAnswer": "Abertura reduzida da válvula"
+        },
+        {
+          "question": "Qual tipo de disfunção valvar causa refluxo sanguíneo?",
+          "options": ["Estenose", "Regurgitação", "Calcificação"],
+          "correctAnswer": "Regurgitação"
+        },
+        {
+          "question": "A doença reumática afeta mais frequentemente qual válvula?",
+          "options": ["Aórtica", "Mitral", "Pulmonar"],
+          "correctAnswer": "Mitral"
+        },
+        {
+          "question": "Sintoma clássico de estenose aórtica severa é:",
+          "options": ["Síncope ao esforço", "Edema periférico", "Tosse crônica"],
+          "correctAnswer": "Síncope ao esforço"
+        },
+        {
+          "question": "Exame padrão-ouro para avaliação anatômica valvar é:",
+          "options": [
+            "Radiografia de tórax",
+            "Ecocardiograma transesofágico",
+            "Eletrocardiograma"
+          ],
+          "correctAnswer": "Ecocardiograma transesofágico"
+        },
+        {
+          "question": "Qual intervenção é indicada para estenose aórtica em idosos com alto risco cirúrgico?",
+          "options": [
+            "Reparo cirúrgico aberto",
+            "TAVI (implante valvar transcateter)",
+            "Terapia anticoagulante"
+          ],
+          "correctAnswer": "TAVI (implante valvar transcateter)"
+        },
+        {
+          "question": "Agente mais comum de endocardite em válvula nativa é:",
+          "options": [
+            "Streptococcus viridans",
+            "Staphylococcus aureus",
+            "Enterococcus faecalis"
+          ],
+          "correctAnswer": "Staphylococcus aureus"
+        }
+      ]
+    },
+    {
+      "type": "habits",
+      "title": "Cuidados e recomendações para pacientes com Doença Valvar",
+      "checklist": [
+        "Realizar acompanhamento ecocardiográfico conforme orientação médica",
+        "Tratar prontamente infecções estreptocócicas de garganta",
+        "Fazer profilaxia antibiótica antes de procedimentos dentários invasivos",
+        "Manter pressão arterial e colesterol sob controle",
+        "Vacinar-se anualmente contra influenza e pneumococo",
+        "Evitar uso indiscriminado de anti-inflamatórios não esteroides",
+        "Praticar atividade física moderada conforme tolerância",
+        "Consultar cardiologista ao primeiro sinal de agravamento dos sintomas"
+      ],
+      "notes": [
+        "Profilaxia de endocardite baseada nas diretrizes AHA/ACC 2020: antibiótico 30–60 min antes do procedimento dentário invasivo.",
+        "Monitoramento ecocardiográfico regular detecta precocemente progressão da doença valvar.",
+        "Controle de fatores de risco (hipertensão, dislipidemia) retarda a degeneração valvar."
+      ]
+    }
+  ]
+},
+
+// MODULO 4
 
   "4": {
-    name: "Doenças do Miocárdio",
-    modules: [
-      {
-        type: "learn",
-        title: "O que são Doenças do Miocárdio?",
-        content: [
-          { type: "title", text: "O que são Doenças do Miocárdio?" },
-          { type: "paragraph", text: "São doenças que afetam diretamente o músculo do coração, como a miocardiopatia dilatada ou hipertrófica, comprometendo a força de contração e relaxamento do coração." },
-          { type: "subtitle", text: "Sintomas" },
-          { type: "list", items: [
-            "Cansaço",
-            "Desmaios",
-            "Batimentos cardíacos irregulares",
-            "Falta de ar"
-          ]},
-          { type: "paragraph", text: "O diagnóstico é feito com exames de imagem e avaliação clínica." }
-        ],
-        videoUrl: "https://www.youtube.com/watch?v=pOAHIKL4EqE",
-        references: [
-          "https://www.scielo.br/miocardio",
-          "https://www.cardiol.br/miocardiopatias"
-        ]
-      },
-      {
-        type: "quiz",
-        title: "Teste seus conhecimentos sobre miocardiopatias",
-        questions: [
-          {
-            question: "O que é uma miocardiopatia?",
-            options: ["Infecção das artérias", "Doença do músculo cardíaco", "Doença congênita da válvula"],
-            correctAnswer: "Doença do músculo cardíaco"
-          }
-        ]
-      },
-      {
-        type: "habits",
-        title: "Cuidados recomendados para miocardiopatias",
-        checklist: [
-          "Acompanhar função cardíaca regularmente",
-          "Evitar bebidas estimulantes",
-          "Seguir dieta com baixo teor de sódio"
-        ]
-      }
-    ]
-  },
+  "name": "Doenças do Miocárdio",
+  "modules": [
+    {
+      "type": "learn",
+      "title": "O que são Doenças do Miocárdio?",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "As doenças do miocárdio afetam o músculo cardíaco, responsável pela contração e bombeamento do sangue. Podem comprometer a contratilidade, condução elétrica e a perfusão do órgão."
+        },
+        {
+          "type": "subtitle",
+          "text": "🫀 Funções do miocárdio"
+        },
+        {
+          "type": "paragraph",
+          "text": "O miocárdio gera a força de ejeção do sangue para a circulação sistêmica e pulmonar, mantendo débito cardíaco e perfusão tecidual adequados."
+        },
+        // inserir imagem: diagrama da camada muscular do coração
+        {
+          "type": "image",
+          "src": "https://www.example.com/images/miocardio_anatomia.png",
+          "alt": "Anatomia do miocárdio"
+        },
+        {
+          "type": "subtitle",
+          "text": "Principais condições miocárdicas"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Infarto Agudo do Miocárdio (IAM)",
+            "Miocardite (inflamação do músculo cardíaco)",
+            "Cardiomiopatia Dilatada",
+            "Cardiomiopatia Hipertrófica",
+            "Cardiomiopatia Restritiva"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Sintomas comuns"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Dor torácica ou desconforto",
+            "Fadiga excessiva e fraqueza",
+            "Dispneia de esforço",
+            "Palpitações",
+            "Edema periférico",
+            "Tontura ou síncope"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Diagnóstico"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Eletrocardiograma (ECG)",
+            "Dosagem de marcadores cardíacos (troponina, CK-MB)",
+            "Ecocardiograma",
+            "Ressonância magnética cardíaca",
+            "Biópsia endomiocárdica (em miocardite)"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Tratamento"
+        },
+        {
+          "type": "paragraph",
+          "text": "O manejo varia conforme a condição:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "IAM: reposição de fluxo (angioplastia, trombólise) e antiplaquetários",
+            "Miocardite: suporte hemodinâmico e anti-inflamatórios",
+            "Cardiomiopatias: betabloqueadores, IECA/BRAs, dispositivos de assistência ventricular",
+            "Reabilitação cardíaca pós-evento agudo"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Prevenção"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Controle rigoroso de hipertensão e dislipidemia",
+            "Dieta balanceada (baixo teor de gorduras saturadas)",
+            "Atividade física regular",
+            "Evitar tabagismo e consumo excessivo de álcool",
+            "Acompanhamento médico periódico"
+          ]
+        },
+        // inserir vídeo: explicação sobre infarto agudo do miocárdio
+        {
+          "type": "video",
+          "src": "https://www.youtube.com/watch?v=abcd1234"
+        }
+      ],
+      "references": [
+        "https://pt.wikipedia.org/wiki/Mioc%C3%A1rdio",
+        "https://www.mayoclinic.org/pt-br/diseases-conditions/myocarditis/symptoms-causes",
+        "https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Myocardial-Infarction"
+      ]
+    },
+    {
+      "type": "quiz",
+      "title": "Teste seus conhecimentos sobre Doenças do Miocárdio",
+      "questions": [
+        {
+          "question": "O que caracteriza Infarto Agudo do Miocárdio?",
+          "options": [
+            "Inflamação difusa do miocárdio",
+            "Obstrução súbita de artéria coronária",
+            "Dilatação crônica do ventrículo"
+          ],
+          "correctAnswer": "Obstrução súbita de artéria coronária"
+        },
+        {
+          "question": "Qual marcador é mais específico para lesão miocárdica?",
+          "options": ["CK-MB", "Troponina I/T", "LDH"],  
+          "correctAnswer": "Troponina I/T"
+        },
+        {
+          "question": "Um ECG com onda Q patológica sugere:",
+          "options": [
+            "Infarto antigo",
+            "Miocardite aguda",
+            "Arritmia ventricular"
+          ],
+          "correctAnswer": "Infarto antigo"
+        },
+        {
+          "question": "Qual dessas NÃO é uma cardiomiopatia?",
+          "options": [
+            "Dilatação",
+            "Hipertrófica",
+            "Estenose"
+          ],
+          "correctAnswer": "Estenose"
+        },
+        {
+          "question": "Tratamento inicial de IAM deve incluir:",
+          "options": [
+            "Antibióticos",
+            "Anlodipino",
+            "Antiplaquetário"
+          ],
+          "correctAnswer": "Antiplaquetário"
+        },
+        {
+          "question": "Miocardite viral frequentemente requer:",
+          "options": [
+            "Corticosteroides de imediato",
+            "Suporte hemodinâmico e avaliação de função",
+            "Cirurgia corretiva"
+          ],
+          "correctAnswer": "Suporte hemodinâmico e avaliação de função"
+        },
+        {
+          "question": "Cardiomiopatia hipertrófica é caracterizada por:",
+          "options": [
+            "Aumento da espessura do septo interventricular",
+            "Dilatação ventricular global",
+            "Regurgitação valvar significativa"
+          ],
+          "correctAnswer": "Aumento da espessura do septo interventricular"
+        },
+        {
+          "question": "Qual é uma medida preventiva para doenças do miocárdio?",
+          "options": [
+            "Dieta rica em gorduras saturadas",
+            "Exercício aeróbico regular",
+            "Uso de cocaína recreativa"
+          ],
+          "correctAnswer": "Exercício aeróbico regular"
+        }
+      ]
+    },
+    {
+      "type": "habits",
+      "title": "Hábitos Saudáveis para o Miocárdio",
+      "checklist": [
+        "Manter pressão arterial abaixo de 130/80 mmHg",
+        "Fazer pelo menos 150 min/semana de exercício aeróbico",
+        "Consumir frutas, verduras e grãos integrais diariamente",
+        "Evitar tabagismo e uso de drogas ilícitas",
+        "Monitorar glicemia em pacientes diabéticos",
+        "Realizar check-up cardíaco anual após 40 anos",
+        "Controle de estresse por técnicas de relaxamento"
+      ],
+      "notes": [
+        "Exercício regular reduz incidência de infarto em até 30%: estudo de cohortes CARDIA (1990–2020)",
+        "Dieta DASH recomendada para prevenção de eventos cardíacos: AHA/ACC Guidelines 2021",
+        "Parar de fumar melhora função endotelial em poucas semanas: revisão Cochrane 2019"
+      ]
+    }
+  ]
+},
+
 
   "5": {
-    name: "Diabetes tipo 1",
-    modules: [
-      {
-        type: "learn",
-        title: "O que é Diabetes tipo 1?",
-        content: [
-          { type: "title", text: "O que é Diabetes tipo 1?" },
-          { type: "paragraph", text: "É uma doença autoimune em que o sistema imunológico ataca as células beta do pâncreas, responsáveis por produzir insulina. Normalmente surge na infância ou adolescência." },
-          { type: "subtitle", text: "Sintomas" },
-          { type: "list", items: [
-            "Sede intensa",
-            "Urina frequente",
-            "Perda de peso inexplicada",
-            "Fadiga"
-          ]},
-          { type: "paragraph", text: "O diagnóstico é realizado por exames laboratoriais, como glicemia e hemoglobina glicada." }
-        ],
-        videoUrl: "https://www.youtube.com/watch?v=diab1",
-        references: [
-          "https://www.diabetes.org.br/tipo1",
-          "https://www.scielo.br/diab1"
-        ]
-      },
-      {
-        type: "quiz",
-        title: "Teste seus conhecimentos sobre Diabetes tipo 1",
-        questions: [
-          {
-            question: "Em qual fase da vida geralmente surge o Diabetes tipo 1?",
-            options: ["Na infância ou adolescência", "Na velhice", "Após os 40"],
-            correctAnswer: "Na infância ou adolescência"
-          }
-        ]
-      },
-      {
-        type: "habits",
-        title: "Cuidados recomendados para Diabetes tipo 1",
-        checklist: [
-          "Monitorar glicemia diariamente",
-          "Aplicar insulina conforme prescrição",
-          "Manter alimentação balanceada"
-        ]
-      }
-    ]
-  },
+  "name": "Diabetes Tipo 1",
+  "modules": [
+    {
+      "type": "learn",
+      "title": "O que é Diabetes Tipo 1?",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O Diabetes Mellitus Tipo 1 é uma doença autoimune caracterizada pela destruição das células β pancreáticas, levando à deficiência absoluta de insulina e à hiperglicemia crônica."
+        },
+        {
+          "type": "subtitle",
+          "text": "🧬 Fisiopatologia"
+        },
+        {
+          "type": "paragraph",
+          "text": "Na DMT1, linfócitos T autoreativos atacam as ilhotas de Langerhans, reduzindo a produção de insulina. Sem insulina suficiente, a glicose não penetra eficientemente nas células, resultando em hiperglicemia e produção excessiva de corpos cetônicos."
+        },
+        // inserir imagem: diagrama da destruição autoimune das células β e consequências metabólicas
+        {
+          "type": "subtitle",
+          "text": "Principais causas"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Predisposição genética (HLA DR3, DR4)",
+            "Fatores ambientais (infecções virais: enterovírus)",
+            "Exposição a toxinas (nitrosaminas)",
+            "Autoanticorpos anti-GAD, IA2 e insulina"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Sintomas e sinais"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Poliúria e noctúria",
+            "Polidipsia",
+            "Polifagia com perda de peso",
+            "Fadiga excessiva",
+            "Visão turva",
+            "Cetoacidose diabética (náuseas, vômitos, hálito cetônico)"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Diagnóstico"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Glicemia de jejum ≥ 126 mg/dL",
+            "Glicemia aleatória ≥ 200 mg/dL com sintomas",
+            "HbA1c ≥ 6,5 %",
+            "Teste de tolerância à glicose (2 h ≥ 200 mg/dL)",
+            "Autoanticorpos (anti-GAD, anti-IA2)"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Tratamento"
+        },
+        {
+          "type": "paragraph",
+          "text": "O manejo baseia-se em terapia de reposição insulínica múltipla diária ou bomba de insulina, monitoramento frequente de glicemia e educação em contagem de carboidratos e autocuidado."
+        },
+        // inserir vídeo: tutorial sobre ajuste de dose de insulina rápida e lenta
+        {
+          "type": "subtitle",
+          "text": "Monitoramento e complicações"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Monitorar glicemia capilar 4–6 vezes ao dia",
+            "Avaliar HbA1c a cada 3 meses",
+            "Retinopatia, nefropatia e neuropatia periférica",
+            "Doença cardiovascular (risco aumentado)"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Prevenção Secundária"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Educação continuada em diabetes",
+            "Exames oftalmológicos anuais",
+            "Avaliação de função renal e microalbuminúria",
+            "Controle de pressão arterial e dislipidemia"
+          ]
+        }
+      ],
+      "references": [
+        "https://pt.wikipedia.org/wiki/Diabetes_mellitus_tipo_1",
+        "https://www.mayoclinic.org/pt-br/diseases-conditions/type-1-diabetes/symptoms-causes",
+        "https://diabetes.org.br/profissional/diretrizes/"
+      ]
+    },
+    {
+      "type": "quiz",
+      "title": "Teste seus conhecimentos sobre Diabetes Tipo 1",
+      "questions": [
+        {
+          "question": "Qual é a característica central do Diabetes Tipo 1?",
+          "options": [
+            "Resistência à insulina",
+            "Destruição autoimune das células β",
+            "Produção exagerada de insulina"
+          ],
+          "correctAnswer": "Destruição autoimune das células β"
+        },
+        {
+          "question": "Qual autoanticorpo é mais comumente encontrado na DMT1?",
+          "options": ["Anti-TSH", "Anti-GAD", "Anti-CCP"],
+          "correctAnswer": "Anti-GAD"
+        },
+        {
+          "question": "Glicemia de jejum diagnóstica para DMT1 é ≥:",
+          "options": ["100 mg/dL", "126 mg/dL", "200 mg/dL"],
+          "correctAnswer": "126 mg/dL"
+        },
+        {
+          "question": "Qual complicação aguda ocorre com deficiência grave de insulina?",
+          "options": [
+            "Hipoglicemia",
+            "Cetoacidose diabética",
+            "Síndrome nefrótica"
+          ],
+          "correctAnswer": "Cetoacidose diabética"
+        },
+        {
+          "question": "O que a terapia com bomba de insulina permite?",
+          "options": [
+            "Evitar monitoramento de glicemia",
+            "Administração contínua e ajustável de insulina",
+            "Produção endógena de insulina"
+          ],
+          "correctAnswer": "Administração contínua e ajustável de insulina"
+        },
+        {
+          "question": "Qual exame acompanha o controle glicêmico a longo prazo?",
+          "options": ["Eletrocardiograma", "HbA1c", "Raio-X de tórax"],
+          "correctAnswer": "HbA1c"
+        },
+        {
+          "question": "Um valor de HbA1c ≥ 6,5 % indica:",
+          "options": [
+            "Controle glicêmico ótimo",
+            "Diabetes",
+            "Hipoglicemia crônica"
+          ],
+          "correctAnswer": "Diabetes"
+        },
+        {
+          "question": "Qual hábito ajuda a reduzir riscos de complicações crônicas?",
+          "options": [
+            "Ignorar contagem de carboidratos",
+            "Monitorar glicemia regularmente",
+            "Evitar atividade física"
+          ],
+          "correctAnswer": "Monitorar glicemia regularmente"
+        }
+      ]
+    },
+    {
+      "type": "habits",
+      "title": "Hábitos Recomendados para DMT1",
+      "checklist": [
+        "Aplicar insulina conforme prescrição (rápida antes das refeições e basal)",
+        "Monitorar glicemia capilar 4–6 vezes ao dia",
+        "Contar carboidratos em cada refeição",
+        "Manter alimentação equilibrada (com fibras e baixo índice glicêmico)",
+        "Praticar atividade física regular (150 min/semana)",
+        "Realizar exames oftalmológicos anuais",
+        "Monitorar pressão arterial e perfil lipídico",
+        "Participar de grupos de apoio ou educação em diabetes"
+      ],
+      "notes": [
+        "Contagem precisa de carboidratos otimiza ajuste de insulina: ADA Standards of Care 2024",
+        "Exercício aeróbico melhora sensibilidade periférica à insulina",
+        "Monitoramento frequente previne episódios graves de hipo e hiperglicemia"
+      ]
+    }
+  ]
+},
 
-  "6": {
-    name: "Diabetes tipo 2",
-    modules: [
-      {
-        type: "learn",
-        title: "O que é Diabetes tipo 2?",
-        content: [
-          { type: "title", text: "O que é Diabetes tipo 2?" },
-          { type: "paragraph", text: "É uma doença metabólica caracterizada pela resistência à insulina, com maior incidência em adultos. Está relacionada ao sedentarismo, obesidade e alimentação inadequada." },
-          { type: "subtitle", text: "Principais sintomas" },
-          { type: "list", items: [
-            "Sede e fome excessivas",
-            "Urina frequente",
-            "Cansaço",
-            "Infecções frequentes"
-          ]},
-          { type: "paragraph", text: "O diagnóstico é feito por exames laboratoriais e acompanhamento médico." }
-        ],
-        videoUrl: "https://www.youtube.com/watch?v=diab2",
-        references: [
-          "https://www.diabetes.org.br/tipo2",
-          "https://www.scielo.br/diab2"
-        ]
-      },
-      {
-        type: "quiz",
-        title: "Teste seus conhecimentos sobre Diabetes tipo 2",
-        questions: [
-          {
-            question: "Qual é um fator de risco importante para o Diabetes tipo 2?",
-            options: ["Excesso de atividade física", "Obesidade", "Hipotermia"],
-            correctAnswer: "Obesidade"
-          }
-        ]
-      },
-      {
-        type: "habits",
-        title: "Cuidados recomendados para Diabetes tipo 2",
-        checklist: [
-          "Evitar açúcar refinado",
-          "Praticar atividade física regularmente",
-          "Fazer controle periódico da glicemia"
-        ]
+
+"6": {
+  "name": "Diabetes Tipo 2",
+  "modules": [
+    {
+      "type": "learn",
+      "title": "O que é Diabetes Tipo 2?",
+      "content": [
+        {
+          "type": "paragraph",
+          "text": "O Diabetes Mellitus Tipo 2 (DMT2) é uma doença metabólica caracterizada por resistência à insulina nos tecidos-alvo e disfunção progressiva das células β pancreáticas, resultando em hiperglicemia crônica."
+        },
+        {
+          "type": "subtitle",
+          "text": "⚙️ Fisiopatologia"
+        },
+        {
+          "type": "paragraph",
+          "text": "Na DMT2, os tecidos (músculo, fígado, tecido adiposo) respondem menos à insulina, elevando glicose sanguínea. Com o tempo, as células β se exaurem, reduzindo ainda mais a produção de insulina."
+        },
+        // inserir imagem: diagrama de resistência à insulina e disfunção das células β
+        {
+          "type": "subtitle",
+          "text": "Principais fatores de risco"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Obesidade abdominal",
+            "Sedentarismo",
+            "História familiar de DMT2",
+            "Síndrome metabólica",
+            "Envelhecimento",
+            "Hipertensão arterial",
+            "Dislipidemia"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Sintomas e sinais"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Poliúria e polidipsia",
+            "Fadiga e fraqueza",
+            "Visão turva",
+            "Feridas que demoram a cicatrizar",
+            "Infecções de repetição",
+            "Parestesias (em neuropatia avançada)"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Diagnóstico"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Glicemia de jejum ≥ 126 mg/dL",
+            "Glicemia aleatória ≥ 200 mg/dL com sintomas",
+            "HbA1c ≥ 6,5 %",
+            "Teste de tolerância à glicose 2 h ≥ 200 mg/dL"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Tratamento"
+        },
+        {
+          "type": "paragraph",
+          "text": "O manejo da DMT2 é escalonado:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Mudanças no estilo de vida (dieta balanceada, redução de peso, exercício) — base do tratamento",
+            "Metformina como primeira linha (↑ captação de glicose e ↓ produção hepática)",
+            "Inibidores de SGLT-2 (↑ excreção de glicose urinária)",
+            "Agonistas de GLP-1 (↑ secreção de insulina, ↓ apetite)",
+            "Inibidores de DPP-4 (prolongam ação do GLP-1 endógeno)",
+            "Insulinoterapia quando necessário"
+          ]
+        },
+        // inserir vídeo: pacientes relatando benefícios de mudança de estilo de vida no controle glicêmico
+        {
+          "type": "subtitle",
+          "text": "Monitoramento e complicações"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Auto-monitoramento glicêmico (frequência conforme orientação)",
+            "HbA1c a cada 3–6 meses",
+            "Rastreamento de retinopatia, nefropatia e neuropatia",
+            "Avaliação cardiovascular (ECG, marcadores)",
+            "Avaliação de função renal (microalbuminúria)"
+          ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Prevenção Secundária e Primária"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Perda de peso de 5–10 % reduz risco de DMT2 em pré-diabéticos",
+            "Adoção de dieta rica em fibras, grãos integrais e vegetais",
+            "Atividade física regular (150 min/semana de moderada a vigorosa)",
+            "Controle de fatores de risco cardiovascular",
+            "Programas de educação em diabetes"
+          ]
+        }
+      ],
+      "references": [
+        "https://pt.wikipedia.org/wiki/Diabetes_mellitus_tipo_2",
+        "https://www.mayoclinic.org/pt-br/diseases-conditions/type-2-diabetes/symptoms-causes",
+        "https://diabetes.org.br/profissional/diretrizes/",
+        "https://care.diabetesjournals.org/content/44/Supplement_1/S1"  // ADA Standards of Care 2024
+      ]
+    },
+    {
+      "type": "quiz",
+      "title": "Teste seus conhecimentos sobre Diabetes Tipo 2",
+      "questions": [
+        {
+          "question": "Qual é o mecanismo principal da metformina?",
+          "options": [
+            "Aumenta secreção de insulina",
+            "Reduz produção hepática de glicose",
+            "Bloqueia absorção de glicose intestinal"
+          ],
+          "correctAnswer": "Reduz produção hepática de glicose"
+        },
+        {
+          "question": "Qual critério diagnósticos usa HbA1c?",
+          "options": ["≥ 5,7 %", "≥ 6,5 %", "≥ 7,5 %"],
+          "correctAnswer": "≥ 6,5 %"
+        },
+        {
+          "question": "Inibidores de SGLT-2 atuam em qual órgão?",
+          "options": ["Fígado", "Rim", "Pâncreas"],
+          "correctAnswer": "Rim"
+        },
+        {
+          "question": "Qual classe farmacológica promove saciedade e perda de peso?",
+          "options": [
+            "Sulfonilureias",
+            "Agonistas de GLP-1",
+            "Tiazolidinedionas"
+          ],
+          "correctAnswer": "Agonistas de GLP-1"
+        },
+        {
+          "question": "Um dos principais fatores de risco para DMT2 é:",
+          "options": [
+            "Baixo peso corporal",
+            "Obesidade abdominal",
+            "Hipoglicemia frequente"
+          ],
+          "correctAnswer": "Obesidade abdominal"
+        },
+        {
+          "question": "Exame de primeira linha para rastrear nefropatia é:",
+          "options": [
+            "Microalbuminúria",
+            "Função pulmonar",
+            "Eletroencefalograma"
+          ],
+          "correctAnswer": "Microalbuminúria"
+        },
+        {
+          "question": "Qual intervenção reduz risco de DMT2 em pré-diabéticos?",
+          "options": [
+            "Suplementação de vitamina D",
+            "Programa de perda de peso e exercício",
+            "Terapia de reposição hormonal"
+          ],
+          "correctAnswer": "Programa de perda de peso e exercício"
+        },
+        {
+          "question": "Síndrome metabólica inclui TODOS EXCETO:",
+          "options": [
+            "Hipertensão arterial",
+            "Glicemia de jejum elevada",
+            "Hipoglicemia pós-prandial"
+          ],
+          "correctAnswer": "Hipoglicemia pós-prandial"
+        }
+      ]
+    },
+    {
+      "type": "habits",
+      "title": "Hábitos Recomendados para DMT2",
+      "checklist": [
+        "Manter IMC entre 18,5 e 24,9 kg/m² ou reduzir ao menos 5–10 % do peso",
+        "Realizar pelo menos 150 min/semana de atividade física moderada",
+        "Adotar dieta rica em fibras, vegetais e grãos integrais",
+        "Monitorar glicemia conforme orientação médica",
+        "Fazer exames de retina e pés anualmente",
+        "Controlar pressão arterial e perfil lipídico",
+        "Participar de programas de educação em diabetes",
+        "Evitar tabagismo e consumo excessivo de álcool"
+      ],
+      "notes": [
+        "Perda de 5 % do peso reduz risco de progressão de pré-diabetes: estudo Diabetes Prevention Program",
+        "Dieta rica em fibras melhora sensibilidade à insulina: meta-análise 2022",
+        "Exercício regular reduz HbA1c em 0,5–1 %: diretrizes ADA"
+      ]
       }
     ]
   }
