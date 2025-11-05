@@ -13,6 +13,7 @@ import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
 import { useAuth } from '../../contexts/AuthContext';
 import { useNavigation } from '@react-navigation/native';
+import { colors } from '../../styles/colors'; 
 
 import * as Google from 'expo-auth-session/providers/google';
 import * as WebBrowser from 'expo-web-browser';
@@ -211,10 +212,10 @@ const styles = StyleSheet.create({
   },
   forgotPasswordText: {
     top: 3,
-    color: '#7B7583',
     fontSize: 14,
     fontFamily: 'Poppins-Bold',
-    
+     color: colors.primary,
+    fontWeight: '600',
   },
 });
 

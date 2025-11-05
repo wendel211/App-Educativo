@@ -1,5 +1,3 @@
-// src/screens/RegisterScreen.tsx
-
 import React, { useState } from 'react';
 import {
   View,
@@ -7,7 +5,9 @@ import {
   ScrollView,
   Alert,
   Image,
-  Dimensions
+  Dimensions,
+  TouchableOpacity,
+  Text,
 } from 'react-native';
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
@@ -50,31 +50,30 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
       confirmPassword: '',
     };
 
-    // Nome obrigatório e máximo de 12 caracteres
     if (!formData.name.trim()) {
       newErrors.name = 'Nome é obrigatório';
     } else if (formData.name.trim().length > 12) {
       newErrors.name = 'Máximo de 12 caracteres';
     }
 
-    // E-mail e confirmação de e-mail
     if (!formData.email) {
       newErrors.email = 'E-mail é obrigatório';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'E-mail inválido';
     }
+
     if (!formData.confirmEmail) {
       newErrors.confirmEmail = 'Confirme seu e-mail';
     } else if (formData.confirmEmail !== formData.email) {
       newErrors.confirmEmail = 'E-mails não coincidem';
     }
 
-    // Senha e confirmação de senha
     if (!formData.password) {
       newErrors.password = 'Senha é obrigatória';
     } else if (formData.password.length < 6) {
       newErrors.password = 'Senha deve ter no mínimo 6 caracteres';
     }
+
     if (!formData.confirmPassword) {
       newErrors.confirmPassword = 'Confirme sua senha';
     } else if (formData.password !== formData.confirmPassword) {
@@ -116,12 +115,18 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
 
   return (
     <View style={styles.container}>
+      {/* Logo */}
       <View style={styles.logoContainer}>
         <Image source={logo} style={styles.logo} resizeMode="contain" />
         <Image source={logoName} style={styles.logoName} resizeMode="contain" />
       </View>
 
-      <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+      <ScrollView
+        style={styles.content}
+        showsVerticalScrollIndicator={false}
+        contentContainerStyle={{ paddingBottom: 40 }}
+      >
+        {/* Inputs */}
         <Input
           label="Nome de usuário"
           value={formData.name}
@@ -129,7 +134,8 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
           placeholder="Digite seu nome"
           error={errors.name}
           autoCapitalize="words"
-          maxLength={12}                    // ← limita no input
+          maxLength={12}
+          style={styles.input}
         />
 
         <Input
@@ -140,6 +146,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
           error={errors.email}
           autoCapitalize="none"
           keyboardType="email-address"
+          style={styles.input}
         />
 
         <Input
@@ -150,6 +157,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
           error={errors.confirmEmail}
           autoCapitalize="none"
           keyboardType="email-address"
+          style={styles.input}
         />
 
         <Input
@@ -159,6 +167,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
           placeholder="Digite sua senha"
           secureTextEntry
           error={errors.password}
+          style={styles.input}
         />
 
         <Input
@@ -168,13 +177,22 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
           placeholder="Repita sua senha"
           secureTextEntry
           error={errors.confirmPassword}
+          style={styles.input}
         />
 
-        <Button
-          title="Criar conta"
-          onPress={handleRegister}
-          loading={loading}
-        />
+        {/* Botão Criar Conta */}
+        <Button title="Criar conta" onPress={handleRegister} loading={loading} />
+
+        {/* Botão Já tem uma conta */}
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Login')}
+          style={styles.loginButton}
+          activeOpacity={0.7}
+        >
+          <Text style={styles.loginText}>
+            Já tem uma conta? <Text style={styles.loginLink}>Entrar</Text>
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
@@ -190,7 +208,7 @@ const styles = StyleSheet.create({
   },
   logoContainer: {
     alignItems: 'center',
-    marginBottom: 20,
+    marginBottom: 10,
   },
   logo: {
     width: width * 0.32,
@@ -203,6 +221,21 @@ const styles = StyleSheet.create({
   },
   content: {
     flex: 1,
-    padding: 20,
+    paddingHorizontal: 20,
+  },
+  input: {
+    marginBottom: 12,
+  },
+  loginButton: {
+    alignItems: 'center',
+    marginTop: 10,
+  },
+  loginText: {
+    fontSize: 15,
+    color: '#666',
+  },
+  loginLink: {
+    color: colors.primary,
+    fontWeight: '600',
   },
 });
