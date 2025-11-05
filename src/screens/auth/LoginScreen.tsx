@@ -176,18 +176,18 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: '#fff',
-    borderColor: '#4285F4',
+    borderColor: '#7B7583',
     borderWidth: 1,
     borderRadius: 8,
     paddingVertical: 10,
     paddingHorizontal: 24,
     width: '100%',
     justifyContent: 'center',
-    elevation: 2,
-    shadowColor: '#4285F4',
+    elevation: 1,
+    shadowColor: '#7B7583',
     shadowOffset: { width: 0, height: 1 },
     shadowOpacity: 0.08,
-    shadowRadius: 2,
+    shadowRadius: 1,
   },
   googleContent: {
     flexDirection: 'row',
@@ -201,7 +201,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   googleButtonText: {
-    color: '#4285F4',
+    color: '#005A57',
     fontWeight: 'bold',
     fontSize: 16,
     fontFamily: 'Roboto',
@@ -210,8 +210,11 @@ const styles = StyleSheet.create({
     marginTop: 15,
   },
   forgotPasswordText: {
-    color: '#007bff',
-    textDecorationLine: 'underline',
+    top: 3,
+    color: '#7B7583',
+    fontSize: 14,
+    fontFamily: 'Poppins-Bold',
+    
   },
 });
 

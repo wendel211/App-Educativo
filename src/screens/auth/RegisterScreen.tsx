@@ -1,5 +1,14 @@
+// src/screens/RegisterScreen.tsx
+
 import React, { useState } from 'react';
-import { View, StyleSheet, ScrollView, Alert, Image, Dimensions } from 'react-native';
+import {
+  View,
+  StyleSheet,
+  ScrollView,
+  Alert,
+  Image,
+  Dimensions
+} from 'react-native';
 import { Input } from '../../components/common/Input';
 import { Button } from '../../components/common/Button';
 import { colors } from '../../styles/colors';
@@ -17,6 +26,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
   const [formData, setFormData] = useState({
     name: '',
     email: '',
+    confirmEmail: '',
     password: '',
     confirmPassword: '',
   });
@@ -24,37 +34,55 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
   const [errors, setErrors] = useState({
     name: '',
     email: '',
+    confirmEmail: '',
     password: '',
     confirmPassword: '',
   });
 
   const [loading, setLoading] = useState(false);
 
-  const validateForm = () => {
-    const newErrors = { name: '', email: '', password: '', confirmPassword: '' };
+  const validateForm = (): boolean => {
+    const newErrors = {
+      name: '',
+      email: '',
+      confirmEmail: '',
+      password: '',
+      confirmPassword: '',
+    };
 
+    // Nome obrigatório e máximo de 12 caracteres
     if (!formData.name.trim()) {
       newErrors.name = 'Nome é obrigatório';
+    } else if (formData.name.trim().length > 12) {
+      newErrors.name = 'Máximo de 12 caracteres';
     }
 
+    // E-mail e confirmação de e-mail
     if (!formData.email) {
       newErrors.email = 'E-mail é obrigatório';
     } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
       newErrors.email = 'E-mail inválido';
     }
+    if (!formData.confirmEmail) {
+      newErrors.confirmEmail = 'Confirme seu e-mail';
+    } else if (formData.confirmEmail !== formData.email) {
+      newErrors.confirmEmail = 'E-mails não coincidem';
+    }
 
+    // Senha e confirmação de senha
     if (!formData.password) {
       newErrors.password = 'Senha é obrigatória';
     } else if (formData.password.length < 6) {
       newErrors.password = 'Senha deve ter no mínimo 6 caracteres';
     }
-
-    if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'As senhas não coincidem';
+    if (!formData.confirmPassword) {
+      newErrors.confirmPassword = 'Confirme sua senha';
+    } else if (formData.password !== formData.confirmPassword) {
+      newErrors.confirmPassword = 'Senhas não coincidem';
     }
 
     setErrors(newErrors);
-    return !Object.values(newErrors).some(error => error !== '');
+    return !Object.values(newErrors).some(err => !!err);
   };
 
   const handleRegister = async () => {
@@ -62,8 +90,11 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
 
     setLoading(true);
     try {
-      // Passa o name para a função de registro
-      await register(formData.email.trim(), formData.password, formData.name.trim());
+      await register(
+        formData.email.trim(),
+        formData.password,
+        formData.name.trim()
+      );
       Alert.alert('Sucesso', 'Cadastro realizado com sucesso!');
       navigation.navigate('Login');
     } catch (error: any) {
@@ -98,6 +129,7 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
           placeholder="Digite seu nome"
           error={errors.name}
           autoCapitalize="words"
+          maxLength={12}                    // ← limita no input
         />
 
         <Input
@@ -106,6 +138,16 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
           onChangeText={text => setFormData({ ...formData, email: text })}
           placeholder="Digite seu e-mail"
           error={errors.email}
+          autoCapitalize="none"
+          keyboardType="email-address"
+        />
+
+        <Input
+          label="Confirmar E-mail"
+          value={formData.confirmEmail}
+          onChangeText={text => setFormData({ ...formData, confirmEmail: text })}
+          placeholder="Repita seu e-mail"
+          error={errors.confirmEmail}
           autoCapitalize="none"
           keyboardType="email-address"
         />
@@ -123,16 +165,22 @@ export const RegisterScreen: React.FC<RegisterScreenProps> = ({ navigation }) =>
           label="Confirmar Senha"
           value={formData.confirmPassword}
           onChangeText={text => setFormData({ ...formData, confirmPassword: text })}
-          placeholder="Confirme sua senha"
+          placeholder="Repita sua senha"
           secureTextEntry
           error={errors.confirmPassword}
         />
 
-        <Button title="Criar conta" onPress={handleRegister} loading={loading} />
+        <Button
+          title="Criar conta"
+          onPress={handleRegister}
+          loading={loading}
+        />
       </ScrollView>
     </View>
   );
 };
+
+export default RegisterScreen;
 
 const styles = StyleSheet.create({
   container: {
@@ -158,5 +206,3 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 });
-
-export default RegisterScreen;
