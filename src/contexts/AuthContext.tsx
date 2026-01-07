@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { onAuthStateChanged, User } from 'firebase/auth';
+import { onAuthStateChanged, User, deleteUser } from 'firebase/auth'; 
 import { auth } from '../services/firebaseConfig';
 import { register as firebaseRegister, login as firebaseLogin, logout as firebaseLogout } from '../services/auth';
 import { GoogleAuthProvider, signInWithCredential } from 'firebase/auth';
@@ -12,6 +12,7 @@ export type AuthContextType = {
   register: (email: string, password: string, name: string) => Promise<void>;
   logout: () => Promise<void>;
   loginWithGoogle: (idToken: string) => Promise<void>;
+  deleteAccount: () => Promise<void>; 
 };
 
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
@@ -46,6 +47,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     await signInWithCredential(auth, credential);
   };
 
+  // --- Função para Excluir Conta (LGPD) ---
+  const deleteAccount = async () => {
+    if (auth.currentUser) {
+      try {
+        // Exclui o usuário do Firebase Auth
+        await deleteUser(auth.currentUser);
+        // O onAuthStateChanged vai detectar automaticamente que o user é null
+        setUser(null);
+      } catch (error: any) {
+        console.error("Erro ao excluir conta:", error);
+
+        throw error;
+      }
+    }
+  };
+
   return (
     <AuthContext.Provider value={{
       user,
@@ -55,6 +72,7 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
       register,
       logout,
       loginWithGoogle,
+      deleteAccount, 
     }}>
       {children}
     </AuthContext.Provider>
