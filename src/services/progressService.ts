@@ -1,6 +1,8 @@
 import { collection, getDocs, doc, getDoc, setDoc, updateDoc, arrayUnion } from 'firebase/firestore';
 import { auth, db } from './firebaseConfig';
 
+import { calculateScore, canEarnPoints } from '../utils/gamificationRules';
+
 export const getUserProgress = async (diseaseId: string) => {
   const uid = auth.currentUser?.uid;
   if (!uid) throw new Error('Usuário não autenticado.');
@@ -18,12 +20,16 @@ export const markModuleComplete = async (diseaseId: string, moduleIndex: number)
 
   const ref = doc(db, 'users', uid, 'progress', diseaseId);
   const snap = await getDoc(ref);
+  
   const completed = snap.exists() ? snap.data().completedModules || [] : [];
-
-  if (completed.includes(moduleIndex)) return;
-
   const currentPoints = snap.exists() ? snap.data().totalPoints || 0 : 0;
-  const newPoints = Math.min(currentPoints + 10, 30);
+
+  if (!canEarnPoints(completed, moduleIndex)) {
+    console.log(`Módulo ${moduleIndex} já completado. Nenhum ponto novo atribuído.`);
+    return;
+  }
+
+  const newPoints = calculateScore(currentPoints, 10, 30);
 
   if (snap.exists()) {
     await updateDoc(ref, {
@@ -38,7 +44,6 @@ export const markModuleComplete = async (diseaseId: string, moduleIndex: number)
   }
 };
 
-// === NOVA FUNÇÃO ===
 export const getTotalPoints = async (): Promise<number> => {
   const uid = auth.currentUser?.uid;
   if (!uid) throw new Error('Usuário não autenticado.');

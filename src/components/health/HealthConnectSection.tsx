@@ -1,90 +1,42 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, Image, StyleSheet, ActivityIndicator, Linking } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { colors } from '../../styles/colors';
-import {
-  getSteps,
-  getHeartRate,
-  getSleepSessions,
-  checkPermissions,
-  ensureHealthConnectInitialized
-} from '../../services/healthConnectService';
 
-export default function HealthConnectSection() {
-  const [loading, setLoading] = useState(false);
-  const [healthData, setHealthData] = useState({ steps: null, heartRate: null, sleep: null });
-  const [healthError, setHealthError] = useState<string | null>(null);
-  const [hasPermission, setHasPermission] = useState<boolean | null>(null);
-  const [permissionChecked, setPermissionChecked] = useState(false);
+// Definimos tudo que a tela pai precisa mandar para este componente funcionar
+interface HealthConnectSectionProps {
+  steps: number | null;
+  heartRate: number | null;
+  sleep: string | null;
+  loading: boolean;
+  error: string | null;
+  hasPermission: boolean | null;
+  permissionChecked: boolean;
+  onSync: () => void; // A função de buscar dados vem do pai
+}
 
-  // Função para sincronizar dados
-  async function handleSync() {
-    setLoading(true);
-    setHealthError(null);
-    try {
-      await ensureHealthConnectInitialized();
-      const permissions = await checkPermissions();
-      setPermissionChecked(true);
-      if (!permissions.length) {
-        setHasPermission(false);
-        setHealthError(
-          "Permissão não concedida. Para visualizar seus dados, conceda permissão ao app pelo Health Connect."
-        );
-        setLoading(false);
-        return;
-      }
-      setHasPermission(true);
-      const [stepsResult, heartRateResult, sleepResult] = await Promise.all([
-        getSteps(),
-        getHeartRate(),
-        getSleepSessions()
-      ]);
-      setHealthData({
-        steps: sumSteps(stepsResult),
-        heartRate: avgHeartRate(heartRateResult),
-        sleep: formatSleep(sleepResult),
-      });
-      setHealthError(null);
-    } catch {
-      setHealthError('Erro ao buscar dados de saúde.');
-      setHealthData({ steps: null, heartRate: null, sleep: null });
-    }
-    setLoading(false);
-  }
-
-  // Helpers para cálculo dos dados
-  function sumSteps(result: any) {
-    if (result?.records?.length) return result.records.reduce((acc: number, r: any) => acc + (r.count || 0), 0);
-    return null;
-  }
-  function avgHeartRate(result: any) {
-    if (result?.records?.length) {
-      const total = result.records.reduce((acc: number, r: any) => acc + (r.beatsPerMinute || r.bpm || 0), 0);
-      return Math.round(total / result.records.length);
-    }
-    return null;
-  }
-  function formatSleep(result: any) {
-    if (result?.records?.length) {
-      const totalMs = result.records.reduce((acc: number, r: any) => acc + (new Date(r.endTime).getTime() - new Date(r.startTime).getTime()), 0);
-      const h = Math.floor(totalMs / (1000 * 60 * 60));
-      const m = Math.floor((totalMs % (1000 * 60 * 60)) / (1000 * 60));
-      return `${h}h ${m}m`;
-    }
-    return null;
-  }
+export default function HealthConnectSection({
+  steps,
+  heartRate,
+  sleep,
+  loading,
+  error,
+  hasPermission,
+  permissionChecked,
+  onSync
+}: HealthConnectSectionProps) {
 
   // Botão para abrir o app Health Connect
   function openHealthConnectApp() {
     Linking.openURL('https://play.google.com/store/apps/details?id=com.google.android.apps.healthdata');
   }
 
-  // Renderização
   return (
     <View style={styles.section}>
       <View style={styles.card}>
         {/* Header com logo e título */}
         <View style={styles.cardHeader}>
+          {/* Certifique-se que o caminho da imagem está correto no seu projeto */}
           <Image
             source={require('../../assets/images/logo_Health_Connect.png')}
             style={styles.logo}
@@ -92,6 +44,7 @@ export default function HealthConnectSection() {
           />
           <Text style={styles.title}>Dados de Saúde</Text>
         </View>
+
         {/* Caso sem permissão */}
         {hasPermission === false ? (
           <View style={styles.permissionBox}>
@@ -109,7 +62,7 @@ export default function HealthConnectSection() {
                   <Ionicons name="open-outline" size={18} color="#fff" style={{ marginRight: 5 }} />
                   <Text style={styles.openButtonText}>Abrir Health Connect</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.tryAgainButton} onPress={handleSync} disabled={loading}>
+                <TouchableOpacity style={styles.tryAgainButton} onPress={onSync} disabled={loading}>
                   <Ionicons name="refresh" size={18} color={colors.primary} style={{ marginRight: 5 }} />
                   <Text style={styles.tryAgainButtonText}>Tentar novamente</Text>
                 </TouchableOpacity>
@@ -122,33 +75,35 @@ export default function HealthConnectSection() {
             <View style={styles.metricsRow}>
               <Metric
                 icon="walk"
-                value={healthData.steps !== null && healthData.steps > 0 ? healthData.steps.toLocaleString() : '—'}
+                value={steps !== null && steps > 0 ? steps.toLocaleString() : '—'}
                 label="Passos"
               />
               <Metric
                 icon="heart"
-                value={healthData.heartRate !== null ? `${healthData.heartRate} bpm` : '—'}
+                value={heartRate !== null && heartRate > 0 ? `${heartRate} bpm` : '—'}
                 label="Batimentos"
               />
               <Metric
                 icon="moon"
-                value={healthData.sleep || '—'}
+                value={sleep || '—'}
                 label="Sono"
               />
             </View>
+            
             {/* Loading/Error */}
             {loading ? (
               <View style={styles.loadingContainer}>
                 <ActivityIndicator size="small" color={colors.primary} />
                 <Text style={styles.loadingText}>Sincronizando...</Text>
               </View>
-            ) : healthError && permissionChecked ? (
-              <Text style={styles.errorText}>{healthError}</Text>
+            ) : error && permissionChecked ? (
+              <Text style={styles.errorText}>{error}</Text>
             ) : null}
+
             {/* Botão de sincronizar */}
             <TouchableOpacity
               style={styles.syncButton}
-              onPress={handleSync}
+              onPress={onSync}
               disabled={loading}
             >
               <Ionicons name="refresh" size={20} color="#fff" style={{ marginRight: 6 }} />
