@@ -3,7 +3,12 @@ import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemL
 import { Feather } from '@expo/vector-icons';
 import { View, StyleSheet, Image, Dimensions } from 'react-native';
 import { TabNavigator } from './TabNavigator';
-import { SettingsScreen } from '../screens/settings/SettingsScreen';
+// REMOVA ou COMENTE a importação direta da SettingsScreen
+// import { SettingsScreen } from '../screens/settings/SettingsScreen'; 
+
+// ADICIONE esta importação
+import { SettingsNavigator } from './SettingsNavigator'; 
+
 import { useAuth } from '../contexts/AuthContext';
 import IndicatorHistoryScreen from '../screens/HistoryScreen/IndicatorHistoryScreen';
 
@@ -50,9 +55,11 @@ export const DrawerNavigator = () => {
           drawerLabel: 'Histórico de Indicadores',
         }}
       />
+      
+      {/* AQUI ESTÁ A MUDANÇA: Trocamos SettingsScreen por SettingsNavigator */}
       <Drawer.Screen
         name="Settings"
-        component={SettingsScreen}
+        component={SettingsNavigator} 
         options={{
           drawerIcon: ({ color, size }) => <Feather name="settings" size={size} color={color} />,
           drawerLabel: 'Configurações',

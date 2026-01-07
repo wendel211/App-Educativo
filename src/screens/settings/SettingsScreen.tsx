@@ -2,11 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, StyleSheet, ScrollView, Switch, Platform, Linking, Alert, TouchableOpacity } from 'react-native';
 import { Ionicons, Feather } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useNavigation } from '@react-navigation/native';
 import { scheduleDailyRegisterReminder, scheduleMotivationNotification } from '../../services/notificationService';
 import * as Notifications from 'expo-notifications';
 import { colors } from '../../styles/colors';
+import { useAuth } from '../../contexts/AuthContext';
 
 export const SettingsScreen: React.FC = () => {
+  const navigation = useNavigation<any>();
+  const { logout, deleteAccount } = useAuth(); 
+
   const [registerReminder, setRegisterReminder] = useState(false);
   const [motivationReminder, setMotivationReminder] = useState(false);
 
@@ -63,6 +68,36 @@ export const SettingsScreen: React.FC = () => {
     });
   };
 
+  const handleDeleteAccount = () => {
+    Alert.alert(
+      "Excluir Conta",
+      "Tem certeza? Esta ação é irreversível e todos os seus dados serão apagados permanentemente.",
+      [
+        { text: "Cancelar", style: "cancel" },
+        { 
+          text: "Excluir", 
+          style: "destructive", 
+          onPress: async () => {
+            try {
+              await deleteAccount();
+              // O AuthContext já deve redirecionar para Login ao setar user null
+            } catch (error) {
+              Alert.alert("Erro", "Por segurança, faça login novamente antes de excluir sua conta.");
+            }
+          }
+        }
+      ]
+    );
+  };
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível sair.");
+    }
+  };
+
   return (
     <ScrollView style={styles.container}>
       <View style={styles.header}>
@@ -70,6 +105,7 @@ export const SettingsScreen: React.FC = () => {
         <Text style={styles.headerSubtitle}>Personalize sua experiência no aplicativo</Text>
       </View>
 
+      {/* Seção de Notificações */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Notificações</Text>
 
@@ -102,6 +138,32 @@ export const SettingsScreen: React.FC = () => {
         </View>
       </View>
 
+      {/* Nova Seção: Privacidade e Dados (LGPD) */}
+      <View style={styles.section}>
+        <Text style={styles.sectionTitle}>Privacidade e Dados</Text>
+        
+        <TouchableOpacity 
+          style={styles.settingItem} 
+          onPress={() => navigation.navigate('PrivacyPolicy')}
+        >
+          <Ionicons name="document-text-outline" size={24} color={colors.primary} />
+          <View style={styles.textContainer}>
+            <Text style={styles.title}>Política de Privacidade</Text>
+            <Text style={styles.subtitle}>Como usamos seus dados</Text>
+          </View>
+          <Ionicons name="chevron-forward" size={20} color="#ccc" />
+        </TouchableOpacity>
+
+        <TouchableOpacity style={styles.settingItem} onPress={handleDeleteAccount}>
+          <Ionicons name="trash-outline" size={24} color="red" />
+          <View style={styles.textContainer}>
+            <Text style={[styles.title, { color: 'red' }]}>Excluir Minha Conta</Text>
+            <Text style={styles.subtitle}>Apagar todos os dados e sair</Text>
+          </View>
+        </TouchableOpacity>
+      </View>
+
+      {/* Seção de Suporte */}
       <View style={styles.section}>
         <Text style={styles.sectionTitle}>Suporte e Feedback</Text>
         <TouchableOpacity style={styles.supportButton} onPress={handleFeedback}>
@@ -114,6 +176,18 @@ export const SettingsScreen: React.FC = () => {
           <Text style={styles.supportText}>Enviar e-mail para suporte</Text>
         </TouchableOpacity>
       </View>
+
+      {/* Botão de Logout */}
+      <View style={{ padding: 24, paddingBottom: 50 }}>
+        <TouchableOpacity 
+          style={styles.logoutButton}
+          onPress={handleLogout}
+        >
+          <Feather name="log-out" size={20} color={colors.primary} />
+          <Text style={styles.logoutText}>Sair do Aplicativo</Text>
+        </TouchableOpacity>
+      </View>
+
     </ScrollView>
   );
 };
@@ -166,6 +240,22 @@ const styles = StyleSheet.create({
     marginLeft: 10,
     fontSize: 14,
   },
+  logoutButton: {
+    flexDirection: 'row',
+    justifyContent: 'center',
+    alignItems: 'center',
+    padding: 15,
+    borderWidth: 1,
+    borderColor: colors.primary,
+    borderRadius: 8,
+    marginTop: 10,
+  },
+  logoutText: {
+    color: colors.primary,
+    fontFamily: 'Poppins-Bold',
+    marginLeft: 10,
+    fontSize: 16,
+  }
 });
 
 export default SettingsScreen;
