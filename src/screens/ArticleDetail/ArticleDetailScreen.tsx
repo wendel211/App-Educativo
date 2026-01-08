@@ -1,8 +1,7 @@
 // src/screens/ArticleDetail/ArticleDetailScreen.tsx
 import React from 'react';
-import { View, Text, StyleSheet, Image, ScrollView, SafeAreaView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, Image, ScrollView, SafeAreaView } from 'react-native';
 import { RouteProp } from '@react-navigation/native';
-
 
 type ArticleDetailScreenRouteProp = RouteProp<{ params: { topicId: string } }, 'params'>;
 
@@ -20,29 +19,29 @@ interface Article {
 const ArticleDetailScreen = ({ route }: { route: ArticleDetailScreenRouteProp }) => {
   const { topicId } = route.params;
 
-  // Definição dos artigos com seções e textos Lorem Ipsum
   let article: Article;
+
   switch (topicId) {
     case '1':
       article = {
         image: require('../../assets/images/topo_article1.jpg'),
-        title: 'Cuidados com Doenças Cardiovasculares',
+        title: 'Doenças Cardiovasculares: Diretrizes de Prevenção',
         sections: [
           {
-            heading: 'Introdução',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed ac erat in quam facilisis tempor. Cras blandit mi a orci commodo, eget hendrerit dui blandit.',
+            heading: 'Impacto Epidemiológico',
+            text: 'Segundo a Sociedade Brasileira de Cardiologia (SBC), as doenças cardiovasculares (DCV) permanecem como a principal causa de mortalidade no Brasil. A hipertensão arterial sistêmica é o fator de risco mais prevalente. O controle da pressão arterial não é apenas uma medida corretiva, mas a única forma comprovada de evitar desfechos graves como o Acidente Vascular Cerebral (AVC) e o Infarto Agudo do Miocárdio.',
           },
           {
-            heading: 'Prevenção',
-            text: 'Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Integer euismod nisl et lorem ultrices, quis commodo nunc semper.',
+            heading: 'A Ciência da Mudança de Estilo de Vida',
+            text: 'Estudos clínicos demonstram que a adoção da dieta DASH (Dietary Approaches to Stop Hypertension), rica em frutas, vegetais e pobre em sódio, pode reduzir a pressão sistólica em até 11 mmHg. Além disso, a Organização Mundial da Saúde (OMS) recomenda 150 minutos de atividade física moderada por semana, o que comprovadamente melhora a função endotelial e reduz a resistência vascular periférica.',
           },
           {
-            heading: 'Tratamento',
-            text: 'Mauris commodo urna et sapien sollicitudin, in ultricies sem ullamcorper. Sed tincidunt, nibh non convallis tempus, metus libero dapibus magna, id faucibus sem.',
+            heading: 'Adesão Farmacológica',
+            text: 'A não adesão ao tratamento medicamentoso é considerada pela OMS um problema de saúde pública mundial. Em doenças assintomáticas ("silenciosas") como a hipertensão, o paciente tende a abandonar o tratamento ao se sentir bem. No entanto, as diretrizes enfatizam: a proteção cardiovascular depende da constância. A medicação atua prevenindo o remodelamento cardíaco e a aterosclerose a longo prazo.',
           },
           {
-            heading: 'Conclusão',
-            text: 'Cras in purus ac neque dignissim lobortis. Duis vitae eros vel orci dignissim dictum a sed mauris. Vivamus ac turpis a urna tincidunt gravida.',
+            heading: 'Conclusão Baseada em Evidências',
+            text: 'O tratamento cardiovascular moderno é multifatorial. A combinação de terapia medicamentosa otimizada com intervenções no estilo de vida reduz drasticamente a mortalidade. O empoderamento do paciente através do monitoramento contínuo é a ferramenta mais eficaz para o sucesso terapêutico.',
           },
         ],
       };
@@ -50,23 +49,23 @@ const ArticleDetailScreen = ({ route }: { route: ArticleDetailScreenRouteProp })
     case '2':
       article = {
         image: require('../../assets/images/topo_article2.png'),
-        title: 'Gerenciamento do Diabetes Tipo 2',
+        title: 'Manejo Clínico do Diabetes Tipo 2',
         sections: [
           {
-            heading: 'Introdução',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla facilisi. Praesent in justo nec lorem fermentum pellentesque.',
+            heading: 'Fisiopatologia e Metas',
+            text: 'O Diabetes Mellitus Tipo 2 (DM2) é caracterizado pela resistência à insulina e falência progressiva das células beta pancreáticas. Segundo a American Diabetes Association (ADA), o objetivo central do tratamento é manter a Hemoglobina Glicada (HbA1c) abaixo de 7% para a maioria dos adultos. Esse marcador reflete a média glicêmica dos últimos 3 meses e é o padrão-ouro para prever o risco de complicações microvasculares (retinopatia, nefropatia e neuropatia).',
           },
           {
-            heading: 'Controle Glicêmico',
-            text: 'In venenatis eros eget turpis molestie, et consequat ipsum consequat. Donec ut purus a turpis vulputate bibendum. Fusce vel semper lectus.',
+            heading: 'O Papel Crítico do Monitoramento',
+            text: 'A automonitorização da glicemia capilar é essencial para entender a variabilidade glicêmica. Estudos apontam que pacientes que monitoram e registram seus dados conseguem identificar padrões alimentares nocivos mais rapidamente. O conceito de "Tempo no Alvo" (Time in Range) tem ganhado destaque nas novas diretrizes, valorizando a estabilidade da glicose ao longo do dia, evitando picos (hiperglicemia) e vales (hipoglicemia).',
           },
           {
-            heading: 'Hábitos Saudáveis',
-            text: 'Phasellus auctor, odio nec fringilla pharetra, tortor neque dignissim velit, at sodales ex libero et libero. Quisque imperdiet libero ut felis auctor.',
+            heading: 'Intervenção Nutricional',
+            text: 'Não existe uma "dieta para diabéticos" única, mas sim padrões alimentares saudáveis. A redução de carboidratos simples e o aumento de fibras solúveis ajudam a diminuir o índice glicêmico das refeições. A perda de peso de 5% a 10% do peso corporal inicial é clinicamente significativa e capaz de melhorar a sensibilidade à insulina, conforme diretrizes da SBD.',
           },
           {
             heading: 'Conclusão',
-            text: 'Sed dictum dui a metus fermentum, at pulvinar est ullamcorper. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.',
+            text: 'O diabetes é uma condição crônica que exige autogestão ativa. A tecnologia e o registro de dados servem como bússola para o tratamento, permitindo que a equipe médica ajuste as terapias com precisão baseada em dados reais do paciente.',
           },
         ],
       };
@@ -74,23 +73,23 @@ const ArticleDetailScreen = ({ route }: { route: ArticleDetailScreenRouteProp })
     case '3':
       article = {
         image: require('../../assets/images/topo_article3.png'),
-        title: 'Desafios da Convivência: Diabetes e Doenças Cardiovasculares',
+        title: 'Risco Cardiovascular no Paciente Diabético',
         sections: [
           {
-            heading: 'Introdução',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus sollicitudin dui eget justo efficitur, vitae auctor lorem fermentum.',
+            heading: 'A Conexão Metabólica',
+            text: 'Existe uma relação intrínseca entre Diabetes e Doença Cardiovascular. Pacientes com DM2 possuem risco de 2 a 4 vezes maior de desenvolver eventos cardiovasculares. Isso ocorre porque a hiperglicemia crônica promove o estresse oxidativo e a inflamação do endotélio (parede dos vasos sanguíneos), acelerando o processo de aterosclerose (acúmulo de placas de gordura).',
           },
           {
-            heading: 'Desafios Cotidianos',
-            text: 'Suspendisse potenti. Quisque vitae turpis hendrerit, placerat urna ac, blandit lorem. Aliquam erat volutpat. Integer at cursus ligula.',
+            heading: 'Síndrome Metabólica',
+            text: 'Frequentemente, o diabetes não vem sozinho. Ele faz parte de um conjunto de condições conhecido como Síndrome Metabólica, que inclui hipertensão, dislipidemia (colesterol alto) e obesidade abdominal. As diretrizes atuais preconizam o tratamento agressivo não apenas da glicose, mas de todos esses fatores de risco simultaneamente para proteger o coração.',
           },
           {
-            heading: 'Estratégias de Gestão',
-            text: 'Aenean vel turpis id metus malesuada luctus. Fusce sed mauris sit amet elit tristique convallis. Nulla facilisi. In hac habitasse platea dictumst.',
+            heading: 'Estratégias de Proteção',
+            text: 'O controle rigoroso do LDL-colesterol e da pressão arterial é tão importante quanto o controle da glicose para o paciente diabético. Medicamentos modernos, como os inibidores de SGLT2 e agonistas de GLP-1, demonstraram em grandes ensaios clínicos (CVOTs) capacidade de reduzir mortalidade cardiovascular, independente da redução da glicemia, marcando uma nova era na cardio-diabetologia.',
           },
           {
-            heading: 'Conclusão',
-            text: 'Nam feugiat dolor et magna dignissim, vitae aliquam sem sagittis. Donec nec turpis at ligula fermentum consectetur. Integer vel tortor a velit laoreet convallis.',
+            heading: 'Mensagem Final',
+            text: 'A vigilância deve ser redobrada. O paciente informado entende que cuidar do diabetes é, primordialmente, cuidar da saúde vascular. A integração de dados de saúde e o acompanhamento multidisciplinar são a chave para a longevidade com qualidade.',
           },
         ],
       };
@@ -98,19 +97,11 @@ const ArticleDetailScreen = ({ route }: { route: ArticleDetailScreenRouteProp })
     default:
       article = {
         image: require('../../assets/images/diabetes-icon.png'),
-        title: 'Artigo Padrão',
+        title: 'Educação em Saúde',
         sections: [
           {
-            heading: 'Introdução',
-            text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut at lorem ac dolor tempor tempus.',
-          },
-          {
-            heading: 'Conteúdo',
-            text: 'Proin pharetra risus in sapien molestie, in suscipit metus tristique. Sed a justo vitae nisl elementum blandit.',
-          },
-          {
-            heading: 'Conclusão',
-            text: 'Curabitur sit amet mi et quam sodales fermentum. Mauris in libero non odio consequat convallis.',
+            heading: 'A Importância da Informação',
+            text: 'O acesso a informações baseadas em evidências científicas é o primeiro passo para o engajamento do paciente. A educação em saúde reduz internações e melhora a adesão ao tratamento.',
           },
         ],
       };
@@ -118,26 +109,24 @@ const ArticleDetailScreen = ({ route }: { route: ArticleDetailScreenRouteProp })
 
   return (
     <SafeAreaView style={styles.container}>
-      <ScrollView>
+      <ScrollView contentContainerStyle={styles.scrollContent}>
         <Image source={article.image} style={styles.headerImage} />
         <View style={styles.contentContainer}>
           <Text style={styles.title}>{article.title}</Text>
+          
+          {/* Tag de Validação Acadêmica */}
+          <View style={styles.validationBadge}>
+            <Text style={styles.validationText}>Conteúdo baseado nas diretrizes da SBC e SBD</Text>
+          </View>
+
           {article.sections.map((section, index) => (
             <View key={index} style={styles.sectionContainer}>
               <Text style={styles.sectionHeading}>{section.heading}</Text>
               <Text style={styles.sectionText}>{section.text}</Text>
             </View>
           ))}
-          {/* Seção de Gamificação */}
-          <View style={styles.gamificationContainer}>
-            <Text style={styles.gamificationTitle}>Desafios e Recompensas</Text>
-            <Text style={styles.gamificationText}>
-              Complete este artigo e quizzes para ganhar pontos e desbloquear novas conquistas!
-            </Text>
-            <TouchableOpacity style={styles.gamificationButton}>
-              <Text style={styles.gamificationButtonText}>Ver Desafios</Text>
-            </TouchableOpacity>
-          </View>
+          
+          <View style={{ height: 40 }} />
         </View>
       </ScrollView>
     </SafeAreaView>
@@ -147,76 +136,69 @@ const ArticleDetailScreen = ({ route }: { route: ArticleDetailScreenRouteProp })
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#F7F7F7', // Fundo claro
+    backgroundColor: '#F7F7F7',
+  },
+  scrollContent: {
+    flexGrow: 1,
   },
   headerImage: {
     width: '100%',
-    height: 200,
-    borderBottomLeftRadius: 20,
-    borderBottomRightRadius: 20,
-    overflow: 'hidden',
+    height: 220,
+    resizeMode: 'cover',
   },
   contentContainer: {
-    padding: 16,
-    marginTop: -20,
+    flex: 1,
+    padding: 24,
+    marginTop: -25,
     backgroundColor: '#fff',
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    paddingTop: 30,
+    borderTopLeftRadius: 30,
+    borderTopRightRadius: 30,
     shadowColor: '#000',
-    shadowOpacity: 0.1,
+    shadowOpacity: 0.15,
     shadowRadius: 10,
+    shadowOffset: { width: 0, height: -5 },
     elevation: 5,
   },
   title: {
-    fontSize: 28,
-    fontWeight: 'bold',
-    marginBottom: 20,
+    fontSize: 24,
+    fontFamily: 'Poppins-Bold',
+    marginBottom: 16,
     color: '#1F8E8A',
+    textAlign: 'left',
+    lineHeight: 30,
+  },
+  validationBadge: {
+    backgroundColor: '#E0F2F1',
+    paddingVertical: 8,
+    paddingHorizontal: 12,
+    borderRadius: 8,
+    marginBottom: 24,
+    borderLeftWidth: 4,
+    borderLeftColor: '#1F8E8A',
+  },
+  validationText: {
+    fontSize: 12,
+    color: '#00695C',
+    fontStyle: 'italic',
+    fontWeight: '600',
   },
   sectionContainer: {
-    marginBottom: 20,
+    marginBottom: 24,
   },
   sectionHeading: {
-    fontSize: 20,
-    fontWeight: '600',
-    marginBottom: 8,
-    color: '#333',
+    fontSize: 18,
+    fontFamily: 'Poppins-Bold', 
+    fontWeight: '700',
+    marginBottom: 10,
+    color: '#2C3E50',
+    letterSpacing: 0.3,
   },
   sectionText: {
-    fontSize: 16,
+    fontSize: 15,
     lineHeight: 24,
-    color: '#555',
-  },
-  gamificationContainer: {
-    backgroundColor: '#E6F7F5',
-    borderRadius: 15,
-    padding: 16,
-    marginTop: 30,
-    alignItems: 'center',
-  },
-  gamificationTitle: {
-    fontSize: 22,
-    fontWeight: 'bold',
-    color: '#1F8E8A',
-    marginBottom: 10,
-  },
-  gamificationText: {
-    fontSize: 16,
-    color: '#333',
-    textAlign: 'center',
-    marginBottom: 15,
-  },
-  gamificationButton: {
-    backgroundColor: '#1F8E8A',
-    paddingVertical: 10,
-    paddingHorizontal: 20,
-    borderRadius: 10,
-  },
-  gamificationButtonText: {
-    color: '#fff',
-    fontSize: 16,
-    fontWeight: 'bold',
+    color: '#4a5568',
+    textAlign: 'justify',
+    fontFamily: 'Poppins-Regular',
   },
 });
 

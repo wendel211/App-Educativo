@@ -10,7 +10,7 @@ import { useAuth } from '../../contexts/AuthContext';
 
 export const SettingsScreen: React.FC = () => {
   const navigation = useNavigation<any>();
-  const { logout, deleteAccount } = useAuth(); 
+  const { deleteAccount } = useAuth(); 
 
   const [registerReminder, setRegisterReminder] = useState(false);
   const [motivationReminder, setMotivationReminder] = useState(false);
@@ -88,14 +88,6 @@ export const SettingsScreen: React.FC = () => {
         }
       ]
     );
-  };
-
-  const handleLogout = async () => {
-    try {
-      await logout();
-    } catch (error) {
-      Alert.alert("Erro", "Não foi possível sair.");
-    }
   };
 
   return (
@@ -177,17 +169,6 @@ export const SettingsScreen: React.FC = () => {
         </TouchableOpacity>
       </View>
 
-      {/* Botão de Logout */}
-      <View style={{ padding: 24, paddingBottom: 50 }}>
-        <TouchableOpacity 
-          style={styles.logoutButton}
-          onPress={handleLogout}
-        >
-          <Feather name="log-out" size={20} color={colors.primary} />
-          <Text style={styles.logoutText}>Sair do Aplicativo</Text>
-        </TouchableOpacity>
-      </View>
-
     </ScrollView>
   );
 };
@@ -239,22 +220,6 @@ const styles = StyleSheet.create({
     fontFamily: 'Poppins-Bold',
     marginLeft: 10,
     fontSize: 14,
-  },
-  logoutButton: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 15,
-    borderWidth: 1,
-    borderColor: colors.primary,
-    borderRadius: 8,
-    marginTop: 10,
-  },
-  logoutText: {
-    color: colors.primary,
-    fontFamily: 'Poppins-Bold',
-    marginLeft: 10,
-    fontSize: 16,
   }
 });
 
