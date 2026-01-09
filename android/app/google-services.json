@@ -7,18 +7,26 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:197529378592:android:886dbd18da827138fd8145",
+        "mobilesdk_app_id": "1:197529378592:android:93f406dd6f5c7123fd8145",
         "android_client_info": {
-          "package_name": "com.anonymous.myapp"
+          "package_name": "com.wendel.educacarioplus"
         }
       },
       "oauth_client": [
         {
-          "client_id": "197529378592-artvpqkb10n21q64gm09f789euknaaop.apps.googleusercontent.com",
+          "client_id": "197529378592-54qm3br7km2iekepcb280oq0bkfkhpa7.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.anonymous.myapp",
+            "package_name": "com.wendel.educacarioplus",
             "certificate_hash": "25ee9a20e77dc9011f66d896fb6e81776355d8e5"
+          }
+        },
+        {
+          "client_id": "197529378592-q35lmjqo1mocaargg3eme95mv0p1tsb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.wendel.educacarioplus",
+            "certificate_hash": "5e8f16062ea3cd2c4a0d547876baa6f38cabf625"
           }
         },
         {

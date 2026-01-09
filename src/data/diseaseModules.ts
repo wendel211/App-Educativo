@@ -1,194 +1,184 @@
 export const diseaseModules = {
 
-  "1": {
+"1": {
     "name": "Insuficiência Cardíaca",
     "modules": [
       {
         "type": "learn",
-        "title": "O que é Insuficiência Cardíaca?",
+        "title": "Entendendo a Insuficiência Cardíaca",
         "content": [
-
           {
             "type": "paragraph",
-            "text": "A insuficiência cardíaca (IC) é uma síndrome clínica crônica em que o coração não consegue bombear sangue de maneira eficiente para atender às necessidades do corpo. Isso faz com que órgãos e tecidos fiquem com deficiência de oxigênio e nutrientes, resultando em sintomas como fadiga, falta de ar e retenção de líquidos."
-          },
-          {
-            "type": "image",
-            "src": "https://www.anahp.com.br/wp-content/uploads/2024/11/SDS-Nov24-Insuficiencia-cardiaca-Prevencao-BLOG.png",  // insira aqui a URL ou require da imagem
-            "alt": "Dado geral sobre insuficiência cardíaca"
-          },
-          {
-            "type": "subtitle",
-            "text": "🧠 Por que isso acontece?"
-          },
-          {
-            "type": "paragraph",
-            "text": "Diversas condições podem enfraquecer ou sobrecarregar o coração ao longo do tempo:"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Doença arterial coronariana / infarto (causa mais comum)",
-              "Hipertensão arterial crônica",
-              "Doenças das válvulas cardíacas",
-              "Cardiomiopatias (dilatada, hipertrófica)",
-              "Arritmias persistentes",
-              "Consumo excessivo de álcool ou drogas",
-              "Miocardites (inflamação do músculo cardíaco)"
-            ]
-          },
-          {
-            "type": "video",
-            "src": "https://www.youtube.com/watch?v=w0S7nMD1J-I&t=4113s"  // insira a URL do YouTube ou ID do player
+            "text": "A Insuficiência Cardíaca (IC) é definida pela Sociedade Brasileira de Cardiologia (SBC) como uma síndrome clínica complexa, na qual o coração perde a capacidade de bombear sangue de forma adequada para suprir as necessidades metabólicas do organismo."
           },
           {
             "type": "image",
             "src": "https://www.anahp.com.br/wp-content/uploads/2024/11/SDS-Nov24-Insuficiencia-cardiaca-Prevencao-BLOG.png",
-            "alt": "Anatomia alterada na insuficiência cardíaca"
+            "alt": "Comparação anatômica: Coração saudável vs. Coração dilatado (insuficiente)"
           },
           {
             "type": "subtitle",
-            "text": "Principais causas"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Hipertensão (até 90% dos casos)",
-              "Infarto do miocárdio (dano ao músculo cardíaco)",
-              "Doenças valvulares (obstrução ou sobrecarga)",
-              "Cardiomiopatias",
-              "Arritmias",
-              "Álcool / drogas",
-              "Miocardite vírica (ex.: COVID‑19)"
-            ]
-          },
-          {
-            "type": "subtitle",
-            "text": "Sintomas comuns"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Fadiga ou fraqueza até em leve esforço",
-              "Falta de ar ao deitar (ortopneia) ou ao esforço",
-              "Edema nos tornozelos, pernas ou abdômen",
-              "Tosse persistente, especialmente à noite",
-              "Palpitações (taquicardia ou ritmo irregular)",
-              "Ganho de peso, náuseas, concentração prejudicada"
-            ]
-          },
-          {
-            "type": "subtitle",
-            "text": "Diagnóstico"
-          },
-          {
-            "type": "list",
-            "items": [
-              "Anamnese e exame físico (sopros, crepitações, edemas)",
-              "Ecocardiograma (ultrassom do coração)",
-              "Eletrocardiograma (ECG)",
-              "Exames laboratoriais (BNP / NT‑proBNP)",
-              "Raio‑X de tórax"
-            ]
-          },
-          {
-            "type": "subtitle",
-            "text": "Tratamento e qualidade de vida"
+            "text": "🫀 O Mecanismo da Doença"
           },
           {
             "type": "paragraph",
-            "text": "O manejo da IC é multidisciplinar: mudanças no estilo de vida (redução de sal, atividade física, cessação de tabaco/álcool), medicamentos (IECA/BRAs, betabloqueadores, diuréticos, antagonistas da aldosterona, SGLT‑2) e procedimentos (ressincronização, marcapasso, VAD ou transplante). Reabilitação e monitoramento contínuo preservam a qualidade de vida."
+            "text": "Imagine o coração como uma bomba hidráulica. Na IC, essa bomba pode estar fraca (não ejeta sangue suficiente - IC com Fração de Ejeção Reduzida) ou rígida (não relaxa para encher - IC com Fração de Ejeção Preservada). O resultado é um 'engarrafamento' de sangue, causando acúmulo de líquidos nos pulmões (falta de ar) e pernas (inchaço)."
           },
           {
             "type": "subtitle",
-            "text": "Prevenção"
+            "text": "Principais Causas no Brasil"
           },
           {
             "type": "list",
             "items": [
-              "Controle da pressão arterial e glicemia",
-              "Alimentação saudável e atividade regular",
-              "Evitar tabagismo e consumo excessivo de álcool",
-              "Acompanhamento médico rotineiro"
+              "Doença Isquêmica (Pós-Infarto): A causa nº 1.",
+              "Hipertensão Arterial Sistêmica não controlada.",
+              "Doença de Chagas: Causa relevante específica do Brasil.",
+              "Valvopatias: Problemas nas válvulas (mitral/aórtica).",
+              "Cardiomiopatia Alcoólica ou induzida por drogas."
             ]
+          },
+          {
+            "type": "subtitle",
+            "text": "📺 Vídeo Explicativo (Insuficiência Cardíaca: Classificação, Diagnóstico e Fisiopatologia)"
+          },
+          {
+            "type": "paragraph",
+            "text": "Assista a esta explicação visual sobre como a doença afeta o bombeamento sanguíneo e o impacto no dia a dia:"
+          },
+          {
+            "type": "video",
+            "src": "https://www.youtube.com/watch?v=yIpXxwin64Q"
+          },
+          {
+            "type": "subtitle",
+            "text": "Sinais de Alerta (Descompensação)"
+          },
+          {
+            "type": "paragraph",
+            "text": "O paciente deve procurar ajuda imediata se notar os sinais de que o coração está descompensando:"
+          },
+          {
+            "type": "list",
+            "items": [
+              "Ortopneia: Falta de ar imediata ao se deitar reto na cama.",
+              "Ganho de Peso Súbito: Aumento de >2kg em 3 dias (sinal de retenção hídrica, não gordura).",
+              "Edema Progressivo: Inchaço que sobe dos tornozelos para as pernas.",
+              "Fadiga Extrema: Cansaço ao realizar atividades simples como tomar banho."
+            ]
+          },
+          {
+            "type": "subtitle",
+            "text": "Diagnóstico Padrão-Ouro"
+          },
+          {
+            "type": "paragraph",
+            "text": "O principal exame é o Ecocardiograma, que mede a 'Fração de Ejeção' (porcentagem de sangue que sai do coração a cada batida). Exames de sangue como o BNP também são usados para avaliar a gravidade."
           }
         ],
         "references": [
-          "https://pt.wikipedia.org/wiki/Insufici%C3%AAncia_card%C3%ADaca",
-          "https://www.mayoclinic.org/diseases-conditions/heart-failure/symptoms-causes",
-          "https://www.msdmanuals.com/pt/casa/distúrbios-do-coração-e-dos-vasos-sanguíneos/insufici%C3%AAncia-cardiaca/insufici%C3%AAncia-cardiaca-ic"
+          "http://publicacoes.cardiol.br/portal/abc/portugues/2018/v11103/pdf/11103021.pdf",
+          "https://www.scielo.br/j/abc/a/JFxSh5bVmzSnvxYMsF3P5kd/",
+          "Heidenreich PA, Bozkurt B, Aguilar D, et al. 2022 AHA/ACC/HFSA Guideline for the Management of Heart Failure. Circulation. 2022;145(18):e895-e1032. DOI: 10.1161/CIR.0000000000001063"
         ]
       },
-
       {
-  "type": "quiz",
-  "title": "Teste seus conhecimentos sobre Insuficiência Cardíaca",
-  "questions": [
-    {
-      "question": "Qual é a causa mais comum de insuficiência cardíaca?",
-      "options": ["Cardiomiopatia", "Hipertensão arterial", "Infecção viral"],
-      "correctAnswer": "Hipertensão arterial"
-    },
-    {
-      "question": "O que caracteriza a insuficiência cardíaca congestiva?",
-      "options": ["Diminuição da frequência respiratória", "Acúmulo de líquidos nos tecidos", "Redução do apetite"],
-      "correctAnswer": "Acúmulo de líquidos nos tecidos"
-    },
-    {
-      "question": "Qual exame é fundamental para avaliar fração de ejeção do coração?",
-      "options": ["Raio‑X de tórax", "Ecocardiograma", "Eletroencefalograma"],
-      "correctAnswer": "Ecocardiograma"
-    },
-    {
-      "question": "Qual sintoma é típico na insuficiência cardíaca esquerda?",
-      "options": ["Edema nos membros inferiores", "Fadiga", "Falta de ar ao deitar"],
-      "correctAnswer": "Falta de ar ao deitar"
-    },
-    {
-      "question": "Por que diuréticos são usados na insuficiência cardíaca?",
-      "options": ["Aumentar peso corporal", "Reduzir retenção de líquidos", "Elevar a pressão arterial"],
-      "correctAnswer": "Reduzir retenção de líquidos"
-    },
-    {
-      "question": "Qual desses NÃO é um sintoma comum de insuficiência cardíaca?",
-      "options": ["Tosse persistente", "Palpitações", "Visão turva"],
-      "correctAnswer": "Visão turva"
-    },
-    {
-      "question": "Arritmias podem ser uma causa de insuficiência cardíaca?",
-      "options": ["Sim", "Não", "Somente se for grave"],
-      "correctAnswer": "Sim"
-    },
-    {
-      "question": "A hipertensão não controlada pode levar à IC?",
-      "options": ["Sim", "Somente em idosos", "Não"],
-      "correctAnswer": "Sim"
-    }
-  ]
-},
-{
-  "type": "habits",
-  "title": "Hábitos Recomendados para IC",
-  "checklist": [
-    "Reduzir consumo de sódio (≤ 3g/dia) para controlar a retenção de líquidos e pressão arterial",
-    "Praticar atividade física leve a moderada (ex: caminhar) pelo menos 150min/semana",
-    "Evitar consumo de álcool e parar de fumar para proteger os vasos e função cardíaca",
-    "Controlar o peso diariamente e reportar ganho súbito (≥2kg em poucos dias)",
-    "Manter hidratação adequada, mas restringir líquidos se indicado (ex: <1,5–2L/dia)",
-    "Fazer check-ups regulares incluindo avaliação de sinais e exames complementares",
-    "Adotar dieta com frutas, verduras, grãos integrais, proteínas magras — estilo DASH/Mediterrânea",
-    "Gerenciar o estresse, priorizar um sono reparador e tratar apneia do sono se presente"
-  ],
-  "notes": [
-    "Recomendações baseadas em diretrizes da AHA/ACC/HFSA 2022 e revisão da NCBI: restrição moderada de sal, exercício, cessação do tabaco e álcool são pilares do cuidado não medicamentoso :contentReference[oaicite:1]{index=1}",
-    "Monitoramento diário do peso é recomendável para prevenir descompensações :contentReference[oaicite:2]{index=2}",
-    "Dietas estilo DASH ou Mediterrânea associadas à redução de hospitalizações por IC :contentReference[oaicite:3]{index=3}",
-    "Atividade física regular melhora capacidade funcional, qualidade de vida e reduz risco de eventos cardíacos :contentReference[oaicite:4]{index=4}",
-    "Tratamento da apneia do sono e controle de estresse contribuem para melhor prognóstico :contentReference[oaicite:5]{index=5}"
-      ]
-     }
+        "type": "quiz",
+        "title": "Quiz de Fixação: Insuficiência Cardíaca",
+        "questions": [
+          {
+            "question": "Qual é a definição básica de Insuficiência Cardíaca?",
+            "options": [
+              "O coração bate rápido demais o tempo todo",
+              "O coração perde a capacidade de bombear sangue adequadamente",
+              "O coração para de bater subitamente"
+            ],
+            "correctAnswer": "O coração perde a capacidade de bombear sangue adequadamente"
+          },
+          {
+            "question": "Além do infarto e da pressão alta, qual doença é citada como causa relevante e específica no Brasil?",
+            "options": [
+              "Malária",
+              "Doença de Chagas",
+              "Febre Amarela"
+            ],
+            "correctAnswer": "Doença de Chagas"
+          },
+          {
+            "question": "O que caracteriza o sintoma de 'Ortopneia'?",
+            "options": [
+              "Falta de ar ao se deitar reto na cama",
+              "Dor no peito ao caminhar",
+              "Tontura ao se levantar rápido"
+            ],
+            "correctAnswer": "Falta de ar ao se deitar reto na cama"
+          },
+          {
+            "question": "Qual ganho de peso é considerado um sinal de alerta para buscar ajuda?",
+            "options": [
+              "1kg em um mês",
+              "Mais de 2kg em 3 dias",
+              "500g em uma semana"
+            ],
+            "correctAnswer": "Mais de 2kg em 3 dias"
+          },
+          {
+            "question": "Por que o peso aumenta tão rápido na descompensação da IC?",
+            "options": [
+              "Acúmulo de gordura por falta de exercícios",
+              "Retenção de líquidos (inchaço) no corpo",
+              "Aumento da massa muscular"
+            ],
+            "correctAnswer": "Retenção de líquidos (inchaço) no corpo"
+          },
+          {
+            "question": "Qual é o exame 'padrão-ouro' para avaliar a Fração de Ejeção do coração?",
+            "options": [
+              "Eletrocardiograma simples",
+              "Ecocardiograma",
+              "Raio-X de Tórax"
+            ],
+            "correctAnswer": "Ecocardiograma"
+          },
+          {
+            "question": "Qual a recomendação de consumo de sal (sódio) para pacientes com IC?",
+            "options": [
+              "Cortar o sal totalmente (0g)",
+              "Limitar a 2-3g por dia e evitar embutidos",
+              "Comer normalmente para manter a pressão"
+            ],
+            "correctAnswer": "Limitar a 2-3g por dia e evitar embutidos"
+          },
+          {
+            "question": "A medicação para IC deve ser suspensa quando o paciente se sente bem?",
+            "options": [
+              "Sim, para evitar efeitos colaterais",
+              "Não, o uso contínuo impede que o coração cresça e descompense",
+              "Sim, deve-se tomar apenas quando sentir falta de ar"
+            ],
+            "correctAnswer": "Não, o uso contínuo impede que o coração cresça e descompense"
+          }
+        ]
+      },
+      {
+        "type": "habits",
+        "title": "Protocolo de Autocuidado (SBC)",
+        "checklist": [
+          "Monitoramento de Peso: Pesar-se todos os dias pela manhã, em jejum, após urinar e anotar.",
+          "Controle de Sódio: Limitar o sal a 2-3g por dia (evitar saleiro à mesa e embutidos).",
+          "Controle Hídrico: Restringir ingestão de líquidos para 1.5L a 2L/dia (se orientado pelo médico).",
+          "Adesão Medicamentosa: Tomar as medicações (Beta-bloqueadores/IECAs) rigorosamente, pois elas impedem que o coração cresça.",
+          "Vacinação: Manter vacinas de Influenza e Pneumococo em dia (infecções pulmonares descompensam a IC).",
+          "Sinais de Alerta: Procurar emergência se acordar afogado no meio da noite (Dispneia Paroxística)."
+        ],
+        "notes": [
+          "Evidência Nível A: O suporte multiprofissional e o autocuidado reduzem re-hospitalizações em até 30% (Diretriz SBC).",
+          "O ganho de peso súbito é o sinal mais precoce de descompensação, aparecendo antes mesmo da falta de ar grave.",
+          "A restrição de sódio é fundamental para evitar que o corpo retenha água, o que 'afoga' o coração fraco."
+        ]
+      }
     ]
- },
+  },
 
 // MODULO 2
 
@@ -197,156 +187,125 @@ export const diseaseModules = {
   "modules": [
     {
       "type": "learn",
-      "title": "O que são Doenças Cardíacas Congênitas?",
+      "title": "Entendendo as Cardiopatias Congênitas",
       "content": [
         {
           "type": "paragraph",
-          "text": "Doenças Cardíacas Congênitas (DCC) são defeitos na estrutura do coração ou grandes vasos presentes desde o nascimento, resultantes de má-formação durante o desenvolvimento fetal."
-        },
-        {
-          "type": "subtitle",
-          "text": "🧠 Por que acontecem?"
-        },
-        {
-          "type": "paragraph",
-          "text": "As principais causas incluem fatores genéticos, exposições maternas durante a gravidez (infecções, medicamentos, toxinas) e alterações cromossômicas."
-        },
-        {
-          "type": "list",
-          "items": [
-            "Síndromes genéticas (ex.: Síndrome de Down)",
-            "Exposição a drogas ou álcool pela gestante",
-            "Infecções maternas (rubéola, citomegalovírus)",
-            "Deficiências nutricionais (folato)",
-            "Fatores ambientais e idiopáticos"
-          ]
+          "text": "As Doenças Cardíacas Congênitas (DCC) são anormalidades na estrutura do coração ou dos grandes vasos que ocorrem enquanto o feto ainda está se desenvolvendo no útero. É a má-formação congênita mais comum, afetando cerca de 1 em cada 100 nascidos vivos no Brasil, segundo a Sociedade Brasileira de Cardiologia Pediátrica."
         },
         {
           "type": "image",
-          "src": "https://www.example.com/images/cc_infantil_anatomia.png",
-          "alt": "Tipos comuns de defeitos cardíacos congênitos"
+          "src": "https://drlucasotaviano.com.br/wp-content/uploads/2023/02/CIV1-e1677506802217.png", 
+          "alt": "Ilustração: Coração Normal vs. Coração com CIV (Comunicação Interventricular)"
         },
         {
           "type": "subtitle",
-          "text": "Classificação"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Acyanóticas (ex.: Comunicação Interatrial, Comunicação Interventricular)",
-            "Cianóticas (ex.: Tetralogia de Fallot, Transposição de Grandes Vasos)",
-            "Obstrutivas (ex.: Coarctação da Aorta)"
-          ]
-        },
-        {
-          "type": "subtitle",
-          "text": "Sintomas e sinais"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Cianose (pele azulada)",
-            "Fadiga e intolerância ao esforço",
-            "Sopro cardíaco audível ao estetoscópio",
-            "Falha de ganho de peso em bebês",
-            "Taquipneia ou dificuldade para mamar"
-          ]
-        },
-        {
-          "type": "subtitle",
-          "text": "Diagnóstico"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Ecocardiograma fetal ou pós-natal",
-            "Radiografia de tórax",
-            "Eletrocardiograma (ECG)",
-            "Cateterismo cardíaco (em casos selecionados)"
-          ]
-        },
-        {
-          "type": "subtitle",
-          "text": "Tratamento"
+          "text": "👶 O Teste do Coraçãozinho"
         },
         {
           "type": "paragraph",
-          "text": "Pode variar de acompanhamento clínico até intervenções invasivas:"
+          "text": "No Brasil, é obrigatória a realização da Oximetria de Pulso (Teste do Coraçãozinho) entre 24h e 48h de vida. Esse exame simples e indolor mede o nível de oxigênio no sangue do bebê e é vital para detectar cardiopatias críticas antes da alta da maternidade."
+        },
+        {
+          "type": "subtitle",
+          "text": "Classificação Simplificada"
         },
         {
           "type": "list",
           "items": [
-            "Medicações para controlar sintomas e prevenir infecções",
-            "Cateterismo cardíaco intervencionista (fechamento de defeitos)",
-            "Cirurgia corretiva ou paliativa",
-            "Transplante cardíaco em casos complexos"
+            "Cianóticas (Bebê Roxo): O sangue pobre em oxigênio se mistura com o rico e vai para o corpo (Ex: Tetralogia de Fallot).",
+            "Acianóticas (Bebê Rosado): Há desvio de sangue, mas a oxigenação se mantém (Ex: CIA, CIV, PCA).",
+            "Obstrutivas: Há um bloqueio na passagem do sangue (Ex: Estenose Aórtica, Coarctação)."
           ]
         },
         {
           "type": "subtitle",
-          "text": "Prevenção e acompanhamento"
+          "text": "📺 Vídeo Explicativo Cardiopatias Congênitas | PEDIATRIA"
+        },
+        {
+          "type": "paragraph",
+          "text": "Assista a esta explicação sobre os tipos mais comuns e a importância do diagnóstico precoce:"
+        },
+        {
+          "type": "video",
+          "src": "https://www.youtube.com/watch?v=axS3-_XKvaI" 
+        },
+        {
+          "type": "subtitle",
+          "text": "Fatores de Risco Materno-Fetais"
         },
         {
           "type": "list",
           "items": [
-            "Suplementação de ácido fólico antes e durante a gestação",
-            "Vacinação materna (rubéola)",
-            "Rastreamento pré-natal por ultrassom",
-            "Acompanhamento com cardiologista pediátrico"
+            "Infecções maternas (Rubéola, Citomegalovírus)",
+            "Uso de medicações (Lítio, Anticonvulsivantes) na gestação",
+            "Diabetes Gestacional não controlado",
+            "Consumo de álcool/tabaco",
+            "Síndromes Genéticas (Down, Turner, Williams)"
           ]
+        },
+        {
+          "type": "subtitle",
+          "text": "Cardiopatia Congênita no Adulto (GUCH)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Graças aos avanços cirúrgicos, mais de 90% das crianças sobrevivem até a idade adulta. O paciente GUCH (Grown-Up Congenital Heart) precisa de acompanhamento vitalício, pois podem surgir arritmias ou insuficiência cardíaca tardia."
         }
       ],
       "references": [
-        "https://pt.wikipedia.org/wiki/Doen%C3%A7as_card%C3%ADacas_cong%C3%AAnitas",
-        "https://www.heart.org/pt-br/health-topics/congenital-heart-defects",
-        "https://www.msdmanuals.com/pt/casa/distúrbios-do-coração-e-dos-vasos-sanguíneos/doenças-cardíacas-congênitas"
-      ]
+        "Departamento de Cardiopatias Congênitas e Cardiologia Pediátrica - SBC. Livro de Cardiopatias Congênitas e Cardiologia Pediátrica, 2023. Disponível em: https://makadu.live/packages/uploads/2023/07/Livro-DCCCP-2023.pdf",
+        "Sociedade Brasileira de Pediatria. Sistematização do atendimento ao recém-nascido com suspeita ou diagnóstico de cardiopatia congênita. Departamento Científico de Cardiologia e Neonatologia, 2019-2021. Disponível em: https://www.sbp.com.br/fileadmin/user_upload/23544c-MO_Sistemat_atend_RN_cSuspeita_CardCongenita.pdf",
+        "Magalhães LP, Guimarães ICB, Melo SL, et al. Diretriz de Arritmias Cardíacas em Crianças e Cardiopatias Congênitas SOBRAC e DCC-CP. Arq Bras Cardiol. 2016;107(1Supl.3):1-58. DOI: 10.5935/abc.20160103"
+        ]
     },
     {
       "type": "quiz",
-      "title": "Teste seus conhecimentos sobre DCC",
+      "title": "Quiz: Cardiopatias e Cuidados",
       "questions": [
         {
-          "question": "O que caracteriza uma doença cardíaca congênita cianótica?",
-          "options": ["Falha de ganho de peso", "Sopro audível", "Cianose sistêmica"],
-          "correctAnswer": "Cianose sistêmica"
+          "question": "Qual é o exame obrigatório na maternidade para detectar cardiopatias críticas?",
+          "options": ["Teste do Pezinho", "Teste do Coraçãozinho (Oximetria)", "Teste da Orelhinha"],
+          "correctAnswer": "Teste do Coraçãozinho (Oximetria)"
         },
         {
-          "question": "Qual defeito é classificado como acianótico?",
-          "options": ["Tetralogia de Fallot", "Comunicação Interventricular", "Transposição de Grandes Vasos"],
-          "correctAnswer": "Comunicação Interventricular"
+          "question": "O que caracteriza uma cardiopatia 'Cianótica'?",
+          "options": ["O bebê fica muito pálido", "O bebê apresenta cor arroxeada (falta de oxigênio)", "O bebê tem febre constante"],
+          "correctAnswer": "O bebê apresenta cor arroxeada (falta de oxigênio)"
         },
         {
-          "question": "Qual exame é padrão-ouro para diagnóstico pré-natal?",
-          "options": ["Raio-X de tórax", "Ecocardiograma fetal", "Cateterismo cardíaco"],
-          "correctAnswer": "Ecocardiograma fetal"
+          "question": "Qual vitamina a gestante deve tomar para prevenir má-formações?",
+          "options": ["Vitamina C", "Ácido Fólico", "Ferro apenas"],
+          "correctAnswer": "Ácido Fólico"
         },
         {
-          "question": "A suplementação de qual substância previne DCC?",
-          "options": ["Vitamina C", "Ácido fólico", "Cálcio"],
-          "correctAnswer": "Ácido fólico"
+          "question": "Uma criança operada do coração está curada para sempre?",
+          "options": ["Sim, não precisa mais de médico", "Não, precisa de acompanhamento por toda a vida", "Depende da idade"],
+          "correctAnswer": "Não, precisa de acompanhamento por toda a vida"
         },
         {
-          "question": "Um dos tratamentos não invasivos é:",
-          "options": ["Cirurgia cardíaca", "Cateterismo intervencionista", "Transplante cardíaco"],
-          "correctAnswer": "Cateterismo intervencionista"
+          "question": "Qual doença materna não controlada aumenta o risco de cardiopatia no bebê?",
+          "options": ["Gastrite", "Diabetes", "Rinite"],
+          "correctAnswer": "Diabetes"
         }
       ]
     },
     {
       "type": "habits",
-      "title": "Recomendações para Gestantes",
+      "title": "Prevenção e Cuidados (Gestante e Família)",
       "checklist": [
-        "Tomar ácido fólico diariamente (0,4–0,8 mg) antes de engravidar e no primeiro trimestre",
-        "Manter todas as vacinas em dia, especialmente contra rubéola",
-        "Evitar consumo de álcool, tabaco e substâncias teratogênicas",
-        "Realizar pré-natais regulares com avaliação ecocardiográfica fetal quando indicado",
-        "Adotar alimentação balanceada e atividade física leve conforme orientação médica"
+        "Suplementação Pré-Concepcional: Iniciar Ácido Fólico 3 meses antes de engravidar.",
+        "Controle Rigoroso: Se a mãe é diabética ou hipertensa, estabilizar a doença antes da concepção.",
+        "Vacinação: Garantir imunidade contra Rubéola antes da gravidez (não pode vacinar gestante).",
+        "Ultrassom Morfológico: Realizar entre 20-24 semanas para avaliar as 4 câmaras cardíacas do feto.",
+        "Ecocardiograma Fetal: Indicado se houver suspeita no ultrassom ou histórico familiar.",
+        "Saúde Bucal: Manter dentes saudáveis na criança cardiopata para evitar Endocardite (infecção no coração).",
+        "Atividade Física: Incentivar exercícios conforme liberação do cardiologista pediátrico."
       ],
       "notes": [
-        "Ácido fólico reduz em até 70% o risco de defeitos no tubo neural e auxilia na prevenção de DCC:หลักcite[1]",
-        "Vacinação contra rubéola é essencial para prevenir complicações cardíacas congênitas:หลักcite[2]",
-        "Exposição a álcool e tabaco correlaciona-se ao aumento de malformações fetais incluindo DCC:หลักcite[3]"
+        "O Ácido Fólico reduz defeitos do tubo neural e do coração. Fonte: FEBRASGO.",
+        "A Endocardite Infecciosa é um risco real: bactérias da boca podem migrar para o coração defeituoso. A higiene oral é prevenção cardíaca.",
+        "O acompanhamento psicológico é fundamental para a criança e família lidarem com cicatrizes e limitações."
       ]
     }
   ]
@@ -355,210 +314,138 @@ export const diseaseModules = {
 // MODULO 3
 
 "3": {
-  "name": "Doenças das Valvas Cardíacas",
+  "name": "Hipertensão Arterial",
   "modules": [
     {
       "type": "learn",
-      "title": "O que são Doenças das Valvas Cardíacas?",
+      "title": "Hipertensão: Fisiopatologia e Impacto",
       "content": [
         {
           "type": "paragraph",
-          "text": "As doenças valvares cardíacas envolvem alterações na estrutura ou função das válvulas que regulam o fluxo sanguíneo unidirecional pelo coração. Podem causar estenose (estreitamento) ou regurgitação (vazamento) e levar a sintomas variados conforme o grau de disfunção."
-        },
-        {
-          "type": "subtitle",
-          "text": "🫀 Anatomia e função das válvulas"
-        },
-        {
-          "type": "paragraph",
-          "text": "O coração possui quatro válvulas principais: mitral e tricúspide (que controlam o fluxo entre átrios e ventrículos) e aórtica e pulmonar (que regulam a saída do sangue aos grandes vasos). Elas abrem e fecham em sincronia com o ciclo cardíaco."
+          "text": "A Hipertensão Arterial Sistêmica (HAS) é uma condição clínica multifatorial caracterizada pela elevação sustentada dos níveis pressóricos ≥ 140 x 90 mmHg. Fisiologicamente, ela representa o aumento da resistência que os vasos sanguíneos oferecem à passagem do sangue, obrigando o coração a exercer uma força excessiva. Segundo a 7ª Diretriz Brasileira de Hipertensão (SBC), ela é o principal fator de risco modificável para morbimortalidade cardiovascular no Brasil."
         },
         {
           "type": "image",
-          "src": "https://www.example.com/images/anatomia_valvas_cardiacas.png",
-          "alt": "Diagrama das quatro válvulas cardíacas"
+          "src": "https://bvsms.saude.gov.br/wp-content/uploads/2022/03/Dica-Aterosclerose.png", 
+          "alt": "Ilustração comparativa: Artéria saudável (flexível) vs. Artéria hipertensa (rígida e estreitada)"
         },
         {
           "type": "subtitle",
-          "text": "Tipos de disfunção valvar"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Estenose – abertura reduzida da válvula, aumentando a pós-carga.",
-            "Regurgitação (insuficiência) – fechamento incompleto, causando refluxo de sangue."
-          ]
-        },
-        {
-          "type": "subtitle",
-          "text": "Principais causas"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Doença reumática (pós-infecção por Streptococcus)",
-            "Degeneração calcificada (idosos)",
-            "Congênita (ex.: válvula bicúspide aórtica)",
-            "Endocardite infecciosa",
-            "Lúpus e outras doenças autoimunes"
-          ]
-        },
-        {
-          "type": "subtitle",
-          "text": "Sintomas comuns"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Fadiga e intolerância ao esforço",
-            "Dispneia de esforço ou ortopneia",
-            "Síncope (em estenose aórtica avançada)",
-            "Palpitações ou palpitação com sensação de batimento irregular",
-            "Edema de membros inferiores (insuficiência tricúspide)",
-            "Dor ou desconforto no peito"
-          ]
-        },
-        {
-          "type": "subtitle",
-          "text": "Diagnóstico"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Ausculta cardíaca (sopros característicos)",
-            "Ecocardiograma transtorácico ou transesofágico",
-            "Radiografia de tórax (câmaras cardíacas dilatadas)",
-            "Cateterismo cardíaco (em casos selecionados)",
-            "Resonância magnética cardíaca – avaliação anatômica complementar"
-          ]
-        },
-        {
-          "type": "subtitle",
-          "text": "Tratamento"
+          "text": "🤫 A Natureza Assintomática ('Silenciosa')"
         },
         {
           "type": "paragraph",
-          "text": "O manejo depende da gravidade e do tipo de disfunção:"
+          "text": "A alcunha de 'Inimigo Silencioso' deve-se ao fato de que o organismo cria mecanismos de adaptação à pressão alta. Dores de cabeça (cefaleia occipital), tonturas ou 'sangramento pelo nariz' geralmente só ocorrem em crises hipertensivas graves. Enquanto o paciente se sente 'bem', a pressão elevada causa microlesões contínuas no endotélio (parede interna dos vasos), levando à Lesão de Órgãos-Alvo (LOA): hipertrofia do coração, insuficiência renal crônica e danos à retina."
+        },
+        {
+          "type": "subtitle",
+          "text": "📺 Mecanismos: Sal, Estresse e Vasoconstrição"
+        },
+        {
+          "type": "paragraph",
+          "text": "O excesso de sódio retém volume líquido nos vasos, enquanto o estresse libera hormônios (como adrenalina) que contraem as artérias. Entenda essa dinâmica com o Dr. Drauzio Varella:"
+        },
+        {
+          "type": "video",
+          "src": "https://www.youtube.com/watch?v=kQzjuE4vPy4" 
+        },
+        {
+          "type": "subtitle",
+          "text": "Intervenção Nutricional: Dieta DASH"
+        },
+        {
+          "type": "paragraph",
+          "text": "A dieta DASH (Dietary Approaches to Stop Hypertension) é a recomendação padrão-ouro. Ela não se limita à restrição de sódio (< 2g/dia), mas enfatiza a ingestão de nutrientes vasodilatadores:"
         },
         {
           "type": "list",
           "items": [
-            "Medidas clínicas: redução de sobrecarga volêmica, controle de arritmias",
-            "Reparo valvar cirúrgico (sempre que possível)",
-            "Substituição valvar (biológica ou mecânica)",
-            "Intervenções percutâneas: TAVI para estenose aórtica, MitraClip para regurgitação mitral",
-            "Profilaxia de endocardite em procedimentos de risco"
+            "Potássio (Banana, Batata, Água de Coco): Estimula a excreção de sódio pelos rins.",
+            "Magnésio (Vegetais Verdes Escuros, Nozes): Promove o relaxamento da musculatura dos vasos.",
+            "Cálcio (Laticínios magros): Essencial para a regulação da contração vascular.",
+            "Fibras: Reduzem a absorção de gorduras e melhoram a saúde vascular."
           ]
         },
         {
           "type": "subtitle",
-          "text": "Prevenção e acompanhamento"
+          "text": "Protocolo Técnico de Medição (MRPA)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Para evitar diagnósticos falsos (como a Hipertensão do Avental Branco), a medição residencial deve seguir rigorosamente o protocolo da SBC:"
         },
         {
           "type": "list",
           "items": [
-            "Tratamento adequado de infecções estreptocócicas",
-            "Acompanhamento ecocardiográfico semestral ou anual",
-            "Profilaxia antibiótica em procedimentos dentários invasivos",
-            "Controle de fatores de risco cardiovascular (hipertensão, dislipidemia)",
-            "Vacinação antigripal e antipneumocócica"
+            "Repouso Prévio: Permanecer sentado por pelo menos 5 minutos em ambiente calmo.",
+            "Posicionamento: Costas apoiadas na cadeira, pernas descruzadas e pés no chão.",
+            "Braço Correto: Apoiado na altura do átrio direito (nível do coração), palma da mão para cima.",
+            "Preparo: Bexiga vazia (a distensão vesical eleva a PA) e evitar café/cigarro 30min antes.",
+            "Silêncio: Não conversar durante a insuflação do aparelho."
           ]
-        },
-        {
-          "type": "video",
-          "src": "https://www.youtube.com/watch?v=ZKTFfYH7u2c",
-          "alt": "Vídeo explicativo sobre doenças valvares"
         }
       ],
       "references": [
-        "https://pt.wikipedia.org/wiki/Doen%C3%A7as_valvares",
-        "https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Valvular-Heart-Disease",
-        "https://www.mayoclinic.org/pt-br/diseases-conditions/heart-valve-disease/symptoms-causes"
+        "http://departamentos.cardiol.br/sbc-dha/profissional/pdf/Diretriz-HAS-2020.pdf",
+        " Diretrizes Brasileiras de Hipertensão Arterial 2020. DOI: 10.36660/abc.20201238",
+        "Whelton PK, Carey RM, Aronow WS, et al. 2017 ACC/AHA/AAPA/ABC/ACPM/AGS/APhA/ASH/ASPC/NMA/PCNA Guideline for the Prevention, Detection, Evaluation, and Management of High Blood Pressure in Adults. J Am Coll Cardiol. 2018;71(19):e127-e248"
       ]
     },
     {
       "type": "quiz",
-      "title": "Teste seus conhecimentos sobre Doenças Valvares",
+      "title": "Quiz Completo: Controle da Pressão",
       "questions": [
         {
-          "question": "Qual é a função principal das válvulas cardíacas?",
-          "options": [
-            "Regular a frequência cardíaca",
-            "Garantir o fluxo unidirecional do sangue",
-            "Produzir hormônios cardíacos"
-          ],
-          "correctAnswer": "Garantir o fluxo unidirecional do sangue"
+          "question": "A partir de qual valor a pressão é considerada alta (Hipertensão Estágio 1)?",
+          "options": ["120/80 mmHg", "130/85 mmHg", "140/90 mmHg (14 por 9) ou superior"],
+          "correctAnswer": "140/90 mmHg (14 por 9) ou superior"
         },
         {
-          "question": "O que caracteriza estenose valvar?",
-          "options": [
-            "Válvula com fechamento incompleto",
-            "Abertura reduzida da válvula",
-            "Espessamento do músculo cardíaco"
-          ],
-          "correctAnswer": "Abertura reduzida da válvula"
+          "question": "Posso suspender o medicamento se minha pressão estiver normal há uma semana?",
+          "options": ["Sim, significa cura", "Não, a normalização é efeito do remédio; suspender causará efeito rebote", "Sim, posso tomar dia sim, dia não"],
+          "correctAnswer": "Não, a normalização é efeito do remédio; suspender causará efeito rebote"
         },
         {
-          "question": "Qual tipo de disfunção valvar causa refluxo sanguíneo?",
-          "options": ["Estenose", "Regurgitação", "Calcificação"],
-          "correctAnswer": "Regurgitação"
+          "question": "Qual nutriente é um aliado fisiológico na redução da pressão arterial?",
+          "options": ["Sódio", "Gordura Saturada", "Potássio (presente em frutas e vegetais)"],
+          "correctAnswer": "Potássio (presente em frutas e vegetais)"
         },
         {
-          "question": "A doença reumática afeta mais frequentemente qual válvula?",
-          "options": ["Aórtica", "Mitral", "Pulmonar"],
-          "correctAnswer": "Mitral"
+          "question": "Ao medir a pressão em casa, qual erro é mais comum e altera o resultado?",
+          "options": ["Estar com bexiga vazia", "Conversar ou cruzar as pernas durante a medição", "Apoiar as costas"],
+          "correctAnswer": "Conversar ou cruzar as pernas durante a medição"
         },
         {
-          "question": "Sintoma clássico de estenose aórtica severa é:",
-          "options": ["Síncope ao esforço", "Edema periférico", "Tosse crônica"],
-          "correctAnswer": "Síncope ao esforço"
+          "question": "O que caracteriza a 'Hipertensão do Avental Branco'?",
+          "options": ["Elevação tensional apenas no consultório médico devido à resposta de estresse", "Pressão baixa constante", "Reação alérgica a hospitais"],
+          "correctAnswer": "Elevação tensional apenas no consultório médico devido à resposta de estresse"
         },
         {
-          "question": "Exame padrão-ouro para avaliação anatômica valvar é:",
-          "options": [
-            "Radiografia de tórax",
-            "Ecocardiograma transesofágico",
-            "Eletrocardiograma"
-          ],
-          "correctAnswer": "Ecocardiograma transesofágico"
+          "question": "Qual é uma alternativa culinária saudável para reduzir o uso de sal?",
+          "options": ["Caldo de carne industrializado", "Molho inglês", "Ervas naturais (orégano, alecrim, alho) e limão"],
+          "correctAnswer": "Ervas naturais (orégano, alecrim, alho) e limão"
         },
         {
-          "question": "Qual intervenção é indicada para estenose aórtica em idosos com alto risco cirúrgico?",
-          "options": [
-            "Reparo cirúrgico aberto",
-            "TAVI (implante valvar transcateter)",
-            "Terapia anticoagulante"
-          ],
-          "correctAnswer": "TAVI (implante valvar transcateter)"
-        },
-        {
-          "question": "Agente mais comum de endocardite em válvula nativa é:",
-          "options": [
-            "Streptococcus viridans",
-            "Staphylococcus aureus",
-            "Enterococcus faecalis"
-          ],
-          "correctAnswer": "Staphylococcus aureus"
+          "question": "Qual o efeito agudo do consumo excessivo de álcool na pressão arterial?",
+          "options": ["Nenhum efeito", "Elevação da pressão e redução da eficácia dos medicamentos", "Redução permanente da pressão"],
+          "correctAnswer": "Elevação da pressão e redução da eficácia dos medicamentos"
         }
       ]
     },
     {
       "type": "habits",
-      "title": "Cuidados e recomendações para pacientes com Doença Valvar",
+      "title": "Checklist do Hipertenso Consciente",
       "checklist": [
-        "Realizar acompanhamento ecocardiográfico conforme orientação médica",
-        "Tratar prontamente infecções estreptocócicas de garganta",
-        "Fazer profilaxia antibiótica antes de procedimentos dentários invasivos",
-        "Manter pressão arterial e colesterol sob controle",
-        "Vacinar-se anualmente contra influenza e pneumococo",
-        "Evitar uso indiscriminado de anti-inflamatórios não esteroides",
-        "Praticar atividade física moderada conforme tolerância",
-        "Consultar cardiologista ao primeiro sinal de agravamento dos sintomas"
+        "Monitoramento Residencial (MRPA): Medir a pressão 2 a 3 vezes na semana, alternando horários.",
+        "Leitura de Rótulos Nutricionais: Evitar alimentos com >400mg de sódio por porção ou que tenham sódio nos primeiros ingredientes.",
+        "Adesão Terapêutica: Tomar os anti-hipertensivos sempre no mesmo horário para manter níveis séricos estáveis.",
+        "Gerenciamento do Estresse: Praticar técnicas de respiração (o estresse libera cortisol e adrenalina, vasoconstritores potentes).",
+        "Atividade Aeróbica: Caminhar 30 min/dia (estimula a produção de Óxido Nítrico, um vasodilatador natural)."
       ],
       "notes": [
-        "Profilaxia de endocardite baseada nas diretrizes AHA/ACC 2020: antibiótico 30–60 min antes do procedimento dentário invasivo.",
-        "Monitoramento ecocardiográfico regular detecta precocemente progressão da doença valvar.",
-        "Controle de fatores de risco (hipertensão, dislipidemia) retarda a degeneração valvar."
+        "A hipertensão é uma doença crônica não transmissível: não tem cura definitiva, mas tem controle total com tratamento contínuo.",
+        "A redução de apenas 1 colher de chá de sal por dia pode reduzir a pressão sistólica em 4 a 6 mmHg.",
+        "O 'Efeito Rebote' ao parar o remédio abruptamente pode causar picos de pressão perigosos (risco de AVC)."
       ]
     }
   ]
@@ -566,214 +453,165 @@ export const diseaseModules = {
 
 // MODULO 4
 
-  "4": {
+"4": {
   "name": "Doenças do Miocárdio",
   "modules": [
     {
       "type": "learn",
-      "title": "O que são Doenças do Miocárdio?",
+      "title": "A Saúde do Músculo Cardíaco",
       "content": [
         {
           "type": "paragraph",
-          "text": "As doenças do miocárdio afetam o músculo cardíaco, responsável pela contração e bombeamento do sangue. Podem comprometer a contratilidade, condução elétrica e a perfusão do órgão."
+          "text": "O miocárdio é a camada muscular média do coração, responsável pela força mecânica de contração (sístole) e relaxamento (diástole). É um tecido que exige alto consumo de energia e oxigênio constante. Quando ele adoece, ocorre o que chamamos de 'Remodelamento Cardíaco', onde o coração muda de forma, perde força e evolui para insuficiência."
         },
-        {
-          "type": "subtitle",
-          "text": "🫀 Funções do miocárdio"
-        },
-        {
-          "type": "paragraph",
-          "text": "O miocárdio gera a força de ejeção do sangue para a circulação sistêmica e pulmonar, mantendo débito cardíaco e perfusão tecidual adequados."
-        },
-        // inserir imagem: diagrama da camada muscular do coração
         {
           "type": "image",
-          "src": "https://www.example.com/images/miocardio_anatomia.png",
-          "alt": "Anatomia do miocárdio"
+          "src": "https://drmichelkalansky.com.br/wp-content/uploads/2023/08/img.png",
+          "alt": "Ilustração médica: Área de necrose no músculo cardíaco após obstrução"
         },
         {
           "type": "subtitle",
-          "text": "Principais condições miocárdicas"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Infarto Agudo do Miocárdio (IAM)",
-            "Miocardite (inflamação do músculo cardíaco)",
-            "Cardiomiopatia Dilatada",
-            "Cardiomiopatia Hipertrófica",
-            "Cardiomiopatia Restritiva"
-          ]
-        },
-        {
-          "type": "subtitle",
-          "text": "Sintomas comuns"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Dor torácica ou desconforto",
-            "Fadiga excessiva e fraqueza",
-            "Dispneia de esforço",
-            "Palpitações",
-            "Edema periférico",
-            "Tontura ou síncope"
-          ]
-        },
-        {
-          "type": "subtitle",
-          "text": "Diagnóstico"
-        },
-        {
-          "type": "list",
-          "items": [
-            "Eletrocardiograma (ECG)",
-            "Dosagem de marcadores cardíacos (troponina, CK-MB)",
-            "Ecocardiograma",
-            "Ressonância magnética cardíaca",
-            "Biópsia endomiocárdica (em miocardite)"
-          ]
-        },
-        {
-          "type": "subtitle",
-          "text": "Tratamento"
+          "text": "1. Infarto Agudo do Miocárdio (IAM)"
         },
         {
           "type": "paragraph",
-          "text": "O manejo varia conforme a condição:"
+          "text": "É a morte (necrose) das células do miocárdio devido à falta de fluxo sanguíneo (isquemia), geralmente causada pela ruptura de uma placa de gordura e formação de coágulo na artéria coronária. \n\n⚠️ **Conceito 'Tempo é Músculo':** A cada minuto sem tratamento, mais células morrem irreversivelmente. O tratamento ideal deve ocorrer na 'Hora de Ouro' (primeira hora após o início da dor)."
+        },
+        {
+          "type": "subtitle",
+          "text": "🚩 Sintomas Atípicos (Atenção!)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Nem sempre a dor é no peito. Mulheres, idosos e diabéticos podem apresentar sintomas diferentes, o que atrasa o diagnóstico:"
         },
         {
           "type": "list",
           "items": [
-            "IAM: reposição de fluxo (angioplastia, trombólise) e antiplaquetários",
-            "Miocardite: suporte hemodinâmico e anti-inflamatórios",
-            "Cardiomiopatias: betabloqueadores, IECA/BRAs, dispositivos de assistência ventricular",
-            "Reabilitação cardíaca pós-evento agudo"
+            "Dor na boca do estômago (confundida com gastrite).",
+            "Cansaço extremo súbito sem motivo.",
+            "Falta de ar isolada.",
+            "Dor na mandíbula ou costas."
           ]
         },
         {
           "type": "subtitle",
-          "text": "Prevenção"
+          "text": "📺 Mecanismo do Infarto (Hospital Einstein)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Veja como a placa de ateroma se rompe e bloqueia o sangue:"
+        },
+        {
+          "type": "video",
+          "src": "https://www.youtube.com/watch?v=TQm8EW8SuAk" 
+        },
+        {
+          "type": "subtitle",
+          "text": "2. Cardiomiopatia Chagásica (Brasil)"
+        },
+        {
+          "type": "paragraph",
+          "text": "Causada pelo parasita *Trypanosoma cruzi* (Doença de Chagas). É uma causa epidemiológica crítica no Brasil. O parasita causa inflamação crônica e fibrose, levando à destruição das fibras musculares e dilatação severa do coração (Cardiomegalia), além de arritmias graves."
+        },
+        {
+          "type": "subtitle",
+          "text": "3. Miocardites e Cardiomiopatias"
         },
         {
           "type": "list",
           "items": [
-            "Controle rigoroso de hipertensão e dislipidemia",
-            "Dieta balanceada (baixo teor de gorduras saturadas)",
-            "Atividade física regular",
-            "Evitar tabagismo e consumo excessivo de álcool",
-            "Acompanhamento médico periódico"
+            "Miocardite: Inflamação aguda, frequentemente viral (ex: pós-COVID ou Coxsackie). Pode ser reversível ou deixar sequelas.",
+            "Hipertrófica: Doença genética onde o músculo engrossa excessivamente, podendo causar morte súbita em jovens atletas.",
+            "Dilatada: O coração se torna uma 'sacola' fraca e grande, comum em alcoólatras ou pós-gestação."
           ]
         },
-        // inserir vídeo: explicação sobre infarto agudo do miocárdio
         {
-          "type": "video",
-          "src": "https://www.youtube.com/watch?v=abcd1234"
+          "type": "subtitle",
+          "text": "Diagnóstico de Precisão"
+        },
+        {
+          "type": "paragraph",
+          "text": "A medicina moderna utiliza biomarcadores e imagem para avaliar o dano:"
+        },
+        {
+          "type": "list",
+          "items": [
+            "Troponina Ultrassensível: Exame de sangue que detecta necrose miocárdica em horas.",
+            "Ressonância Magnética Cardíaca: Padrão-ouro para ver fibrose e inflamação.",
+            "Cintilografia: Avalia se o músculo ainda está vivo (viável) ou se virou cicatriz."
+          ]
         }
       ],
       "references": [
-        "https://pt.wikipedia.org/wiki/Mioc%C3%A1rdio",
-        "https://www.mayoclinic.org/pt-br/diseases-conditions/myocarditis/symptoms-causes",
-        "https://www.escardio.org/Guidelines/Clinical-Practice-Guidelines/Myocardial-Infarction"
+        "https://www.scielo.br/j/abc/a/sWGjV8JBzQLVKbQJqXQVskx/",
+        "Elliott PM, Anastasakis A, Borger MA, et al. 2014 ESC Guidelines on diagnosis and management of hypertrophic cardiomyopathy. Eur Heart J. 2014;35(39):2733-79. DOI: 10.1093/eurheartj/ehu284"
       ]
     },
     {
       "type": "quiz",
-      "title": "Teste seus conhecimentos sobre Doenças do Miocárdio",
+      "title": "Quiz Avançado: Proteção do Miocárdio",
       "questions": [
         {
-          "question": "O que caracteriza Infarto Agudo do Miocárdio?",
-          "options": [
-            "Inflamação difusa do miocárdio",
-            "Obstrução súbita de artéria coronária",
-            "Dilatação crônica do ventrículo"
-          ],
-          "correctAnswer": "Obstrução súbita de artéria coronária"
+          "question": "O que significa a frase 'Tempo é Músculo' no contexto do Infarto?",
+          "options": ["Que o coração precisa de tempo para descansar", "Que quanto mais rápido o atendimento, menos células musculares morrem", "Que o músculo cresce com o tempo"],
+          "correctAnswer": "Que quanto mais rápido o atendimento, menos células musculares morrem"
         },
         {
-          "question": "Qual marcador é mais específico para lesão miocárdica?",
-          "options": ["CK-MB", "Troponina I/T", "LDH"],  
-          "correctAnswer": "Troponina I/T"
+          "question": "Mulheres e diabéticos frequentemente têm 'Infarto Silencioso' ou atípico. Qual é um sintoma comum nesse grupo?",
+          "options": ["Dor muito forte no braço direito", "Dor na boca do estômago (epigástrica) e cansaço súbito", "Dor de cabeça"],
+          "correctAnswer": "Dor na boca do estômago (epigástrica) e cansaço súbito"
         },
         {
-          "question": "Um ECG com onda Q patológica sugere:",
-          "options": [
-            "Infarto antigo",
-            "Miocardite aguda",
-            "Arritmia ventricular"
-          ],
-          "correctAnswer": "Infarto antigo"
+          "question": "No Brasil, qual doença parasitária é uma grande causadora de insuficiência cardíaca e arritmias?",
+          "options": ["Malária", "Doença de Chagas", "Dengue"],
+          "correctAnswer": "Doença de Chagas"
         },
         {
-          "question": "Qual dessas NÃO é uma cardiomiopatia?",
-          "options": [
-            "Dilatação",
-            "Hipertrófica",
-            "Estenose"
-          ],
-          "correctAnswer": "Estenose"
+          "question": "Para que serve o exame de Troponina?",
+          "options": ["Verificar o colesterol", "Confirmar se houve morte de células cardíacas (Infarto)", "Verificar anemia"],
+          "correctAnswer": "Confirmar se houve morte de células cardíacas (Infarto)"
         },
         {
-          "question": "Tratamento inicial de IAM deve incluir:",
-          "options": [
-            "Antibióticos",
-            "Anlodipino",
-            "Antiplaquetário"
-          ],
-          "correctAnswer": "Antiplaquetário"
+          "question": "A Cardiomiopatia Hipertrófica (coração grosso) é a principal causa de morte súbita em qual grupo?",
+          "options": ["Idosos fumantes", "Jovens atletas aparentemente saudáveis", "Crianças"],
+          "correctAnswer": "Jovens atletas aparentemente saudáveis"
         },
         {
-          "question": "Miocardite viral frequentemente requer:",
-          "options": [
-            "Corticosteroides de imediato",
-            "Suporte hemodinâmico e avaliação de função",
-            "Cirurgia corretiva"
-          ],
-          "correctAnswer": "Suporte hemodinâmico e avaliação de função"
+          "question": "Após um infarto, o tecido morto se transforma em cicatriz (fibrose). Esse tecido:",
+          "options": ["Volta a bater normalmente após um mês", "Não contrai e pode gerar arritmias", "Transforma-se em músculo novo"],
+          "correctAnswer": "Não contrai e pode gerar arritmias"
         },
         {
-          "question": "Cardiomiopatia hipertrófica é caracterizada por:",
-          "options": [
-            "Aumento da espessura do septo interventricular",
-            "Dilatação ventricular global",
-            "Regurgitação valvar significativa"
-          ],
-          "correctAnswer": "Aumento da espessura do septo interventricular"
-        },
-        {
-          "question": "Qual é uma medida preventiva para doenças do miocárdio?",
-          "options": [
-            "Dieta rica em gorduras saturadas",
-            "Exercício aeróbico regular",
-            "Uso de cocaína recreativa"
-          ],
-          "correctAnswer": "Exercício aeróbico regular"
+          "question": "Qual a relação entre saúde bucal e miocardite/endocardite?",
+          "options": ["Nenhuma relação", "Bactérias da boca podem entrar no sangue e inflamar o coração", "Pasta de dente protege o coração"],
+          "correctAnswer": "Bactérias da boca podem entrar no sangue e inflamar o coração"
         }
       ]
     },
     {
       "type": "habits",
-      "title": "Hábitos Saudáveis para o Miocárdio",
+      "title": "Checklist de Preservação Miocárdica",
       "checklist": [
-        "Manter pressão arterial abaixo de 130/80 mmHg",
-        "Fazer pelo menos 150 min/semana de exercício aeróbico",
-        "Consumir frutas, verduras e grãos integrais diariamente",
-        "Evitar tabagismo e uso de drogas ilícitas",
-        "Monitorar glicemia em pacientes diabéticos",
-        "Realizar check-up cardíaco anual após 40 anos",
-        "Controle de estresse por técnicas de relaxamento"
+        "Controle Rigoroso do LDL: Manter colesterol LDL < 50mg/dL se já infartou (meta agressiva da SBC).",
+        "Adesão à Antiagregação: Se possui stent, nunca parar AAS ou Clopidogrel sem ordem do cardiologista (risco de trombose do stent).",
+        "Saúde Bucal: Usar fio dental diariamente e tratar cáries (previne endocardite bacteriana).",
+        "Vacinação: Vacina da Gripe anual reduz risco de infarto em cardiopatas.",
+        "Exercício Monitorado: Reabilitação cardíaca para estimular a circulação colateral (novos vasos sanguíneos).",
+        "Dieta Anti-inflamatória: Consumir ômega-3 (peixes, linhaça) e evitar gorduras trans."
       ],
       "notes": [
-        "Exercício regular reduz incidência de infarto em até 30%: estudo de cohortes CARDIA (1990–2020)",
-        "Dieta DASH recomendada para prevenção de eventos cardíacos: AHA/ACC Guidelines 2021",
-        "Parar de fumar melhora função endotelial em poucas semanas: revisão Cochrane 2019"
+        "O coração não se regenera facilmente: a prevenção da necrose é o único caminho.",
+        "A Doença de Chagas ainda não tem cura definitiva na fase crônica, mas o tratamento precoce evita a dilatação do órgão.",
+        "O exercício físico regular funciona como um 'remédio', melhorando a eficiência do oxigênio no miocárdio restante."
       ]
     }
   ]
 },
 
+// MODULO 5 
 
-  "5": {
+"5": {
   "name": "Diabetes Tipo 1",
   "modules": [
     {
@@ -792,7 +630,6 @@ export const diseaseModules = {
           "type": "paragraph",
           "text": "Na DMT1, linfócitos T autoreativos atacam as ilhotas de Langerhans, reduzindo a produção de insulina. Sem insulina suficiente, a glicose não penetra eficientemente nas células, resultando em hiperglicemia e produção excessiva de corpos cetônicos."
         },
-        // inserir imagem: diagrama da destruição autoimune das células β e consequências metabólicas
         {
           "type": "subtitle",
           "text": "Principais causas"
@@ -843,7 +680,6 @@ export const diseaseModules = {
           "type": "paragraph",
           "text": "O manejo baseia-se em terapia de reposição insulínica múltipla diária ou bomba de insulina, monitoramento frequente de glicemia e educação em contagem de carboidratos e autocuidado."
         },
-        // inserir vídeo: tutorial sobre ajuste de dose de insulina rápida e lenta
         {
           "type": "subtitle",
           "text": "Monitoramento e complicações"
@@ -872,9 +708,9 @@ export const diseaseModules = {
         }
       ],
       "references": [
-        "https://pt.wikipedia.org/wiki/Diabetes_mellitus_tipo_1",
-        "https://www.mayoclinic.org/pt-br/diseases-conditions/type-1-diabetes/symptoms-causes",
-        "https://diabetes.org.br/profissional/diretrizes/"
+        "https://diretriz.diabetes.org.br/",
+        "American Diabetes Association. Standards of Medical Care in Diabetes—2024. Diabetes Care. 2024;47(Suppl. 1):S1-S321. DOI: 10.2337/dc24-Sint",
+        "Atkinson MA, Eisenbarth GS, Michels AW. Type 1 diabetes. Lancet. 2014;383(9911):69-82. DOI: 10.1016/S0140-6736(13)60591-7"
       ]
     },
     {
@@ -965,6 +801,7 @@ export const diseaseModules = {
   ]
 },
 
+// MODULO 6
 
 "6": {
   "name": "Diabetes Tipo 2",
@@ -985,7 +822,6 @@ export const diseaseModules = {
           "type": "paragraph",
           "text": "Na DMT2, os tecidos (músculo, fígado, tecido adiposo) respondem menos à insulina, elevando glicose sanguínea. Com o tempo, as células β se exaurem, reduzindo ainda mais a produção de insulina."
         },
-        // inserir imagem: diagrama de resistência à insulina e disfunção das células β
         {
           "type": "subtitle",
           "text": "Principais fatores de risco"
@@ -1049,7 +885,6 @@ export const diseaseModules = {
             "Insulinoterapia quando necessário"
           ]
         },
-        // inserir vídeo: pacientes relatando benefícios de mudança de estilo de vida no controle glicêmico
         {
           "type": "subtitle",
           "text": "Monitoramento e complicações"
@@ -1080,10 +915,9 @@ export const diseaseModules = {
         }
       ],
       "references": [
-        "https://pt.wikipedia.org/wiki/Diabetes_mellitus_tipo_2",
-        "https://www.mayoclinic.org/pt-br/diseases-conditions/type-2-diabetes/symptoms-causes",
-        "https://diabetes.org.br/profissional/diretrizes/",
-        "https://care.diabetesjournals.org/content/44/Supplement_1/S1"  // ADA Standards of Care 2024
+        "https://diretriz.diabetes.org.br/",
+        "American Diabetes Association. Standards of Medical Care in Diabetes—2024. Diabetes Care. 2024;47(Suppl. 1):S1-S321. DOI: 10.2337/dc24-Sint",
+        "Davies MJ, Aroda VR, Collins BS, et al. Management of hyperglycemia in type 2 diabetes, 2022. A consensus report by the American Diabetes Association (ADA) and the European Association for the Study of Diabetes (EASD). Diabetes Care. 2022;45(11):2753-86. DOI: 10.2337/dci22-0034"
       ]
     },
     {
@@ -1100,7 +934,7 @@ export const diseaseModules = {
           "correctAnswer": "Reduz produção hepática de glicose"
         },
         {
-          "question": "Qual critério diagnósticos usa HbA1c?",
+          "question": "Qual critério diagnóstico usa HbA1c?",
           "options": ["≥ 5,7 %", "≥ 6,5 %", "≥ 7,5 %"],
           "correctAnswer": "≥ 6,5 %"
         },
@@ -1174,7 +1008,8 @@ export const diseaseModules = {
         "Dieta rica em fibras melhora sensibilidade à insulina: meta-análise 2022",
         "Exercício regular reduz HbA1c em 0,5–1 %: diretrizes ADA"
       ]
-      }
-    ]
-  }
+    }
+  ]
+}
+
 };

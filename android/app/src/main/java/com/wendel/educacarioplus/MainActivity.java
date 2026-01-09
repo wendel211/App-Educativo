@@ -1,4 +1,4 @@
-package com.anonymous.myapp;
+package com.wendel.educacarioplus;
 
 import android.os.Bundle;
 import com.facebook.react.ReactActivity;

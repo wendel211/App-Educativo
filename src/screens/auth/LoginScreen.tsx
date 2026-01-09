@@ -37,8 +37,11 @@ export const LoginScreen: React.FC = () => {
   const navigation = useNavigation();
 
   // Auth Google
-  const [request, response, promptAsync] = Google.useAuthRequest({
-    androidClientId: '197529378592-artvpqkb10n21q64gm09f789euknaaop.apps.googleusercontent.com',
+const [request, response, promptAsync] = Google.useAuthRequest({
+
+    clientId: '197529378592-29312ichql1ttac8lssnmqdbkr2rhugc.apps.googleusercontent.com',
+    
+    androidClientId: '197529378592-q35lmjqo1mocaargg3eme95mv0p1tsb9.apps.googleusercontent.com',
   });
 
   useEffect(() => {

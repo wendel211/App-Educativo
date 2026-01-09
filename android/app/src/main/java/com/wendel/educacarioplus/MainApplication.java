@@ -1,4 +1,4 @@
-package com.anonymous.myapp;
+package com.wendel.educacarioplus;
 
 import android.app.Application;
 import android.content.res.Configuration;
