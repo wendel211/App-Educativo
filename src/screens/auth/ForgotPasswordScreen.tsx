@@ -1,5 +1,3 @@
-// src/screens/ForgotPasswordScreen.tsx
-
 import React, { useState } from 'react';
 import {
   View,
@@ -47,21 +45,28 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({ navi
 
     try {
       await forgotPassword(email);
+      
+      // Alerta de sucesso
       Alert.alert(
         'E-mail enviado',
-        'Verifique sua caixa de entrada (ou spam) para redefinir sua senha.'
+        'Verifique sua caixa de entrada (ou a pasta de spam) para redefinir sua senha.',
+        [
+            { text: "OK", onPress: () => navigation.navigate('Login') }
+        ]
       );
-      navigation.navigate('Login');
+      
     } catch (err: any) {
       console.error(err);
       let message = 'Não foi possível enviar o e-mail. Tente novamente.';
+      
       if (err.code === 'auth/user-not-found') {
-        message = 'E-mail não cadastrado.';
+        message = 'E-mail não cadastrado no sistema.';
       } else if (err.code === 'auth/invalid-email') {
         message = 'Formato de e-mail inválido.';
       } else if (err.code === 'auth/network-request-failed') {
-        message = 'Falha na rede. Verifique sua conexão.';
+        message = 'Falha na rede. Verifique sua conexão com a internet.';
       }
+      
       Alert.alert('Erro', message);
     } finally {
       setLoading(false);
@@ -76,6 +81,12 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({ navi
       </View>
 
       <ScrollView style={styles.content} showsVerticalScrollIndicator={false}>
+        <View style={styles.textContainer}>
+            <Text style={styles.instructions}>
+                Digite o e-mail associado à sua conta e enviaremos um link para redefinir sua senha.
+            </Text>
+        </View>
+
         <Input
           label="E-mail"
           value={email}
@@ -83,6 +94,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({ navi
           placeholder="Digite seu e-mail"
           error={error}
           autoCapitalize="none"
+          keyboardType="email-address"
         />
 
         <Button
@@ -95,7 +107,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({ navi
           onPress={() => navigation.goBack()}
           style={styles.backContainer}
         >
-          <Text style={styles.backText}>Voltar</Text>
+          <Text style={styles.backText}>Voltar para o Login</Text>
         </TouchableOpacity>
       </ScrollView>
     </View>
@@ -105,7 +117,7 @@ export const ForgotPasswordScreen: React.FC<ForgotPasswordScreenProps> = ({ navi
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: colors.background,
+    backgroundColor: '#fefefe', // Fundo branco padrão
     paddingTop: 50
   },
   logoContainer: {
@@ -125,12 +137,28 @@ const styles = StyleSheet.create({
     flex: 1,
     padding: 20
   },
+  textContainer: {
+    marginBottom: 25,
+    alignItems: 'center',
+    paddingHorizontal: 10
+  },
+  instructions: {
+    fontSize: 15,
+    color: '#666',
+    textAlign: 'center',
+    lineHeight: 22,
+
+  },
   backContainer: {
     marginTop: 20,
-    alignItems: 'center'
+    alignItems: 'center',
+    padding: 10
   },
   backText: {
-    color: colors.primary || '#007bff',
+    color: colors.primary || '#005A57',
+    fontSize: 15,
+    fontWeight: '600',
     textDecorationLine: 'underline'
   }
 });
+

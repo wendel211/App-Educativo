@@ -140,7 +140,7 @@ const [request, response, promptAsync] = Google.useAuthRequest({
         </TouchableOpacity>
 
         <TouchableOpacity
-          onPress={() => navigation.navigate('ForgotPassword')}
+          onPress={() => navigation.navigate('ForgotPassword' as never)}
           style={styles.forgotPasswordContainer}
         >
           <Text style={styles.forgotPasswordText}>Esqueceu a senha?</Text>
