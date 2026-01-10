@@ -19,6 +19,7 @@
     },
     "android": {
       "minSdkVersion": 26,
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/LogoAPPEduca.png",
         "backgroundColor": "#ffffff"
@@ -39,7 +40,6 @@
       "favicon": "./src/assets/favicon.png"
     },
     "plugins": [
-    
       [
         "expo-build-properties",
         {
