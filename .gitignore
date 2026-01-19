@@ -7,6 +7,7 @@ node_modules/
 .expo/
 dist/
 web-build/
+eas.json
 
 # Native
 *.orig.*
@@ -37,3 +38,10 @@ yarn-error.*
 # Arquivos de ambiente
 .env
 .env.*
+
+# IDEs e editores
+.vscode/
+.idea/
+
+# EAS
+eas.json
