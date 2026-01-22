@@ -2,56 +2,46 @@
   "expo": {
     "name": "EducaCardio+",
     "slug": "educacardio-plus",
-    "version": "1.0.0",
+    "version": "6.0.0",
     "orientation": "portrait",
     "icon": "./src/assets/images/LogoAPPEduca.png",
     "userInterfaceStyle": "light",
+    "newArchEnabled": true,
     "splash": {
-      "image": "./src/assets/splash.png",
+      "image": "./assets/splash.png",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
     "ios": {
       "supportsTablet": true
     },
     "android": {
-      "minSdkVersion": 26,
-      "versionCode": 2,
       "adaptiveIcon": {
         "foregroundImage": "./src/assets/images/LogoAPPEduca.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.wendel.educacarioplus",
-      "permissions": [
-        "com.google.android.gms.permission.ACTIVITY_RECOGNITION",
-        "android.permission.BODY_SENSORS",
-        "android.permission.health.READ_HEART_RATE",
-        "android.permission.health.WRITE_HEART_RATE",
-        "android.permission.health.READ_STEPS",
-        "android.permission.health.WRITE_STEPS",
-        "android.permission.health.READ_SLEEP",
-        "android.permission.health.WRITE_SLEEP"
-      ]
+      "edgeToEdgeEnabled": true,
+      "predictiveBackGestureEnabled": false,
+      "package": "com.wendel.educacarioplus"
     },
     "web": {
-      "favicon": "./src/assets/favicon.png"
+      "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      "expo-font",
+      "expo-build-properties",
       [
         "expo-build-properties",
         {
           "android": {
-            "compileSdkVersion": 34,
-            "targetSdkVersion": 34,
+            "compileSdkVersion": 36,
+            "targetSdkVersion": 36,
             "minSdkVersion": 26
           }
         }
       ]
     ],
-    "extra": {
+        "extra": {
       "eas": {
         "projectId": "b5862575-2752-441f-8677-79d07eb88744"
       }

@@ -7,9 +7,10 @@ node_modules/
 .expo/
 dist/
 web-build/
-eas.json
+expo-env.d.ts
 
 # Native
+.kotlin/
 *.orig.*
 *.jks
 *.p8
@@ -35,13 +36,13 @@ yarn-error.*
 # typescript
 *.tsbuildinfo
 
-# Arquivos de ambiente
+# generated native folders
+/ios
+/android
+
+env.local
+env
 .env
-.env.*
 
-# IDEs e editores
-.vscode/
-.idea/
 
-# EAS
 eas.json
