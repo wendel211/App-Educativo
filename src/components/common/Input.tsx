@@ -1,38 +1,34 @@
 // src/components/common/Input.tsx
 import React from 'react';
-import { View, TextInput, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Text, StyleSheet, TextInputProps } from 'react-native';
 import { colors } from '../../styles/colors';
 
-interface InputProps {
+// Alteração 1: Estendemos TextInputProps para aceitar style, cursorColor, etc.
+interface InputProps extends TextInputProps {
   value: string;
   onChangeText: (text: string) => void;
-  placeholder?: string;
-  secureTextEntry?: boolean;
   error?: string;
   label?: string;
-  autoCapitalize?: 'none' | 'sentences' | 'words' | 'characters';
 }
 
 export const Input: React.FC<InputProps> = ({
   value,
   onChangeText,
-  placeholder,
-  secureTextEntry,
   error,
   label,
-  autoCapitalize = 'none',
+  style,
+  ...props // Captura todas as outras propriedades (secureTextEntry, placeholder, etc.)
 }) => {
   return (
     <View style={styles.container}>
       {label && <Text style={styles.label}>{label}</Text>}
       <TextInput
-        style={[styles.input, !!error && styles.inputError]}
+        // Alteração 2: Mesclamos o style recebido e forçamos a cor preta no styles.input abaixo
+        style={[styles.input, !!error && styles.inputError, style]}
         value={value}
         onChangeText={onChangeText}
-        placeholder={placeholder}
-        secureTextEntry={secureTextEntry}
-        autoCapitalize={autoCapitalize}
         placeholderTextColor="#999"
+        {...props} // Repassa as props para o componente nativo
       />
       {error && <Text style={styles.errorText}>{error}</Text>}
     </View>
@@ -55,7 +51,8 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     padding: 12,
     fontSize: 16,
-    backgroundColor: '#FFF',
+    backgroundColor: '#fdfdfdff',
+    color: '#000000', 
   },
   inputError: {
     borderColor: colors.error,
