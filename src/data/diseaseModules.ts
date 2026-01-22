@@ -343,7 +343,7 @@ export const diseaseModules = {
         },
         {
           "type": "paragraph",
-          "text": "O excesso de sódio retém volume líquido nos vasos, enquanto o estresse libera hormônios (como adrenalina) que contraem as artérias. Entenda essa dinâmica com o Dr. Drauzio Varella:"
+          "text": "O excesso de sódio retém volume líquido nos vasos, enquanto o estresse libera hormônios (como adrenalina) que contraem as artérias. Entenda essa dinâmica com o vídeo a seguir:"
         },
         {
           "type": "video",
@@ -496,7 +496,7 @@ export const diseaseModules = {
         },
         {
           "type": "subtitle",
-          "text": "📺 Mecanismo do Infarto (Hospital Einstein)"
+          "text": "📺 Mecanismo do Infarto:"
         },
         {
           "type": "paragraph",
