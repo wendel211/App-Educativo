@@ -39,9 +39,9 @@ export const LoginScreen: React.FC = () => {
   // Auth Google
 const [request, response, promptAsync] = Google.useAuthRequest({
 
-    clientId: '197529378592-29312ichql1ttac8lssnmqdbkr2rhugc.apps.googleusercontent.com',
+    clientId: '197529378592-tgsdr8cefah6ij3sv4fb0vubgu45pao0.apps.googleusercontent.com',
     
-    androidClientId: '197529378592-q35lmjqo1mocaargg3eme95mv0p1tsb9.apps.googleusercontent.com',
+    androidClientId: '197529378592-tgsdr8cefah6ij3sv4fb0vubgu45pao0.apps.googleusercontent.com',
   });
 
   useEffect(() => {
